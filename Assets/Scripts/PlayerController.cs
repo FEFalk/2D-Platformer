@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float maxMoveSpeed;
     private float currentMovement;
 	public float jumpHeight;
-
+    //hejhej
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 	private bool grounded;
