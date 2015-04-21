@@ -36,11 +36,11 @@ public class PlayerController : MonoBehaviour {
         if (currentMovement == 0)
             applyStopForce();
 
+
         if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 3)
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20));
         }
-
 
 
 	}
@@ -64,12 +64,15 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetButtonDown("Jump") && grounded) 
 		{
 			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight), ForceMode2D.Impulse);
+
 		}
 		
 		if (Input.GetButtonDown("Jump") && !grounded && !doubleJumped) 
 		{
 			doubleJumped=true;
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+
+
 		}
 
 
