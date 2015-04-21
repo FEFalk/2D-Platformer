@@ -276,7 +276,7 @@ BoxCollider2D:
   m_PrefabInternal: {fileID: 916738600}
   m_GameObject: {fileID: 280887348}
   m_Enabled: 1
-  m_Material: {fileID: 6200000, guid: 6914ba169a088714297987e651f896cd, type: 2}
+  m_Material: {fileID: 6200000, guid: 3c9079b2f0c6b364ba1aed112db36cb7, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: -.5, y: -1}
@@ -545,6 +545,54 @@ Prefab:
       propertyPath: m_SortingOrder
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 11131806, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_Animations.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: 1fda3623dfbf09d42afc508e3231d1f4, type: 2}
+    - target: {fileID: 11131806, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_Animations.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: de3a6a542f53a2346bdadd43e1b227f2, type: 2}
+    - target: {fileID: 11131806, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9517808, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9517808, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11131806, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_Animations.Array.data[2]
+      value: 
+      objectReference: {fileID: 7400000, guid: 1fda3623dfbf09d42afc508e3231d1f4, type: 2}
+    - target: {fileID: 11131806, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_Animations.Array.data[3]
+      value: 
+      objectReference: {fileID: 7400000, guid: 1fda3623dfbf09d42afc508e3231d1f4, type: 2}
+    - target: {fileID: 11131806, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_Animations.Array.data[4]
+      value: 
+      objectReference: {fileID: 7400000, guid: 1fda3623dfbf09d42afc508e3231d1f4, type: 2}
+    - target: {fileID: 11131806, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_Animation
+      value: 
+      objectReference: {fileID: 7400000, guid: 1fda3623dfbf09d42afc508e3231d1f4, type: 2}
+    - target: {fileID: 11480462, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: jumpHeight
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094574, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_GravityScale
+      value: 2.3599999
+      objectReference: {fileID: 0}
+    - target: {fileID: 6174208, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 9940d8f96105f704fbeef7b57992c4f6, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
   m_IsPrefabParent: 0
@@ -559,13 +607,24 @@ MonoBehaviour:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 573662412}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aa6d9d05f13da04ba7fec91d323c043, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 179438, guid: 6d5f555272502d44489fc11861adba83, type: 2}
-  fireDelay: .25
-  bulletOffset: {x: 1, y: 0, z: 0}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 200, y: 1}
+--- !u!4 &630521319
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 630521317}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2, y: -5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
 --- !u!1 &670501496
 GameObject:
   m_ObjectHideFlags: 0

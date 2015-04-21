@@ -30,10 +30,16 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		//if(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < maxSpeed)
-			gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Input.GetAxisRaw("Horizontal")*moveSpeed, 0f));
-			anim.SetFloat("Walking", Mathf.Abs(Input.GetAxisRaw("Horizontal")*moveSpeed));
-	}
+
+        Movement();
+
+        if (currentMovement == 0)
+            applyStopForce();
+
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 3)
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20));
+        }
 
 
 	// Update is called once per frame
@@ -93,4 +99,30 @@ public class PlayerController : MonoBehaviour {
 			Destroy (other.gameObject);
 		}
 	}
+
+    void Movement()
+    {
+        currentMovement = Input.GetAxisRaw("Horizontal");
+
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+
+        anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
+    }
+
+    void applyStopForce()
+    {
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 1)
+        {
+           gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 0f));
+        }
+
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.x < -1)
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(20, 0f));
+        }
+    }
 }
