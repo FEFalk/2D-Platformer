@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 
         if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 3)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -15));
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20));
         }
 
 
@@ -122,12 +122,12 @@ public class PlayerController : MonoBehaviour {
     {
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 1)
         {
-           gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-15, 0f));
+           gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 0f));
         }
 
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x < -1)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(15, 0f));
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(20, 0f));
         }
     }
 }
