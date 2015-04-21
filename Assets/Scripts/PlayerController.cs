@@ -4,9 +4,8 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;
-    public float maxMoveSpeed;
-    private float currentMovement;
 	public float jumpHeight;
+	private float maxSpeed = 5f;
 
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
@@ -31,19 +30,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-
-        Movement();
-
-        if (currentMovement == 0)
-            applyStopForce();
-
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 3)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -15));
-        }
-
-
-
+		//if(gameObject.GetComponent<Rigidbody2D>().velocity.magnitude < maxSpeed)
+			gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(Input.GetAxisRaw("Horizontal")*moveSpeed, 0f));
+			anim.SetFloat("Walking", Mathf.Abs(Input.GetAxisRaw("Horizontal")*moveSpeed));
 	}
 
 
@@ -64,13 +53,13 @@ public class PlayerController : MonoBehaviour {
 		//Jumping
 		if (Input.GetButtonDown("Jump") && grounded) 
 		{
-			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight), ForceMode2D.Impulse);
+			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight));
 		}
 		
 		if (Input.GetButtonDown("Jump") && !grounded && !doubleJumped) 
 		{
 			doubleJumped=true;
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight));
 		}
 
 
@@ -104,30 +93,4 @@ public class PlayerController : MonoBehaviour {
 			Destroy (other.gameObject);
 		}
 	}
-
-    void Movement()
-    {
-        currentMovement = Input.GetAxisRaw("Horizontal");
-
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
-
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
-
-        anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
-    }
-
-    void applyStopForce()
-    {
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 1)
-        {
-           gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-15, 0f));
-        }
-
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x < -1)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(15, 0f));
-        }
-    }
 }
