@@ -5,8 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	public float moveSpeed;
 	public float jumpHeight;
-	private float maxSpeed = 5f;
-
+    //hejhej
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 	private bool grounded;
@@ -42,6 +41,10 @@ public class PlayerController : MonoBehaviour {
         }
 
 
+
+	}
+
+
 	// Update is called once per frame
 	void Update () {
 
@@ -59,13 +62,13 @@ public class PlayerController : MonoBehaviour {
 		//Jumping
 		if (Input.GetButtonDown("Jump") && grounded) 
 		{
-			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight));
+			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight), ForceMode2D.Impulse);
 		}
 		
 		if (Input.GetButtonDown("Jump") && !grounded && !doubleJumped) 
 		{
 			doubleJumped=true;
-			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight));
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
 		}
 
 
