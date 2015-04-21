@@ -430,7 +430,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 9517808, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11131806, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
       propertyPath: m_Animations.Array.data[2]
@@ -448,6 +448,14 @@ Prefab:
       propertyPath: m_Animation
       value: 
       objectReference: {fileID: 7400000, guid: 1fda3623dfbf09d42afc508e3231d1f4, type: 2}
+    - target: {fileID: 11480462, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: jumpHeight
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 5094574, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: m_GravityScale
+      value: 2.3599999
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
   m_IsPrefabParent: 0
@@ -475,7 +483,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 630521317}
   m_Enabled: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
