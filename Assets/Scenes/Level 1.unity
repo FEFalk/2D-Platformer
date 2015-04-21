@@ -531,7 +531,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 21251112, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 21243454, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
       propertyPath: m_SortingOrder
@@ -543,7 +543,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 21229266, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
       propertyPath: m_SortingOrder
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
@@ -902,7 +902,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 280887349}
   m_RootOrder: 9
---- !u!4 &1373277947
+--- !u!4 &1373277947 stripped
 Transform:
   m_PrefabParentObject: {fileID: 449626, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
   m_PrefabInternal: {fileID: 573662411}
