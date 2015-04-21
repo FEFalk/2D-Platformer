@@ -2,9 +2,10 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-
+    private float currentMovement;
 	public float moveSpeed;
 	public float jumpHeight;
+    public float maxMoveSpeed;
     //hejhej
 	public Transform groundCheck;
 	public LayerMask whatIsGround;

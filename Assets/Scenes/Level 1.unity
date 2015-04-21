@@ -193,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 22
   jumpHeight: 500
+  maxMoveSpeed: 0
   groundCheck: {fileID: 1373277947}
   whatIsGround:
     serializedVersion: 2
@@ -593,6 +594,10 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: 9940d8f96105f704fbeef7b57992c4f6, type: 2}
+    - target: {fileID: 11480462, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: maxMoveSpeed
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
   m_IsPrefabParent: 0
@@ -613,7 +618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 179438, guid: 6d5f555272502d44489fc11861adba83, type: 2}
   fireDelay: .25
-  bulletOffset: {x: .5, y: 0, z: 0}
+  bulletOffset: {x: 1, y: 0, z: 0}
 --- !u!1 &670501496
 GameObject:
   m_ObjectHideFlags: 0
