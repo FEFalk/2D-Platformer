@@ -37,10 +37,7 @@ public class PlayerController : MonoBehaviour {
         if (currentMovement == 0)
             applyStopForce();
 
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 3)
-        {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -15));
-        }
+
 
 
 
@@ -61,17 +58,24 @@ public class PlayerController : MonoBehaviour {
 		if (grounded)
 			doubleJumped = false;
 
-		//Jumping
-		if (Input.GetButtonDown("Jump") && grounded) 
-		{
-			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight), ForceMode2D.Impulse);
-		}
-		
-		if (Input.GetButtonDown("Jump") && !grounded && !doubleJumped) 
-		{
-			doubleJumped=true;
+        //Jumping
+        if (Input.GetButtonDown("Jump") && grounded)
+        {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-		}
+        }
+
+        if (Input.GetButtonDown("Jump") && !grounded && !doubleJumped)
+        {
+            doubleJumped = true;
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+        }
+
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.y > 6)
+        {
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20));
+        }
+
+
 
 
 		//Turning/facing new direction
@@ -107,6 +111,7 @@ public class PlayerController : MonoBehaviour {
 
     void Movement()
     {
+        //Moving
         currentMovement = Input.GetAxisRaw("Horizontal");
 
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
@@ -122,12 +127,12 @@ public class PlayerController : MonoBehaviour {
     {
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 1)
         {
-           gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-15, 0f));
+           gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-20, 0f));
         }
 
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x < -1)
         {
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(15, 0f));
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(20, 0f));
         }
     }
 }
