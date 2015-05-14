@@ -148,6 +148,9 @@ public class PlayerController : MonoBehaviour {
 
     public void startJumping(bool jumped)
     {
+       // AudioSource audio = GetComponent<AudioSource>();
+        if (jumped)
+            GetComponent<AudioSource>().Play();
         jumping = jumped;
     }
 
