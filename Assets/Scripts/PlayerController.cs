@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour {
 		//Jumping
 		if (jumping && grounded && prev==false) 
 		{
+            GetComponent<AudioSource>().Play();
 			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight), ForceMode2D.Impulse);
             GetComponent<AudioSource>().Play();
             inAir = true;
@@ -148,9 +149,6 @@ public class PlayerController : MonoBehaviour {
 
     public void startJumping(bool jumped)
     {
-       // AudioSource audio = GetComponent<AudioSource>();
-        if (jumped)
-            GetComponent<AudioSource>().Play();
         jumping = jumped;
     }
 
