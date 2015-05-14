@@ -1571,6 +1571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   laserPrefab: {fileID: 863163079}
+  parentObject: {fileID: 1489894364}
   rotationOffset: 0
 --- !u!1 &386998839
 GameObject:
@@ -6117,6 +6118,10 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a7c892013f3102438871a1562af51a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!1 &1489894364
+GameObject:
+  m_PrefabParentObject: {fileID: 140332, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+  m_PrefabInternal: {fileID: 573662411}
 --- !u!1001 &1490322834
 Prefab:
   m_ObjectHideFlags: 0
