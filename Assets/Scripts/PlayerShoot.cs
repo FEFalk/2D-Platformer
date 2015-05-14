@@ -10,6 +10,8 @@ public class PlayerShoot : MonoBehaviour {
     void Start()
     {
         startPosition = laserPrefab.transform.position;
+        laserPrefab.transform.parent = transform;
+        laserPrefab.transform.localPosition = Vector3.zero;
     }
 
     void Update () {
@@ -24,7 +26,7 @@ public class PlayerShoot : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
 
             scaling += 2;
-            laserPrefab.transform.position = new Vector3(transform.position.x + scaling, 0);
+            laserPrefab.transform.localPosition = new Vector2(transform.position.x + scaling, 0);
             laserPrefab.transform.localScale = new Vector3(transform.localScale.x + scaling, 1, 0);
 
         }
@@ -32,7 +34,7 @@ public class PlayerShoot : MonoBehaviour {
         {
             scaling = 0;
             laserPrefab.transform.localScale = new Vector2(0, 1);
-            laserPrefab.transform.position = startPosition;
+            laserPrefab.transform.localPosition = startPosition;
         }
 
     }
