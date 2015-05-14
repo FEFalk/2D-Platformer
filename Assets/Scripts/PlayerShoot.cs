@@ -25,7 +25,7 @@ public class PlayerShoot : MonoBehaviour {
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
 
             scaling += 0.5f;
-            laserPrefab.transform.localPosition = new Vector2(transform.position.x + scaling/2.86f, 0);
+            laserPrefab.transform.localPosition = new Vector2(transform.localPosition.x + scaling/2.86f, 0);
             laserPrefab.transform.localScale = new Vector3(transform.localScale.x + scaling, 1, 0);
 
         }
