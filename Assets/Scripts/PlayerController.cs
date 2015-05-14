@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour {
 		if (jumping && grounded && prev==false) 
 		{
 			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight), ForceMode2D.Impulse);
+            GetComponent<AudioSource>().Play();
             inAir = true;
             prev = true;
 		}
@@ -84,7 +85,6 @@ public class PlayerController : MonoBehaviour {
             if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y*4.5f)/2));
 
-            Debug.Log("hejhej");
 		}
 	}
 
@@ -114,7 +114,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Movement()
     {
-        //currentMovement = Input.GetAxisRaw("Horizontal");
+        currentMovement = Input.GetAxisRaw("Horizontal");
 
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
@@ -142,7 +142,9 @@ public class PlayerController : MonoBehaviour {
     public void startMoving(float moveDirection)
     {
         currentMovement=moveDirection;
+
     }
+
 
     public void startJumping(bool jumped)
     {
