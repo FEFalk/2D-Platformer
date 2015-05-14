@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class PlayerController : MonoBehaviour {
-    private float currentMovement;
+    private static float currentMovement;
 	public float moveSpeed;
 	public float jumpHeight;
     public float maxMoveSpeed;
@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour {
 	private bool hasKey=false;
 	public Animator anim;
 
-    
+    private bool prev, current, inAir, jumping;
 
 	// Use this for initialization
 	void Start () {
@@ -41,8 +41,6 @@ public class PlayerController : MonoBehaviour {
         {
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -20));
         }
-
-
 	}
 
 
@@ -60,27 +58,32 @@ public class PlayerController : MonoBehaviour {
 		if (grounded)
 			doubleJumped = false;
 
+        if (prev == true && jumping == false && GetComponent<Rigidbody2D>().velocity.y>8.2f)
+        {
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -jumpHeight/2), ForceMode2D.Impulse);
+        }
+
+        if (jumping == false)
+        {
+            inAir = false;
+            prev = false;
+        }
+
 		//Jumping
-		if (Input.GetButtonDown("Jump") && grounded) 
+		if (jumping && grounded && prev==false) 
 		{
 			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight), ForceMode2D.Impulse);
-
+            inAir = true;
+            prev = true;
 		}
 		
-		if (Input.GetButtonDown("Jump") && !grounded && !doubleJumped) 
+		if (jumping && !grounded && inAir == true)
 		{
-			doubleJumped=true;
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+            if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y*7)/2));
 
-
+            Debug.Log("hejhej");
 		}
-
-
-		//Turning/facing new direction
-		if(Input.GetAxisRaw("Horizontal")==1)
-			transform.localScale = new Vector2(someScale, transform.localScale.y);
-		if(Input.GetAxisRaw("Horizontal")==-1)
-			transform.localScale = new Vector2(-someScale, transform.localScale.y);
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
@@ -107,9 +110,9 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-    void Movement()
+    public void Movement()
     {
-        currentMovement = Input.GetAxisRaw("Horizontal");
+        //currentMovement = Input.GetAxisRaw("Horizontal");
 
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
@@ -117,7 +120,25 @@ public class PlayerController : MonoBehaviour {
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
 
+
+        //Turning/facing new direction
+        if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
+            transform.localScale = new Vector2(someScale, transform.localScale.y);
+        if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1)
+            transform.localScale = new Vector2(-someScale, transform.localScale.y);
+
         anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
+
+    }
+
+    public void startMoving(float moveDirection)
+    {
+        currentMovement=moveDirection;
+    }
+
+    public void startJumping(bool jumped)
+    {
+        jumping = jumped;
     }
 
     void applyStopForce()
@@ -133,3 +154,4 @@ public class PlayerController : MonoBehaviour {
         }
     }
 }
+
