@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private Vector2 spawn;
 
 	private float someScale;
-	public bool hasKey=false;
+	private bool hasKey=false;
 	public Animator anim;
 
     private bool prev, current, inAir, jumping;
@@ -48,9 +48,9 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 
 		//Ground-checking
-		groundCheckDiag1.x = groundCheck.position.x-0.5f;
+		groundCheckDiag1.x = groundCheck.position.x-0.49f;
 		groundCheckDiag1.y = groundCheck.position.y-0.1f;
-		groundCheckDiag2.x = groundCheck.position.x+0.5f;
+		groundCheckDiag2.x = groundCheck.position.x+0.49f;
 		groundCheckDiag2.y = groundCheck.position.y+0.1f;
 
 		grounded = Physics2D.OverlapArea (groundCheckDiag1, groundCheckDiag2, whatIsGround);
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 		if (jumping && !grounded && inAir == true)
 		{
             if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y*7)/2));
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y*4.5f)/2));
 
             Debug.Log("hejhej");
 		}
@@ -105,8 +105,8 @@ public class PlayerController : MonoBehaviour {
 	
 		else if (other.transform.tag == "Key") 
 		{
-            Destroy(other.gameObject);
 			hasKey = true;
+			Destroy (other.gameObject);
 		}
 	}
 

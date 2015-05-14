@@ -13,7 +13,7 @@ GameObject:
   - 50: {fileID: 5009712}
   - 61: {fileID: 6164256}
   - 114: {fileID: 11421846}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Blue Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
