@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour {
 	private float someScale;
 	private bool hasKey=false;
 	public Animator anim;
+    public GameObject ChildObject;
+    public GameObject Laser;
 
     private bool prev, current, inAir, jumping;
 
@@ -123,9 +125,15 @@ public class PlayerController : MonoBehaviour {
 
         //Turning/facing new direction
         if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
+        {
             transform.localScale = new Vector2(someScale, transform.localScale.y);
-        if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1)
+            ChildObject.transform.localScale = new Vector2(someScale, ChildObject.transform.localScale.y);
+        }
+        if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1){
             transform.localScale = new Vector2(-someScale, transform.localScale.y);
+            ChildObject.transform.localScale = new Vector2(-someScale, ChildObject.transform.localScale.y);
+            Laser.transform.localScale = new Vector2(someScale, transform.localScale.y);
+        }
 
         anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
 
