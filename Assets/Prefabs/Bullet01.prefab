@@ -11,7 +11,6 @@ GameObject:
   - 212: {fileID: 21234302}
   - 61: {fileID: 6174292}
   - 50: {fileID: 5091276}
-  - 114: {fileID: 11443174}
   - 114: {fileID: 11415982}
   - 114: {fileID: 11457454}
   m_Layer: 9
@@ -73,19 +72,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
---- !u!114 &11443174
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 179438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f72ebf24c560e04295536fef8414229, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 8
-  timer: 2
 --- !u!114 &11457454
 MonoBehaviour:
   m_ObjectHideFlags: 1
