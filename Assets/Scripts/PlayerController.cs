@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
 	private Vector2 spawn;
 
 	private float someScale;
-	private bool hasKey=false;
+	public bool hasKey=false;
 	public Animator anim;
 
     private bool prev, current, inAir, jumping;
@@ -105,8 +105,8 @@ public class PlayerController : MonoBehaviour {
 	
 		else if (other.transform.tag == "Key") 
 		{
+            Destroy(other.gameObject);
 			hasKey = true;
-			Destroy (other.gameObject);
 		}
 	}
 
