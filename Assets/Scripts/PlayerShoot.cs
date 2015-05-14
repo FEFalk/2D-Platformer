@@ -3,15 +3,14 @@ using System.Collections;
 
 public class PlayerShoot : MonoBehaviour {
     public GameObject laserPrefab;
-    private Vector3 startPosition;
+    public GameObject parentObject;
     public int rotationOffset = 0;
     private float scaling;
 
     void Start()
     {
-        startPosition = laserPrefab.transform.position;
         laserPrefab.transform.parent = transform;
-        laserPrefab.transform.localPosition = Vector3.zero;
+        transform.parent = parentObject.transform;
     }
 
     void Update () {
@@ -25,16 +24,17 @@ public class PlayerShoot : MonoBehaviour {
             float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
 
-            scaling += 2;
-            laserPrefab.transform.localPosition = new Vector2(transform.position.x + scaling, 0);
+            scaling += 0.5f;
+            laserPrefab.transform.localPosition = new Vector2(transform.position.x + scaling/2.86f, 0);
             laserPrefab.transform.localScale = new Vector3(transform.localScale.x + scaling, 1, 0);
 
         }
         else if (!Input.GetButton("Fire1"))
         {
+            transform.position = parentObject.transform.position;
             scaling = 0;
             laserPrefab.transform.localScale = new Vector2(0, 1);
-            laserPrefab.transform.localPosition = startPosition;
+            laserPrefab.transform.localPosition = transform.position;
         }
 
     }
