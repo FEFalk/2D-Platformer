@@ -6,6 +6,7 @@ public class PlayerShoot : MonoBehaviour {
     public float fireDelay = 0.25f;
     float cooldownTimer = 0;
     public Vector3 bulletOffset = new Vector3(0.5f, 0, 0);
+    public AudioClip pew; 
 
 	void Update () {
         cooldownTimer -= Time.deltaTime;
@@ -17,6 +18,7 @@ public class PlayerShoot : MonoBehaviour {
 
             Vector3 offset = transform.rotation * bulletOffset; 
             Instantiate(bulletPrefab, transform.position + offset, transform.rotation);
+            GetComponent<AudioSource>().PlayOneShot(pew);
         }
 	}
 }

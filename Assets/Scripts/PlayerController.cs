@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 	private float someScale;
 	private bool hasKey=false;
 	public Animator anim;
+    public AudioClip footsteps;
 
     private bool prev, current, inAir, jumping;
 
@@ -82,7 +83,6 @@ public class PlayerController : MonoBehaviour {
             if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y*4.5f)/2));
 
-            Debug.Log("hejhej");
 		}
 	}
 
@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour {
 
     public void Movement()
     {
-        //currentMovement = Input.GetAxisRaw("Horizontal");
+        currentMovement = Input.GetAxisRaw("Horizontal");
 
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
@@ -134,10 +134,16 @@ public class PlayerController : MonoBehaviour {
     public void startMoving(float moveDirection)
     {
         currentMovement=moveDirection;
+        if(moveDirection != 0)
+             GetComponent<AudioSource>().PlayOneShot(footsteps);
     }
+
 
     public void startJumping(bool jumped)
     {
+       // AudioSource audio = GetComponent<AudioSource>();
+        if(jumped)
+            GetComponent<AudioSource>().Play();
         jumping = jumped;
     }
 
