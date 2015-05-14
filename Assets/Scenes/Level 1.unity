@@ -2839,6 +2839,14 @@ Prefab:
       propertyPath: maxMoveSpeed
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 11480462, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: ChildObject
+      value: 
+      objectReference: {fileID: 377494564}
+    - target: {fileID: 11480462, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
+      propertyPath: Laser
+      value: 
+      objectReference: {fileID: 863163079}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
   m_IsPrefabParent: 0

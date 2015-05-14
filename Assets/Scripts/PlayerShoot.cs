@@ -10,7 +10,6 @@ public class PlayerShoot : MonoBehaviour {
     void Start()
     {
         laserPrefab.transform.parent = transform;
-        transform.parent = parentObject.transform;
     }
 
     void Update () {
@@ -18,11 +17,13 @@ public class PlayerShoot : MonoBehaviour {
 
         if (Input.GetButton("Fire1"))
         {
-
             Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             difference.Normalize();
             float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
+            if(transform.localScale.x==-1)
+                transform.rotation = Quaternion.Euler(0f, 0f, -rotZ + rotationOffset);
+            else
+                transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
 
             scaling += 0.5f;
             laserPrefab.transform.localPosition = new Vector2(transform.localPosition.x + scaling/2.86f, 0);
