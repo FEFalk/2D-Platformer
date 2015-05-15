@@ -15,7 +15,7 @@ GameObject:
   - 114: {fileID: 11421846}
   m_Layer: 11
   m_Name: Blue Box
-  m_TagString: Untagged
+  m_TagString: Blue Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: 4, z: 0}
+  m_LocalPosition: {x: -4, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,6 +102,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02e3a450fe63f5e4995fca226e65fb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  distance: .200000003
+  damper: 1
+  frequency: 8
+  drag: 30
+  angularDrag: 30
+  attachToCenterOfMass: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

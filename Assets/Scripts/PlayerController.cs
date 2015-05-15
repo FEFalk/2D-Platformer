@@ -128,12 +128,9 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
         {
             transform.localScale = new Vector2(someScale, transform.localScale.y);
-            ChildObject.transform.localScale = new Vector2(someScale, ChildObject.transform.localScale.y);
         }
         if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1){
             transform.localScale = new Vector2(-someScale, transform.localScale.y);
-            ChildObject.transform.localScale = new Vector2(-someScale, ChildObject.transform.localScale.y);
-            Laser.transform.localScale = new Vector2(someScale, transform.localScale.y);
         }
 
         anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
