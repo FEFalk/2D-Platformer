@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3373486}
   - 23: {fileID: 2344724}
   - 61: {fileID: 6120998}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Key
   m_TagString: Key
   m_Icon: {fileID: 0}
