@@ -37,6 +37,14 @@ public class PlayerShoot : MonoBehaviour {
         laserPrefab.transform.position = transform.position;
         transform.position = parentObject.transform.position;
 
+        mouse_pos = Input.mousePosition;
+        mouse_pos.z = 5.23f; //The distance between the camera and object
+        object_pos = Camera.main.WorldToScreenPoint(transform.position);
+        mouse_pos.x = mouse_pos.x - object_pos.x;
+        mouse_pos.y = mouse_pos.y - object_pos.y;
+        angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
         if (Input.GetButton("Fire1"))
         {
             if(dragging==false)
@@ -47,23 +55,14 @@ public class PlayerShoot : MonoBehaviour {
             Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);
 
-            mouse_pos = Input.mousePosition;
-            mouse_pos.z = 5.23f; //The distance between the camera and object
-            object_pos = Camera.main.WorldToScreenPoint(transform.position);
-            mouse_pos.x = mouse_pos.x - object_pos.x;
-            mouse_pos.y = mouse_pos.y - object_pos.y;
-            angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
-
-            
             if (dragging==false)
             {
                 diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
                 lr.SetPosition(1, -diff);
             }
-            
 
             Debug.Log("Point: " + hit.point.x + ", " + hit.point.y + " -- Line: " + lr.transform.position.x + ", " + lr.transform.position.y);
+
             //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             //difference.Normalize();
             //float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
