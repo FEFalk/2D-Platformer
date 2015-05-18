@@ -127,10 +127,10 @@ public class PlayerController : MonoBehaviour {
         //Turning/facing new direction
         if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
         {
-            transform.localScale = new Vector2(someScale, transform.localScale.y);
+            transform.localScale = new Vector3(someScale, transform.localScale.y, 1);
         }
         if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1){
-            transform.localScale = new Vector2(-someScale, transform.localScale.y);
+            transform.localScale = new Vector3(-someScale, transform.localScale.y, 1);
         }
 
         anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));

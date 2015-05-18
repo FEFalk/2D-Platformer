@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: New Material 1
-  m_Shader: {fileID: 10800, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 200, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -137,7 +137,7 @@ Material:
       data:
         first:
           name: _InvFade
-        second: 1
+        second: 1.62
     m_Colors:
       data:
         first:
@@ -154,4 +154,4 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .616632938, g: .602941155, b: 1, a: .501960814}
+        second: {r: .0345500447, g: .00610943511, b: .83088237, a: .501960814}
