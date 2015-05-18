@@ -11,8 +11,9 @@ public class PlayerShoot : MonoBehaviour {
     private Vector3 mouse_pos;
     private Vector3 object_pos;
     private float angle;
+    public bool dragging;
 
-    private RaycastHit2D hit;
+    private static RaycastHit2D hit;
     private LineRenderer lr;
 
     public float distance = 0.2f;
@@ -22,21 +23,27 @@ public class PlayerShoot : MonoBehaviour {
     public float angularDrag = 30.0f;
     private SpringJoint2D springJoint;
     private Camera mainCamera;
+    private Vector2 diff;
 
     void Start()
     {
         lr = laserPrefab.GetComponent<LineRenderer>();
-
+        dragging = false;
         mainCamera = FindCamera();
     }
 
     void Update()
     {
+        laserPrefab.transform.position = transform.position;
         transform.position = parentObject.transform.position;
 
         if (Input.GetButton("Fire1"))
         {
-            hit = Physics2D.Raycast(transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+            if(dragging==false)
+                hit = Physics2D.Raycast(transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+            else
+                hit = Physics2D.Raycast(transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
+
             Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);
 
@@ -48,9 +55,10 @@ public class PlayerShoot : MonoBehaviour {
             angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            Vector2 diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
-            if (hit.collider.tag != "Blue Box")
+            
+            if (dragging==false)
             {
+                diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
                 lr.SetPosition(1, -diff);
             }
             
@@ -67,36 +75,47 @@ public class PlayerShoot : MonoBehaviour {
             ////    scaling += 0.5f;
             //laserPrefab.transform.localPosition = new Vector2(transform.localPosition.x + scaling/2.86f, 0);
             //laserPrefab.transform.localScale = new Vector3(transform.localScale.x + scaling, 1, 0);
-            if (!hit.rigidbody) return;
+            if (!hit.rigidbody)
+                return;
             if (hit.collider != null && hit.rigidbody.isKinematic == true) {
-            return;
+                dragging = false;
+                return;
             }
             if (hit.collider != null && hit.rigidbody.isKinematic == false) {
                 if (hit.collider.tag == "Blue Box")
                 {
-                   if (!springJoint) {
-                    GameObject go = new GameObject ("Rigidbody2D Dragger");
-                    Rigidbody2D body = go.AddComponent <Rigidbody2D>() as Rigidbody2D;
-                     springJoint = go.AddComponent <SpringJoint2D>() as SpringJoint2D;
-                     body.isKinematic = true;
-                     body.mass=0.0001f;
+                    dragging = true;
+                    diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
+                    lr.SetPosition(1, -diff);
+                    if (!springJoint)
+                    {
+                        GameObject go = new GameObject("Rigidbody2D Dragger");
+                        Rigidbody2D body = go.AddComponent<Rigidbody2D>() as Rigidbody2D;
+                        springJoint = go.AddComponent<SpringJoint2D>() as SpringJoint2D;
+                        body.isKinematic = true;
+                        body.mass = 0.0001f;
                     }
-                   springJoint.transform.position = hit.point;
-                   lr.SetPosition(1, hit.collider.transform.position);
+                    springJoint.transform.position = hit.point;
+
                 }
-            springJoint.distance = distance; // there is no distance in SpringJoint2D
-            springJoint.dampingRatio = damper;// there is no damper in SpringJoint2D but there is a dampingRatio
-            //springJoint.maxDistance = distance;  // there is no MaxDistance in the SpringJoint2D - but there is a 'distance' field
-            //  see http://docs.unity3d.com/Documentation/ScriptReference/SpringJoint2D.html
-            //springJoint.maxDistance = distance;
-            springJoint.connectedBody = hit.rigidbody;
-            // maybe check if the 'fraction' is normalised. See http://docs.unity3d.com/Documentation/ScriptReference/RaycastHit2D-fraction.html
-            StartCoroutine ("DragObject", hit.fraction);
+                else
+                    dragging = false;
+
+                springJoint.distance = distance; // there is no distance in SpringJoint2D
+                springJoint.dampingRatio = damper;// there is no damper in SpringJoint2D but there is a dampingRatio
+                //springJoint.maxDistance = distance;  // there is no MaxDistance in the SpringJoint2D - but there is a 'distance' field
+                //  see http://docs.unity3d.com/Documentation/ScriptReference/SpringJoint2D.html
+                //springJoint.maxDistance = distance;
+                springJoint.connectedBody = hit.rigidbody;
+                // maybe check if the 'fraction' is normalised. See http://docs.unity3d.com/Documentation/ScriptReference/RaycastHit2D-fraction.html
+                if(dragging==true)
+                    StartCoroutine ("DragObject", hit.fraction);
             }
 
         }
         else if (!Input.GetButton("Fire1"))
         {
+            dragging = false;
             lr.SetPosition(1, new Vector2(0, 0));
         }
         //Debug.Log ("Layermask: " + LayerMask.LayerToName (8));
@@ -116,15 +135,18 @@ public class PlayerShoot : MonoBehaviour {
 
 
 
-        while (Input.GetMouseButton(0))
+        while (Input.GetButton("Fire1"))
         {
-
+            if (hit.collider.tag != "Blue Box" || hit.rigidbody.isKinematic == true)
+            {
+                dragging = false;
+                break;
+            }
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             springJoint.transform.position = ray.GetPoint(distance);
 
             yield return null;
         }
-
         if (springJoint.connectedBody)
         {
             //Debug.Log(springJoint.connectedBody.rigidbody2D.velocity.ToString());
