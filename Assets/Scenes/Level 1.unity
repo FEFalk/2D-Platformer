@@ -184,7 +184,7 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 854f3fdd49d299b48a57dde07a4e272f, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &109806652
+--- !u!4 &109806652 stripped
 Transform:
   m_PrefabParentObject: {fileID: 466774, guid: 68bad19ebc5ccfc4ea338b9aa9d61f0f, type: 2}
   m_PrefabInternal: {fileID: 826801959}
@@ -2850,11 +2850,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &573662414
+--- !u!4 &573662414 stripped
 Transform:
   m_PrefabParentObject: {fileID: 460556, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
   m_PrefabInternal: {fileID: 573662411}
---- !u!114 &573662418
+--- !u!114 &573662418 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11480462, guid: 84f3f446456f3b94f8c1a04bd053ff16,
     type: 2}
@@ -4057,11 +4057,11 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a7c892013f3102438871a1562af51a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!1 &863163079
+--- !u!1 &863163079 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 179438, guid: 585ff2fdaf439a94c9f9093ca25e721b, type: 2}
   m_PrefabInternal: {fileID: 1775942114}
---- !u!4 &863163086
+--- !u!4 &863163086 stripped
 Transform:
   m_PrefabParentObject: {fileID: 460706, guid: 585ff2fdaf439a94c9f9093ca25e721b, type: 2}
   m_PrefabInternal: {fileID: 1775942114}
@@ -5962,11 +5962,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 69a87a952199ea54fad34b15bfbe7007, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1428133415
+--- !u!4 &1428133415 stripped
 Transform:
   m_PrefabParentObject: {fileID: 466774, guid: 68bad19ebc5ccfc4ea338b9aa9d61f0f, type: 2}
   m_PrefabInternal: {fileID: 656637869}
---- !u!4 &1446288179
+--- !u!4 &1446288179 stripped
 Transform:
   m_PrefabParentObject: {fileID: 466774, guid: 68bad19ebc5ccfc4ea338b9aa9d61f0f, type: 2}
   m_PrefabInternal: {fileID: 125096454}
@@ -6126,7 +6126,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a7c892013f3102438871a1562af51a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!1 &1489894364
+--- !u!1 &1489894364 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 140332, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
   m_PrefabInternal: {fileID: 573662411}
@@ -8414,7 +8414,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8a7c892013f3102438871a1562af51a0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!4 &2032653805
+--- !u!4 &2032653805 stripped
 Transform:
   m_PrefabParentObject: {fileID: 466774, guid: 68bad19ebc5ccfc4ea338b9aa9d61f0f, type: 2}
   m_PrefabInternal: {fileID: 225728311}
