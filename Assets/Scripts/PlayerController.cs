@@ -115,7 +115,8 @@ public class PlayerController : MonoBehaviour {
 
     public void Movement()
     {
-        currentMovement = Input.GetAxisRaw("Horizontal");
+        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1)
+            currentMovement = Input.GetAxisRaw("Horizontal");
 
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
             gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
