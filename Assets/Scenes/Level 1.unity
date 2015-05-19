@@ -2195,6 +2195,7 @@ MonoBehaviour:
   frequency: 8
   drag: 30
   angularDrag: 30
+  touching: 0
 --- !u!1 &380220104
 GameObject:
   m_ObjectHideFlags: 0

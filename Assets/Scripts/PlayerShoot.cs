@@ -24,6 +24,7 @@ public class PlayerShoot : MonoBehaviour {
     private SpringJoint2D springJoint;
     private Camera mainCamera;
     private Vector2 diff;
+    public bool touching;
 
     void Start()
     {
@@ -45,7 +46,11 @@ public class PlayerShoot : MonoBehaviour {
         angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        if (Input.GetButton("Fire1"))
+
+        if (Input.GetButton("Fire1") || Input.touchCount > 0)
+            touching = true;
+
+        if (Input.GetButton("Fire1") || Input.touchCount > 0)
         {
             if(dragging==false)
                 hit = Physics2D.Raycast(transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
@@ -112,7 +117,7 @@ public class PlayerShoot : MonoBehaviour {
             }
 
         }
-        else if (!Input.GetButton("Fire1"))
+        else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
         {
             dragging = false;
             lr.SetPosition(1, new Vector2(0, 0));
@@ -134,7 +139,7 @@ public class PlayerShoot : MonoBehaviour {
 
 
 
-        while (Input.GetButton("Fire1"))
+        while (Input.GetButton("Fire1") || Input.touchCount > 0)
         {
             if (hit.collider.tag != "Blue Box" || hit.rigidbody.isKinematic == true)
             {
