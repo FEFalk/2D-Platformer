@@ -5,6 +5,7 @@ public class PlayerShoot : MonoBehaviour {
 
     public GameObject parentObject;
     public GameObject laserPrefab;
+    public GameObject Button;
     public int rotationOffset = 0;
     private float scaling;
 
@@ -15,6 +16,7 @@ public class PlayerShoot : MonoBehaviour {
 
     private static RaycastHit2D hit;
     private LineRenderer lr;
+    private bool obstacleButton = false;
 
     public float distance = 0.2f;
     public float damper = 1.0f;
@@ -47,12 +49,13 @@ public class PlayerShoot : MonoBehaviour {
 
         if (Input.GetButton("Fire1"))
         {
+           
             if(dragging==false)
                 hit = Physics2D.Raycast(transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
             else
                 hit = Physics2D.Raycast(transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
 
-            Debug.Log(hit.collider.tag);
+            //Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);
 
             if (dragging==false)
@@ -60,8 +63,12 @@ public class PlayerShoot : MonoBehaviour {
                 diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
                 lr.SetPosition(1, -diff);
             }
-            
-            Debug.Log("Point: " + hit.point.x + ", " + hit.point.y + " -- Line: " + lr.transform.position.x + ", " + lr.transform.position.y);
+            if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
+                {
+                    obstacleButton = true;
+                    Button.GetComponent<ButtonHandler>().buttonActivate = true;
+                }
+            //Debug.Log("Point: " + hit.point.x + ", " + hit.point.y + " -- Line: " + lr.transform.position.x + ", " + lr.transform.position.y);
 
             //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             //difference.Normalize();
@@ -81,6 +88,7 @@ public class PlayerShoot : MonoBehaviour {
                 return;
             }
             if (hit.collider != null && hit.rigidbody.isKinematic == false) {
+                
                 if (hit.collider.tag == "Blue Box")
                 {
                     dragging = true;
@@ -109,6 +117,7 @@ public class PlayerShoot : MonoBehaviour {
                 // maybe check if the 'fraction' is normalised. See http://docs.unity3d.com/Documentation/ScriptReference/RaycastHit2D-fraction.html
                 if(dragging==true)
                     StartCoroutine ("DragObject", hit.fraction);
+                
             }
 
         }

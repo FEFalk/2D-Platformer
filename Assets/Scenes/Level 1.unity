@@ -187,6 +187,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 109806652}
   m_RootOrder: 27
+--- !u!1 &15812382 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 191110, guid: feed69df92759b04ead87f3672da10be, type: 2}
+  m_PrefabInternal: {fileID: 444449516}
+--- !u!114 &15812384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 15812382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96122b169e9b7704991a5e21cdc62e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &57974224
 GameObject:
   m_ObjectHideFlags: 0
@@ -819,8 +834,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 573662418}
-          m_MethodName: startMoving
-          m_Mode: 4
+          m_MethodName: Movement
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -837,8 +852,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 573662418}
-          m_MethodName: startMoving
-          m_Mode: 4
+          m_MethodName: Movement
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -2189,6 +2204,7 @@ MonoBehaviour:
   parentObject: {fileID: 1489894364}
   laserPrefab: {fileID: 518150548}
   rotationOffset: 0
+  dragging: 0
   distance: .200000003
   damper: 1
   frequency: 8
@@ -5432,8 +5448,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 573662418}
-          m_MethodName: startMoving
-          m_Mode: 4
+          m_MethodName: Movement
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -5450,8 +5466,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 573662418}
-          m_MethodName: startMoving
-          m_Mode: 4
+          m_MethodName: Movement
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
@@ -5628,7 +5644,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96122b169e9b7704991a5e21cdc62e65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
 --- !u!4 &867625412
 Transform:
   m_ObjectHideFlags: 0
