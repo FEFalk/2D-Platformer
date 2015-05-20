@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class PlayerShoot : MonoBehaviour {
@@ -25,6 +26,7 @@ public class PlayerShoot : MonoBehaviour {
     private Camera mainCamera;
     private Vector2 diff;
     public bool touching;
+    private Touch touches;
 
     void Start()
     {
@@ -46,13 +48,34 @@ public class PlayerShoot : MonoBehaviour {
         angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
+        bool isPointerOverGameObject = false;
 
-        if (Input.GetButton("Fire1") || Input.touchCount > 0)
-            touching = true;
-
-        if (Input.GetButton("Fire1") || Input.touchCount > 0)
+        if (EventSystem.current.currentInputModule is TouchInputModule)
         {
-            if(dragging==false)
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                Touch touch = Input.touches[i];
+                if (EventSystem.current.IsPointerOverGameObject(Input.touches[i].fingerId))
+                {
+                    touching = false;
+                    isPointerOverGameObject = true;
+                    break;
+                }
+            }
+        }
+        else
+        {
+            isPointerOverGameObject = EventSystem.current.IsPointerOverGameObject();
+        }
+
+        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
+            touching = true;
+        else
+            touching = false;
+
+        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
+        {
+            if (dragging == false && touching == true)
                 hit = Physics2D.Raycast(transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
             else
                 hit = Physics2D.Raycast(transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
@@ -60,7 +83,7 @@ public class PlayerShoot : MonoBehaviour {
             Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);
 
-            if (dragging==false)
+            if (dragging == false && touching == true)
             {
                 diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
                 lr.SetPosition(1, -diff);
@@ -79,48 +102,54 @@ public class PlayerShoot : MonoBehaviour {
             ////    scaling += 0.5f;
             //laserPrefab.transform.localPosition = new Vector2(transform.localPosition.x + scaling/2.86f, 0);
             //laserPrefab.transform.localScale = new Vector3(transform.localScale.x + scaling, 1, 0);
-            if (!hit.rigidbody)
-                return;
-            if (hit.collider != null && hit.rigidbody.isKinematic == true) {
-                dragging = false;
-                return;
-            }
-            if (hit.collider != null && hit.rigidbody.isKinematic == false) {
-                if (hit.collider.tag == "Blue Box")
+            if (touching == true)
+            {
+                if (!hit.rigidbody)
+                    return;
+                if (hit.collider != null && hit.rigidbody.isKinematic == true)
                 {
-                    dragging = true;
-                    diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
-                    lr.SetPosition(1, -diff);
-                    if (!springJoint)
-                    {
-                        GameObject go = new GameObject("Rigidbody2D Dragger");
-                        Rigidbody2D body = go.AddComponent<Rigidbody2D>() as Rigidbody2D;
-                        springJoint = go.AddComponent<SpringJoint2D>() as SpringJoint2D;
-                        body.isKinematic = true;
-                        body.mass = 0.0001f;
-                    }
-                    springJoint.transform.position = hit.point;
-
-                }
-                else
                     dragging = false;
+                    return;
+                }
+                if (hit.collider != null && hit.rigidbody.isKinematic == false)
+                {
+                    if (hit.collider.tag == "Blue Box")
+                    {
+                        dragging = true;
+                        diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
+                        lr.SetPosition(1, -diff);
+                        if (!springJoint)
+                        {
+                            GameObject go = new GameObject("Rigidbody2D Dragger");
+                            Rigidbody2D body = go.AddComponent<Rigidbody2D>() as Rigidbody2D;
+                            springJoint = go.AddComponent<SpringJoint2D>() as SpringJoint2D;
+                            body.isKinematic = true;
+                            body.mass = 0.0001f;
+                        }
+                        springJoint.transform.position = hit.point;
 
-                springJoint.distance = distance; // there is no distance in SpringJoint2D
-                springJoint.dampingRatio = damper;// there is no damper in SpringJoint2D but there is a dampingRatio
-                //springJoint.maxDistance = distance;  // there is no MaxDistance in the SpringJoint2D - but there is a 'distance' field
-                //  see http://docs.unity3d.com/Documentation/ScriptReference/SpringJoint2D.html
-                //springJoint.maxDistance = distance;
-                springJoint.connectedBody = hit.rigidbody;
-                // maybe check if the 'fraction' is normalised. See http://docs.unity3d.com/Documentation/ScriptReference/RaycastHit2D-fraction.html
-                if(dragging==true)
-                    StartCoroutine ("DragObject", hit.fraction);
+                    }
+                    else
+                        dragging = false;
+
+                    springJoint.distance = distance; // there is no distance in SpringJoint2D
+                    springJoint.dampingRatio = damper;// there is no damper in SpringJoint2D but there is a dampingRatio
+                    //springJoint.maxDistance = distance;  // there is no MaxDistance in the SpringJoint2D - but there is a 'distance' field
+                    //  see http://docs.unity3d.com/Documentation/ScriptReference/SpringJoint2D.html
+                    //springJoint.maxDistance = distance;
+                    springJoint.connectedBody = hit.rigidbody;
+                    // maybe check if the 'fraction' is normalised. See http://docs.unity3d.com/Documentation/ScriptReference/RaycastHit2D-fraction.html
+                    if (dragging == true)
+                        StartCoroutine("DragObject", hit.fraction);
+                }
+
             }
-
         }
         else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
         {
             dragging = false;
             lr.SetPosition(1, new Vector2(0, 0));
+            touching = false;
         }
         //Debug.Log ("Layermask: " + LayerMask.LayerToName (8));
         // I have proxy collider objects (empty gameobjects with a 2D Collider) as a child of a 3D rigidbody - simulating collisions between 2D and 3D objects
