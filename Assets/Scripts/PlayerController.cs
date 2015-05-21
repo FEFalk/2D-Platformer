@@ -106,8 +106,8 @@ namespace UnityStandardAssets.CrossPlatformInput
         if (Input.GetButtonUp("Horizontal"))
             currentMovement = 0;
 
-        }
-	    }
+    }
+	
 
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.transform.tag == "Enemy")
