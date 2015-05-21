@@ -1,7 +1,13 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour {
+
+namespace UnityStandardAssets.CrossPlatformInput
+{
+
+    public class PlayerController : MonoBehaviour
+    {
     private static float currentMovement;
 	public float moveSpeed;
 	public float jumpHeight;
@@ -49,6 +55,9 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+            if (Input.GetButtonUp("Horizontal"))
+                currentMovement = 0;
+
 		//Ground-checking
 		groundCheckDiag1.x = groundCheck.position.x-0.49f;
 		groundCheckDiag1.y = groundCheck.position.y-0.1f;
@@ -59,6 +68,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (grounded)
 			doubleJumped = false;
+
         if (prev == true && jumping == false && GetComponent<Rigidbody2D>().velocity.y > 8.2f)
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -jumpHeight / 2), ForceMode2D.Impulse);
@@ -96,7 +106,8 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetButtonUp("Horizontal"))
             currentMovement = 0;
 
-	}
+        }
+	    }
 
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.transform.tag == "Enemy")
@@ -117,6 +128,7 @@ public class PlayerController : MonoBehaviour {
 	
 		else if (other.transform.tag == "Key") 
 		{
+                GameObject.Find("GoalLight").GetComponent<Light>().color = Color.green;
 			hasKey = true;
 			Destroy (other.gameObject);
 		}
@@ -124,31 +136,32 @@ public class PlayerController : MonoBehaviour {
 
     public void Movement()
     {
-        
-        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1)
-            currentMovement = Input.GetAxisRaw("Horizontal");
-        
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+            currentMovement = Mathf.RoundToInt(CrossPlatformInput.CrossPlatformInputManager.GetAxisRaw("Horizontal"));
 
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+            if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1)
+                currentMovement = Input.GetAxisRaw("Horizontal");
 
 
-        //Turning/facing new direction
+            if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
 
-        if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
-        {
-            transform.localScale = new Vector3(someScale, transform.localScale.y, 1);
+            if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+
+
+            //Turning/facing new direction
+
+            if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
+            {
+                transform.localScale = new Vector3(someScale, transform.localScale.y, 1);
+            }
+            if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1)
+            {
+                transform.localScale = new Vector3(-someScale, transform.localScale.y, 1);
+            }
+
+            anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
         }
-        if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1)
-        {
-            transform.localScale = new Vector3(-someScale, transform.localScale.y, 1);
-        }
-
-        anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
-
-    }
 
     public void startMoving(float moveDirection)
     {
@@ -176,3 +189,4 @@ public class PlayerController : MonoBehaviour {
     }
 }
 
+}
