@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour {
 
 		if (grounded)
 			doubleJumped = false;
-#if !UNITY_IPHONE
         if (prev == true && jumping == false && GetComponent<Rigidbody2D>().velocity.y > 8.2f)
         {
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -jumpHeight / 2), ForceMode2D.Impulse);
@@ -72,6 +71,10 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Jumping
+        if (Input.GetButton("Jump"))
+        {
+            jumping = true;
+        }
         if (jumping && grounded && prev == false)
         {
             GetComponent<AudioSource>().Play();
@@ -85,11 +88,14 @@ public class PlayerController : MonoBehaviour {
         {
             if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y * 4.5f) / 2));
-
         }
-#else
-        startJumping(jumped);
-#endif
+        if (!Input.GetButton("Jump"))
+        {
+            jumping = false;
+        }
+        if (Input.GetButtonUp("Horizontal"))
+            currentMovement = 0;
+
 	}
 
 	void OnCollisionEnter2D(Collision2D other){
@@ -118,35 +124,30 @@ public class PlayerController : MonoBehaviour {
 
     public void Movement()
     {
-#if !UNITY_IPHONE
-        if (Input.GetButton("Horizontal"))
+        
+        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1)
+            currentMovement = Input.GetAxisRaw("Horizontal");
+        
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+
+        if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
+            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+
+
+        //Turning/facing new direction
+
+        if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
         {
-            if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1)
-                currentMovement = Input.GetAxisRaw("Horizontal");
-
-            if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
-                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
-
-            if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
-                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
-
-
-            //Turning/facing new direction
-
-            if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
-            {
-                transform.localScale = new Vector3(someScale, transform.localScale.y, 1);
-            }
-            if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1)
-            {
-                transform.localScale = new Vector3(-someScale, transform.localScale.y, 1);
-            }
-
-            anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
+            transform.localScale = new Vector3(someScale, transform.localScale.y, 1);
         }
-#else
-        startMoving(moveDirection);
-#endif
+        if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1)
+        {
+            transform.localScale = new Vector3(-someScale, transform.localScale.y, 1);
+        }
+
+        anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
+
     }
 
     public void startMoving(float moveDirection)
