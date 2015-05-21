@@ -121,6 +121,7 @@ public class PlayerShoot : MonoBehaviour {
                 {
                 if (hit.collider.tag == "Blue Box")
                 {
+                    hit.collider.GetComponentInChildren<BoxEffects>().isActivated = true;
                     dragging = true;
                     diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
                     lr.SetPosition(1, -diff);
