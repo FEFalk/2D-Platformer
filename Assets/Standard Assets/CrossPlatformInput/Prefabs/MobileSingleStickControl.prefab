@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &100002
 GameObject:
   m_ObjectHideFlags: 0
@@ -48,6 +48,7 @@ GameObject:
   - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11486090}
   m_Layer: 5
   m_Name: JumpButton
   m_TagString: Untagged
@@ -73,6 +74,23 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &184810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 22406964}
+  - 222: {fileID: 22299302}
+  - 114: {fileID: 11406918}
+  m_Layer: 5
+  m_Name: JoyStickImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ignoreReversedGraphics: 1
-  blockingObjects: 0
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -117,36 +135,36 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11400002}
-          m_MethodName: SetDownState
-          m_Mode: 1
+        - m_Target: {fileID: 0}
+          m_MethodName: startJumping
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
               Culture=neutral, PublicKeyToken=null
             m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: Jump
-            m_BoolArgument: 0
-          m_CallState: 1
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   - eventID: 3
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11400002}
-          m_MethodName: SetUpState
-          m_Mode: 1
+        - m_Target: {fileID: 0}
+          m_MethodName: startJumping
+          m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
               Culture=neutral, PublicKeyToken=null
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Jump
+            m_StringArgument: 
             m_BoolArgument: 0
-          m_CallState: 1
+          m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 --- !u!114 &11400006
@@ -162,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 3d8675433a508ec47b8f895201eacf20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56f55d3d8d101c1428a0ae2cd7c87630, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -181,8 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c3c865782347f41b6358d9fba14b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementRange: 100
-  axesToUse: 0
+  MovementRange: 75
+  axesToUse: 1
   horizontalAxisName: Horizontal
   verticalAxisName: Vertical
 --- !u!114 &11400010
@@ -198,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300000, guid: 9866a92691696b346901281f2b329034, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1d86e387238ef648a3ca161f6f9ea90, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -257,6 +275,68 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Jump
+--- !u!114 &11406918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 59f429f159c57954788fff09c61476b0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!114 &11486090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: .784313798, g: .784313798, b: .784313798, a: 1}
+    m_PressedColor: {r: .492647052, g: .492647052, b: .492647052, a: 1}
+    m_DisabledColor: {r: .784313738, g: .784313738, b: .784313738, a: .501960814}
+    m_ColorMultiplier: 1
+    m_FadeDuration: .0399999991
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 11400006}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!222 &22200000
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -275,6 +355,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100006}
+--- !u!222 &22299302
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184810}
 --- !u!223 &22300000
 Canvas:
   m_ObjectHideFlags: 1
@@ -302,8 +388,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 22400004}
+  - {fileID: 22406964}
   - {fileID: 22400002}
+  - {fileID: 22400004}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
@@ -319,13 +406,13 @@ RectTransform:
   m_GameObject: {fileID: 100002}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 22400000}
   m_RootOrder: 1
-  m_AnchorMin: {x: .160000011, y: .200000003}
-  m_AnchorMax: {x: .160000011, y: .200000003}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 132.699997, y: 118.5}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400004
@@ -340,11 +427,11 @@ RectTransform:
   m_Children:
   - {fileID: 22400006}
   m_Father: {fileID: 22400000}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_AnchorMin: {x: .779999971, y: .00999999978}
-  m_AnchorMax: {x: .99000001, y: .150000006}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMax: {x: .779999971, y: .00999999978}
+  m_AnchoredPosition: {x: 10, y: 70}
+  m_SizeDelta: {x: 110, y: 110}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22400006
 RectTransform:
@@ -362,6 +449,23 @@ RectTransform:
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: .5, y: .5}
+--- !u!224 &22406964
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 184810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 22400000}
+  m_RootOrder: 0
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 131.800003, y: 119.300003}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: .5, y: .5}
 --- !u!1001 &100100000
 Prefab:
