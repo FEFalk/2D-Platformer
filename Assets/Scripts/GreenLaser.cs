@@ -106,6 +106,7 @@ public class GreenLaser : MonoBehaviour
                     {
                         hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         GetComponent<GreenLaser>().enabled = false;
+                        GetComponent<Movement>().enabled = false;
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
                         //laserPrefab.transform.position = GameObject.Find("Player").transform.position;
                         //parentObject = hit.collider.gameObject;
