@@ -87,7 +87,7 @@ public class PlayerShoot : MonoBehaviour {
 
             if (dragging == false && touching == true)
             {
-                diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
+                diff = new Vector2(parentObject.transform.position.x - hit.point.x, parentObject.transform.position.y - hit.point.y);
                 lr.SetPosition(1, -diff);
             }
             if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
@@ -123,7 +123,7 @@ public class PlayerShoot : MonoBehaviour {
                     {
                         hit.collider.GetComponentInChildren<BoxEffects>().isActivated = true;
                         dragging = true;
-                        diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
+                        diff = new Vector2(parentObject.transform.localPosition.x - hit.collider.transform.position.x, parentObject.transform.localPosition.y - hit.collider.transform.position.y);
                         lr.SetPosition(1, -diff);
                         if (!springJoint)
                         {
