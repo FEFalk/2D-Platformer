@@ -1193,7 +1193,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 9202987}
-  - {fileID: 217688650}
   m_Father: {fileID: 0}
   m_RootOrder: 27
 --- !u!58 &176429394
@@ -1215,7 +1214,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 176429392}
-  m_Mass: 1
+  m_Mass: 9.99999975e-05
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
@@ -1331,56 +1330,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2032653805}
   m_RootOrder: 2
---- !u!1 &217688648
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 217688650}
-  - 114: {fileID: 217688649}
-  m_Layer: 9
-  m_Name: Pikkadoll 2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &217688649
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 217688648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb9d03c54db4cd44a05956fc250ddd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentObject: {fileID: 1489894364}
-  laserPrefab: {fileID: 518150548}
-  Button: {fileID: 427172552}
-  rotationOffset: 0
-  dragging: 0
-  distance: .200000003
-  damper: 1
-  frequency: 8
-  drag: 30
-  angularDrag: 30
-  touching: 0
---- !u!4 &217688650
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 217688648}
-  m_LocalRotation: {x: 0, y: 0, z: .707106829, w: .707106709}
-  m_LocalPosition: {x: -.600000024, y: -.349999994, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 176429393}
-  m_RootOrder: 1
 --- !u!1 &220018726
 GameObject:
   m_ObjectHideFlags: 0
@@ -2549,6 +2498,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 377494565}
   - 114: {fileID: 377494566}
+  - 114: {fileID: 377494567}
   m_Layer: 9
   m_Name: Pikkadoll
   m_TagString: Untagged
@@ -2574,7 +2524,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377494564}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bb9d03c54db4cd44a05956fc250ddd8, type: 3}
   m_Name: 
@@ -2584,6 +2534,28 @@ MonoBehaviour:
   Button: {fileID: 427172552}
   rotationOffset: 0
   dragging: 0
+  distance: .200000003
+  damper: 1
+  frequency: 8
+  drag: 30
+  angularDrag: 30
+  touching: 0
+--- !u!114 &377494567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 377494564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da6df7d64e4638b4eb8c3ac029cc5841, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObject: {fileID: 1489894364}
+  laserPrefab: {fileID: 518150548}
+  Button: {fileID: 427172552}
+  activated: 0
+  rotationOffset: 0
   distance: .200000003
   damper: 1
   frequency: 8
@@ -2601,6 +2573,7 @@ GameObject:
   - 33: {fileID: 377690885}
   - 50: {fileID: 377690883}
   - 58: {fileID: 377690884}
+  - 114: {fileID: 377690886}
   m_Layer: 11
   m_Name: GreenLaserButton
   m_TagString: GreenButton
@@ -2619,7 +2592,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2076769339}
-  - {fileID: 1449523245}
   m_Father: {fileID: 0}
   m_RootOrder: 26
 --- !u!50 &377690883
@@ -2628,7 +2600,7 @@ Rigidbody2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377690881}
-  m_Mass: 1
+  m_Mass: 9.99999975e-05
   m_LinearDrag: 0
   m_AngularDrag: .0500000007
   m_GravityScale: 0
@@ -2657,6 +2629,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377690881}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &377690886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 377690881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d4085c68edf5248a6d19bb786642e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Object: {fileID: 0}
+  buttonActivate: 0
+  greenButtonActivate: 0
 --- !u!1 &380220104
 GameObject:
   m_ObjectHideFlags: 0
@@ -3072,6 +3058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Object: {fileID: 857651192}
   buttonActivate: 0
+  greenButtonActivate: 0
 --- !u!1 &428288777
 GameObject:
   m_ObjectHideFlags: 0
@@ -10063,56 +10050,6 @@ Transform:
   - {fileID: 489210905}
   m_Father: {fileID: 0}
   m_RootOrder: 12
---- !u!1 &1449523244
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1449523245}
-  - 114: {fileID: 1449523246}
-  m_Layer: 9
-  m_Name: Pikkadoll 1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1449523245
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1449523244}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.35000002, y: -.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 377690882}
-  m_RootOrder: 1
---- !u!114 &1449523246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1449523244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bb9d03c54db4cd44a05956fc250ddd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentObject: {fileID: 1489894364}
-  laserPrefab: {fileID: 518150548}
-  Button: {fileID: 427172552}
-  rotationOffset: 0
-  dragging: 0
-  distance: .200000003
-  damper: 1
-  frequency: 8
-  drag: 30
-  angularDrag: 30
-  touching: 0
 --- !u!1 &1463206464
 GameObject:
   m_ObjectHideFlags: 0
@@ -13898,7 +13835,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2076769339}
   - 212: {fileID: 2076769338}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: buttonGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}

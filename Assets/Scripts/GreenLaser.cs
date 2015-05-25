@@ -21,21 +21,15 @@ public class GreenLaser : MonoBehaviour
     private bool obstacleButton = false;
 
     private int size;
-    public float distance = 0.2f;
-    public float damper = 1.0f;
-    public float frequency = 8.0f;
-    public float drag = 30.0f;
-    public float angularDrag = 30.0f;
-    private SpringJoint2D springJoint;
     private Camera mainCamera;
     private Vector2 diff;
     public bool touching;
     private Touch touches;
-
+    private Vector2 vectorSize;
+    private Vector2 prevPos;
     void Start()
     {
         lr = laserPrefab.GetComponent<LineRenderer>();
-        mainCamera = FindCamera();
         activated = false;
         size = 2;
 
@@ -45,7 +39,7 @@ public class GreenLaser : MonoBehaviour
     {
         laserPrefab.transform.position = transform.position;
         transform.position = parentObject.transform.position;
-
+        prevPos = transform.position;
         mouse_pos = Input.mousePosition;
         mouse_pos.z = 5.23f; //The distance between the camera and object
         object_pos = Camera.main.WorldToScreenPoint(transform.position);
@@ -79,14 +73,11 @@ public class GreenLaser : MonoBehaviour
         else
             touching = false;
 
-        //if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
-        //{
-        //    obstacleButton = true;
-        //    Button.GetComponent<ButtonHandler>().buttonActivate = true;
-        //}
+        
 
         if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
         {
+            
             if (activated == false && touching == true)
                 hit = Physics2D.Raycast(transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
             else
@@ -106,31 +97,26 @@ public class GreenLaser : MonoBehaviour
                     return;
                 if (hit.collider != null)
                 {
-                    if (hit.collider.tag == "GreenButton")
+                    if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
                     {
-                        transform.position = diff;
-                        lr.SetVertexCount(size++);
-                        Vector2 vectorSize = new Vector2(0, 0);
-                        lr.SetPosition(size, vectorSize);
+                        obstacleButton = true;
+                        Button.GetComponent<ButtonHandler>().buttonActivate = true;
+                    }
+                    if (hit.collider.tag == "GreenButton" && activated == false)
+                    {
+                        parentObject = hit.collider.gameObject;
                         
+                        lr.SetVertexCount(size++);
+                        vectorSize = new Vector2(hit.collider.transform.position.x, hit.collider.transform.position.y);
+                        lr.SetPosition(size, vectorSize);
+                        hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         activated = true;
-                        diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
-                        lr.SetPosition(1, diff);
                         //lr.SetPosition(size -1, -diff);
                         //laserPrefab.transform.position = transform.position;
                         //transform.position = hit.transform.position;
                         //Camera.main.transform.position = parentObject.transform.position;
-                        springJoint.transform.position = hit.point;
                     }
 
-                    else
-                        activated = false;
-                    springJoint.distance = distance; // there is no distance in SpringJoint2D
-                    springJoint.dampingRatio = damper;// there is no damper in SpringJoint2D but there is a dampingRatio
-                    //springJoint.maxDistance = distance;  // there is no MaxDistance in the SpringJoint2D - but there is a 'distance' field
-                    //  see http://docs.unity3d.com/Documentation/ScriptReference/SpringJoint2D.html
-                    //springJoint.maxDistance = distance;
-                    springJoint.connectedBody = hit.rigidbody;
                 }
             }
             
@@ -138,16 +124,8 @@ public class GreenLaser : MonoBehaviour
         else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
             {
                 activated = false;
-                lr.SetPosition(1, new Vector2(0, 0));
+                lr.SetPosition(size, prevPos);
                 touching = false;
             }
     } // end of update
-
-    Camera FindCamera()
-    {
-        if (GetComponent<Camera>())
-            return GetComponent<Camera>();
-        else
-            return Camera.main;
-    }
 }
