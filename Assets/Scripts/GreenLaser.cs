@@ -78,13 +78,13 @@ public class GreenLaser : MonoBehaviour
 
         if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
         {
-
+            
             if (activated == false && touching == true)
             {
                 //if (parentObject.transform.localScale.x == -1)
                 //    hit = Physics2D.Raycast(parentObject.transform.localPosition, -transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
                 //else
-                    hit = Physics2D.Raycast(parentObject.transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
 
             }
             else
@@ -92,7 +92,7 @@ public class GreenLaser : MonoBehaviour
                 //if (parentObject.transform.localScale.x == -1)
                 //    hit = Physics2D.Raycast(parentObject.transform.localPosition, diff, 1 << LayerMask.NameToLayer("Ground"));
                 //else
-                    hit = Physics2D.Raycast(parentObject.transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
             }
 
 
@@ -120,7 +120,9 @@ public class GreenLaser : MonoBehaviour
                     {
                         hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         GetComponent<GreenLaser>().enabled = false;
+                        
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
+                        Button.GetComponent<ButtonHandler>().greenButtonActivate = true;
                         //laserPrefab.transform.position = GameObject.Find("Player").transform.position;
                         //parentObject = hit.collider.gameObject;
                         
