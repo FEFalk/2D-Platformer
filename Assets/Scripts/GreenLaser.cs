@@ -32,12 +32,12 @@ public class GreenLaser : MonoBehaviour
         lr = laserPrefab.GetComponent<LineRenderer>();
         activated = false;
         size = 2;
-
+        laserPrefab.transform.position = transform.position;
     }
 
     void Update()
     {
-        laserPrefab.transform.position = transform.position;
+        
         transform.position = parentObject.transform.position;
         prevPos = transform.position;
         mouse_pos = Input.mousePosition;
@@ -89,7 +89,7 @@ public class GreenLaser : MonoBehaviour
             if (activated == false && touching == true)
             {
                 diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
-                lr.SetPosition(1, -diff);
+                lr.SetPosition(size-1, -diff);
             }
             if (touching == true)
             {
@@ -104,11 +104,14 @@ public class GreenLaser : MonoBehaviour
                     }
                     if (hit.collider.tag == "GreenButton" && activated == false)
                     {
+                        
+                        laserPrefab.transform.position = GameObject.Find("Player").transform.position;
                         parentObject = hit.collider.gameObject;
                         
-                        lr.SetVertexCount(size++);
+
+                        lr.SetVertexCount(++size);
                         vectorSize = new Vector2(hit.collider.transform.position.x, hit.collider.transform.position.y);
-                        lr.SetPosition(size, vectorSize);
+                        lr.SetPosition(size-1, vectorSize);
                         hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         activated = true;
                         //lr.SetPosition(size -1, -diff);
@@ -124,7 +127,7 @@ public class GreenLaser : MonoBehaviour
         else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
             {
                 activated = false;
-                lr.SetPosition(size, prevPos);
+                lr.SetPosition(size-1, prevPos);
                 touching = false;
             }
     } // end of update
