@@ -78,9 +78,9 @@ public class PlayerShoot : MonoBehaviour {
         if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
         {
             if (dragging == false && touching == true)
-                hit = Physics2D.Raycast(transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
             else
-                hit = Physics2D.Raycast(transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
 
             //Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);

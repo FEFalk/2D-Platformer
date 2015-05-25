@@ -7,7 +7,6 @@ public class GreenLaser : MonoBehaviour
 
     public GameObject parentObject;
     public GameObject laserPrefab;
-    public GameObject Button;
     public bool activated;
     public int rotationOffset = 0;
     private float scaling;
@@ -37,6 +36,7 @@ public class GreenLaser : MonoBehaviour
 
     void Update()
     {
+
         transform.position = parentObject.transform.position;
         laserPrefab.transform.position = parentObject.transform.position;
         prevPos = transform.position;
@@ -100,15 +100,17 @@ public class GreenLaser : MonoBehaviour
                     if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
                     {
                         obstacleButton = true;
-                        Button.GetComponent<ButtonHandler>().buttonActivate = true;
+                        hit.collider.GetComponent<ButtonHandler>().buttonActivate = true;
                     }
                     if (hit.collider.tag == "GreenButton" && activated == false)
                     {
+                        diff = new Vector2(parentObject.transform.position.x - hit.collider.transform.position.x, parentObject.transform.position.y - hit.collider.transform.position.y);
+                        lr.SetPosition(1, -diff);
                         hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         GetComponent<GreenLaser>().enabled = false;
                         
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
-                        Button.GetComponent<ButtonHandler>().greenButtonActivate = true;
+                        hit.collider.GetComponent<ButtonHandler>().greenButtonActivate = true;
                         //laserPrefab.transform.position = GameObject.Find("Player").transform.position;
                         //parentObject = hit.collider.gameObject;
                         

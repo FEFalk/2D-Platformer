@@ -15,7 +15,8 @@ public class ButtonHandler : MonoBehaviour {
         }
         if (greenButtonActivate)
         {
-            
+            Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
+            Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().currentMovement = 0;
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().enabled = false;
             greenButtonActivate = false;
         }
