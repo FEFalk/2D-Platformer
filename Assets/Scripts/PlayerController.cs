@@ -29,6 +29,7 @@ namespace UnityStandardAssets.CrossPlatformInput
     public GameObject ChildObject;
     public GameObject Laser;
 
+    private bool jumpButtonPressed;
     private bool prev, current, inAir, jumping;
 
 	// Use this for initialization
@@ -99,7 +100,7 @@ namespace UnityStandardAssets.CrossPlatformInput
             if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y * 4.5f) / 2));
         }
-        if (!Input.GetButton("Jump"))
+        if (!Input.GetButton("Jump") && jumpButtonPressed == false)
         {
             jumping = false;
         }
@@ -173,6 +174,10 @@ namespace UnityStandardAssets.CrossPlatformInput
     public void startJumping(bool jumped)
     {
         jumping = jumped;
+        if(jumped)
+            jumpButtonPressed = true;
+        else
+            jumpButtonPressed = false;
     }
 
     void applyStopForce()
