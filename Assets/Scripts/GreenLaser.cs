@@ -37,6 +37,7 @@ public class GreenLaser : MonoBehaviour
 
     void Update()
     {
+
         transform.position = parentObject.transform.position;
         laserPrefab.transform.position = parentObject.transform.position;
         prevPos = transform.position;
@@ -77,11 +78,23 @@ public class GreenLaser : MonoBehaviour
 
         if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
         {
-            
+
             if (activated == false && touching == true)
-                hit = Physics2D.Raycast(parentObject.transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+            {
+                //if (parentObject.transform.localScale.x == -1)
+                //    hit = Physics2D.Raycast(parentObject.transform.localPosition, -transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+                //else
+                    hit = Physics2D.Raycast(parentObject.transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+
+            }
             else
-                hit = Physics2D.Raycast(parentObject.transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
+            {
+                //if (parentObject.transform.localScale.x == -1)
+                //    hit = Physics2D.Raycast(parentObject.transform.localPosition, diff, 1 << LayerMask.NameToLayer("Ground"));
+                //else
+                    hit = Physics2D.Raycast(parentObject.transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
+            }
+
 
             //Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);
@@ -89,9 +102,7 @@ public class GreenLaser : MonoBehaviour
             if (activated == false && touching == true)
             {
                 diff = new Vector2(parentObject.transform.position.x - hit.point.x, parentObject.transform.position.y - hit.point.y);
-                Debug.Log("parent");
-                Debug.Log(parentObject.transform.position);
-                Debug.Log(transform.localPosition);
+
                 lr.SetPosition(1, -diff);
             }
             if (touching == true)

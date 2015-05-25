@@ -153,11 +153,11 @@ namespace UnityStandardAssets.CrossPlatformInput
 
             if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
             {
-                transform.localScale = new Vector3(someScale, transform.localScale.y, 1);
+                transform.Find("Body").localScale = new Vector3(someScale, transform.localScale.y, 1);
             }
             if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1)
             {
-                transform.localScale = new Vector3(-someScale, transform.localScale.y, 1);
+                transform.Find("Body").localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
             }
 
             anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
