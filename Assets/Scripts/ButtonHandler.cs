@@ -13,10 +13,10 @@ public class ButtonHandler : MonoBehaviour {
             Object.GetComponent<ObstacleHandler>().activated = true;
             buttonActivate = false;
         }
-        if (greenButtonActivate)
-        { 
-            Object.GetComponent<PlayerController>()
-        }
+        //if (greenButtonActivate)
+        //{ 
+        //    Object.GetComponent<PlayerController>()
+        //}
 	}
 
 }
