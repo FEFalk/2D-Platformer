@@ -89,9 +89,6 @@ public class GreenLaser : MonoBehaviour
             if (activated == false && touching == true)
             {
                 diff = new Vector2(parentObject.transform.position.x - hit.point.x, parentObject.transform.position.y - hit.point.y);
-                Debug.Log("parent");
-                Debug.Log(parentObject.transform.position);
-                Debug.Log(transform.localPosition);
                 lr.SetPosition(1, -diff);
             }
             if (touching == true)
@@ -109,8 +106,9 @@ public class GreenLaser : MonoBehaviour
                     {
                         hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         GetComponent<GreenLaser>().enabled = false;
-                        //GetComponent<Movement>().enabled = false;
+                        
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
+                        Button.GetComponent<ButtonHandler>().greenButtonActivate = true;
                         //laserPrefab.transform.position = GameObject.Find("Player").transform.position;
                         //parentObject = hit.collider.gameObject;
                         

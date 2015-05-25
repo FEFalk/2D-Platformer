@@ -1194,7 +1194,7 @@ Transform:
   m_Children:
   - {fileID: 9202987}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 27
 --- !u!58 &176429394
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -2553,7 +2553,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentObject: {fileID: 1489894364}
   laserPrefab: {fileID: 518150548}
-  Button: {fileID: 427172552}
+  Button: {fileID: 377690881}
   activated: 0
   rotationOffset: 0
   touching: 0
@@ -2587,7 +2587,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2076769339}
-  - {fileID: 398292837}
+  - {fileID: 1425550096}
   m_Father: {fileID: 0}
   m_RootOrder: 26
 --- !u!50 &377690883
@@ -2881,8 +2881,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 377690882}
-  m_RootOrder: 1
+  m_Father: {fileID: 1425550096}
+  m_RootOrder: 0
 --- !u!114 &398292838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9982,11 +9982,13 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1425550095}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.74000001, y: 8.85000038, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_Children:
+  - {fileID: 398292837}
+  - {fileID: 1774651201}
+  m_Father: {fileID: 377690882}
+  m_RootOrder: 1
 --- !u!4 &1428133415
 Transform:
   m_ObjectHideFlags: 0
@@ -12167,11 +12169,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1774651200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.74000001, y: 8.85000038, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_Father: {fileID: 1425550096}
+  m_RootOrder: 1
 --- !u!114 &1774651202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12185,7 +12187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentObject: {fileID: 377690881}
   laserPrefab: {fileID: 398292836}
-  Button: {fileID: 427172552}
+  Button: {fileID: 176429392}
   activated: 0
   rotationOffset: 0
   touching: 0
