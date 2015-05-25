@@ -79,16 +79,19 @@ public class GreenLaser : MonoBehaviour
         {
             
             if (activated == false && touching == true)
-                hit = Physics2D.Raycast(transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
             else
-                hit = Physics2D.Raycast(transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
 
             //Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);
 
             if (activated == false && touching == true)
             {
-                diff = new Vector2(transform.localPosition.x - hit.point.x, transform.localPosition.y - hit.point.y);
+                diff = new Vector2(parentObject.transform.position.x - hit.point.x, parentObject.transform.position.y - hit.point.y);
+                Debug.Log("parent");
+                Debug.Log(parentObject.transform.position);
+                Debug.Log(transform.localPosition);
                 lr.SetPosition(1, -diff);
             }
             if (touching == true)
