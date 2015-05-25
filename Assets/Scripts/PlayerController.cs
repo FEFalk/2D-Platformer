@@ -8,7 +8,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
     public class PlayerController : MonoBehaviour
     {
-    private static float currentMovement;
+    public float currentMovement;
 	public float moveSpeed;
 	public float jumpHeight;
     public float maxMoveSpeed;
