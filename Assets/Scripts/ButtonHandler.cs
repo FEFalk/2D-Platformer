@@ -4,6 +4,7 @@ using System.Collections;
 public class ButtonHandler : MonoBehaviour {
     public GameObject Object;
     public bool buttonActivate = false;
+    public bool greenButtonActivate = false;
 	
 	// Update is called once per frame
 	void Update () {

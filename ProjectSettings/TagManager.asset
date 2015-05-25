@@ -10,6 +10,7 @@ TagManager:
   - Wall
   - Blue Box
   - ObstacleButton
+  - GreenButton
   layers:
   - Default
   - TransparentFX

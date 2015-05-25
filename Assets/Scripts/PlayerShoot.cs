@@ -110,47 +110,47 @@ public class PlayerShoot : MonoBehaviour {
             //laserPrefab.transform.localScale = new Vector3(transform.localScale.x + scaling, 1, 0);
             if (touching == true)
             {
-            if (!hit.rigidbody)
-                return;
+                if (!hit.rigidbody)
+                    return;
                 if (hit.collider != null && hit.rigidbody.isKinematic == true)
                 {
-                dragging = false;
-                return;
-            }
+                    dragging = false;
+                    return;
+                }
                 if (hit.collider != null && hit.rigidbody.isKinematic == false)
                 {
-                if (hit.collider.tag == "Blue Box")
-                {
-                    hit.collider.GetComponentInChildren<BoxEffects>().isActivated = true;
-                    dragging = true;
-                    diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
-                    lr.SetPosition(1, -diff);
-                    if (!springJoint)
+                    if (hit.collider.tag == "Blue Box")
                     {
-                        GameObject go = new GameObject("Rigidbody2D Dragger");
-                        Rigidbody2D body = go.AddComponent<Rigidbody2D>() as Rigidbody2D;
-                        springJoint = go.AddComponent<SpringJoint2D>() as SpringJoint2D;
-                        body.isKinematic = true;
-                        body.mass = 0.0001f;
+                        hit.collider.GetComponentInChildren<BoxEffects>().isActivated = true;
+                        dragging = true;
+                        diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
+                        lr.SetPosition(1, -diff);
+                        if (!springJoint)
+                        {
+                            GameObject go = new GameObject("Rigidbody2D Dragger");
+                            Rigidbody2D body = go.AddComponent<Rigidbody2D>() as Rigidbody2D;
+                            springJoint = go.AddComponent<SpringJoint2D>() as SpringJoint2D;
+                            body.isKinematic = true;
+                            body.mass = 0.0001f;
+                        }
+                        springJoint.transform.position = hit.point;
+
                     }
-                    springJoint.transform.position = hit.point;
+                    else
+                        dragging = false;
 
-                }
-                else
-                    dragging = false;
-
-                springJoint.distance = distance; // there is no distance in SpringJoint2D
-                springJoint.dampingRatio = damper;// there is no damper in SpringJoint2D but there is a dampingRatio
-                //springJoint.maxDistance = distance;  // there is no MaxDistance in the SpringJoint2D - but there is a 'distance' field
-                //  see http://docs.unity3d.com/Documentation/ScriptReference/SpringJoint2D.html
-                //springJoint.maxDistance = distance;
-                springJoint.connectedBody = hit.rigidbody;
-                // maybe check if the 'fraction' is normalised. See http://docs.unity3d.com/Documentation/ScriptReference/RaycastHit2D-fraction.html
+                    springJoint.distance = distance; // there is no distance in SpringJoint2D
+                    springJoint.dampingRatio = damper;// there is no damper in SpringJoint2D but there is a dampingRatio
+                    //springJoint.maxDistance = distance;  // there is no MaxDistance in the SpringJoint2D - but there is a 'distance' field
+                    //  see http://docs.unity3d.com/Documentation/ScriptReference/SpringJoint2D.html
+                    //springJoint.maxDistance = distance;
+                    springJoint.connectedBody = hit.rigidbody;
+                    // maybe check if the 'fraction' is normalised. See http://docs.unity3d.com/Documentation/ScriptReference/RaycastHit2D-fraction.html
                     if (dragging == true)
                         StartCoroutine("DragObject", hit.fraction);
-            }
+                }
 
-        }
+            }
         }
         else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
         {
