@@ -15,6 +15,7 @@ public class ButtonHandler : MonoBehaviour {
         }
         if (greenButtonActivate)
         {
+            
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().enabled = false;
             greenButtonActivate = false;
         }

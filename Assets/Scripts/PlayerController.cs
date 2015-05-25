@@ -175,7 +175,7 @@ namespace UnityStandardAssets.CrossPlatformInput
         jumping = jumped;
     }
 
-    void applyStopForce()
+    public void applyStopForce()
     {
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 1)
         {
