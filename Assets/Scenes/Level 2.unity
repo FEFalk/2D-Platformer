@@ -2556,11 +2556,6 @@ MonoBehaviour:
   Button: {fileID: 427172552}
   activated: 0
   rotationOffset: 0
-  distance: .200000003
-  damper: 1
-  frequency: 8
-  drag: 30
-  angularDrag: 30
   touching: 0
 --- !u!1 &377690881
 GameObject:
@@ -2573,7 +2568,6 @@ GameObject:
   - 33: {fileID: 377690885}
   - 50: {fileID: 377690883}
   - 58: {fileID: 377690884}
-  - 114: {fileID: 377690886}
   m_Layer: 11
   m_Name: GreenLaserButton
   m_TagString: GreenButton
@@ -2588,7 +2582,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377690881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.74000001, y: 9.18999958, z: 0}
+  m_LocalPosition: {x: 1.5, y: 8.79500008, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2076769339}
@@ -2619,9 +2613,9 @@ CircleCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_Offset: {x: -1, y: .100000001}
+  m_Offset: {x: 0, y: .600000024}
   serializedVersion: 2
-  m_Radius: .680000007
+  m_Radius: .75318718
 --- !u!33 &377690885
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2629,20 +2623,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 377690881}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &377690886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 377690881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46d4085c68edf5248a6d19bb786642e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Object: {fileID: 0}
-  buttonActivate: 0
-  greenButtonActivate: 0
 --- !u!1 &380220104
 GameObject:
   m_ObjectHideFlags: 0
@@ -13875,7 +13855,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2076769337}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: -1.62920685e-07}
-  m_LocalPosition: {x: -1, y: -.349999994, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 377690882}

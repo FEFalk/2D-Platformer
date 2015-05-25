@@ -107,18 +107,26 @@ public class GreenLaser : MonoBehaviour
                         
                         laserPrefab.transform.position = GameObject.Find("Player").transform.position;
                         parentObject = hit.collider.gameObject;
-                        
+                        prevPos = GameObject.Find("Player").transform.position;
 
                         lr.SetVertexCount(++size);
                         vectorSize = new Vector2(hit.collider.transform.position.x, hit.collider.transform.position.y);
                         lr.SetPosition(size-1, vectorSize);
                         hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         activated = true;
+                        
                         //lr.SetPosition(size -1, -diff);
                         //laserPrefab.transform.position = transform.position;
                         //transform.position = hit.transform.position;
                         //Camera.main.transform.position = parentObject.transform.position;
                     }
+                    if (activated == true)
+                    {
+                        GetComponent<GreenLaser>().enabled = false;
+                        transform.Find("Pikkadoll").gameObject.SetActive(true);
+                    }
+                    else
+                        transform.Find("Pikkadoll").gameObject.SetActive(false);
 
                 }
             }
@@ -127,7 +135,7 @@ public class GreenLaser : MonoBehaviour
         else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
             {
                 activated = false;
-                lr.SetPosition(size-1, prevPos);
+                lr.SetPosition(size, prevPos);
                 touching = false;
             }
     } // end of update
