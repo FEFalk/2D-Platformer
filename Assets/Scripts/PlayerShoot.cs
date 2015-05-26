@@ -81,9 +81,9 @@ public class PlayerShoot : MonoBehaviour {
         {
                       isShooting = true;
             if (dragging == false && touching == true)
-                hit = Physics2D.Raycast(parentObject.transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.position, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
             else
-                hit = Physics2D.Raycast(parentObject.transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.position, -diff, 1 << LayerMask.NameToLayer("Ground"));
 
             //Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);
@@ -133,7 +133,7 @@ public class PlayerShoot : MonoBehaviour {
                     {
                         hit.collider.GetComponentInChildren<BoxEffects>().isActivated = true;
                         dragging = true;
-                        diff = new Vector2(parentObject.transform.localPosition.x - hit.collider.transform.position.x, parentObject.transform.localPosition.y - hit.collider.transform.position.y);
+                        diff = new Vector2(parentObject.transform.position.x - hit.collider.transform.position.x, parentObject.transform.position.y - hit.collider.transform.position.y);
                         lr.SetPosition(1, -diff);
                         if (!springJoint)
                         {
