@@ -13,16 +13,20 @@ public class ButtonHandler : MonoBehaviour {
             Object.GetComponent<ObstacleHandler>().activated = true;
             buttonActivate = false;
         }
-        if (greenButtonActivate)
+        if (greenButtonActivate && Object!=null)
         {
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().currentMovement = 0;
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().anim.SetFloat("Walking", Mathf.Abs(0));
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().enabled = false;
 
-            //Camera.main.GetComponent<SmoothCamera2D>().target.transform.position = transform.position;
+            Camera.main.GetComponent<SmoothCamera2D>().target.transform.position = transform.position;
+            greenButtonActivate = false;
+        }
+        else if(greenButtonActivate)
+        {
+            Camera.main.GetComponent<SmoothCamera2D>().target.transform.position = transform.position;
             greenButtonActivate = false;
         }
 	}
-
 }
