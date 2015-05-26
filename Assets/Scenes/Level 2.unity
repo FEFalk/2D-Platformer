@@ -2648,7 +2648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 1489894364}
-  Obstacle: {fileID: 857651192}
+  Obstacle: {fileID: 427172552}
   buttonActivate: 0
   greenButtonActivate: 0
 --- !u!1 &428288777
@@ -10864,7 +10864,7 @@ Prefab:
     - target: {fileID: 11473552, guid: 7d320cef2eb53754689a1c9880bc3217, type: 2}
       propertyPath: Obstacle
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 427172552}
     - target: {fileID: 11406888, guid: 7d320cef2eb53754689a1c9880bc3217, type: 2}
       propertyPath: m_Enabled
       value: 1
