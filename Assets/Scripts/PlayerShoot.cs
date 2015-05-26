@@ -9,6 +9,7 @@ public class PlayerShoot : MonoBehaviour {
     public GameObject Button;
     public int rotationOffset = 0;
     private float scaling;
+    public bool isShooting = false;
 
     private Vector3 mouse_pos;
     private Vector3 object_pos;
@@ -77,6 +78,7 @@ public class PlayerShoot : MonoBehaviour {
 
         if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
         {
+            isShooting = true;
             if (dragging == false && touching == true)
                 hit = Physics2D.Raycast(parentObject.transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
             else
@@ -154,6 +156,7 @@ public class PlayerShoot : MonoBehaviour {
         }
         else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
         {
+            isShooting = false;
             dragging = false;
             lr.SetPosition(1, new Vector2(0, 0));
             touching = false;
@@ -177,6 +180,7 @@ public class PlayerShoot : MonoBehaviour {
 
         while (Input.GetButton("Fire1") || Input.touchCount > 0)
         {
+            isShooting = true;
             if (hit.collider.tag != "Blue Box" || hit.rigidbody.isKinematic == true)
             {
                 dragging = false;
@@ -187,6 +191,7 @@ public class PlayerShoot : MonoBehaviour {
 
             yield return null;
         }
+        isShooting = false;
         if (springJoint.connectedBody)
         {
             //Debug.Log(springJoint.connectedBody.rigidbody2D.velocity.ToString());

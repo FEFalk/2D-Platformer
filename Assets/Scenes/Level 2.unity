@@ -2759,6 +2759,10 @@ Transform:
   m_Children: []
   m_Father: {fileID: 109806652}
   m_RootOrder: 13
+--- !u!1 &454968973 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 151382, guid: 7d320cef2eb53754689a1c9880bc3217, type: 2}
+  m_PrefabInternal: {fileID: 1744964876}
 --- !u!1 &457877063
 GameObject:
   m_ObjectHideFlags: 0
@@ -8908,6 +8912,10 @@ Transform:
   - {fileID: 1177152321}
   m_Father: {fileID: 0}
   m_RootOrder: 9
+--- !u!1 &1430900235 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 151382, guid: 7d320cef2eb53754689a1c9880bc3217, type: 2}
+  m_PrefabInternal: {fileID: 13129335}
 --- !u!1 &1443103144
 GameObject:
   m_ObjectHideFlags: 0
@@ -10857,6 +10865,10 @@ Prefab:
       propertyPath: Obstacle
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 11406888, guid: 7d320cef2eb53754689a1c9880bc3217, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d320cef2eb53754689a1c9880bc3217, type: 2}
   m_IsPrefabParent: 0
@@ -11330,6 +11342,54 @@ MonoBehaviour:
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 404320174}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+              Culture=neutral, PublicKeyToken=null
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 1160577049}
+          m_MethodName: set_enabled
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+              Culture=neutral, PublicKeyToken=null
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
+        - m_Target: {fileID: 454968973}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+              Culture=neutral, PublicKeyToken=null
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1430900235}
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, Version=0.0.0.0,
+              Culture=neutral, PublicKeyToken=null
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
           m_CallState: 2
       m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
         Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
