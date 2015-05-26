@@ -11,6 +11,8 @@ TagManager:
   - Blue Box
   - ObstacleButton
   - GreenButton
+  - ResetButton
+  - Red Button
   layers:
   - Default
   - TransparentFX

@@ -7,7 +7,7 @@ public class ButtonHandler : MonoBehaviour {
     public bool greenButtonActivate = false;
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () {  
         if (buttonActivate)
         {
             Object.GetComponent<ObstacleHandler>().activated = true;
@@ -21,6 +21,5 @@ public class ButtonHandler : MonoBehaviour {
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().enabled = false;
             greenButtonActivate = false;
         }
-	}
-
+    }
 }

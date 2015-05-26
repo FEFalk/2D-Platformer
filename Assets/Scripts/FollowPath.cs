@@ -17,10 +17,12 @@ public class FollowPath : MonoBehaviour
 
     private IEnumerator<Transform> _currentPoint;
     private GameObject player;
+    private GameObject gun;
     
     public void Start()
     {
         player = GameObject.Find("Player");
+        gun = GameObject.Find("Pikkadoll");
 
         if (Path == null)
         {
@@ -59,13 +61,14 @@ public class FollowPath : MonoBehaviour
         if (coll.gameObject.tag == "Player")
         {
             if (player.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().isMoving == true)
-                  coll.gameObject.transform.parent = null;
-            else
-                coll.gameObject.transform.parent = this.gameObject.transform;
+                coll.gameObject.transform.parent = null;
 
+            else
+                coll.gameObject.transform.parent = this.gameObject.transform;        
         }
         else
             coll.gameObject.transform.parent = this.gameObject.transform;
+
     }
     //Once it leaves the platform, become a normal object again.
     void OnCollisionExit2D(Collision2D coll)
