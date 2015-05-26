@@ -16,6 +16,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 	private bool grounded;
+    public bool isMoving;
 
 	private bool doubleJumped;
 	private Vector2 groundCheckDiag1;
@@ -57,8 +58,12 @@ namespace UnityStandardAssets.CrossPlatformInput
 	// Update is called once per frame
 	void Update () {
 
-            if (Input.GetButtonUp("Horizontal"))
-                currentMovement = 0;
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            currentMovement = 0;
+            isMoving = false;
+        }
+
 
 		//Ground-checking
 		groundCheckDiag1.x = groundCheck.position.x-0.49f;
@@ -106,7 +111,10 @@ namespace UnityStandardAssets.CrossPlatformInput
             jumping = false;
         }
         if (Input.GetButtonUp("Horizontal"))
+        {
             currentMovement = 0;
+            isMoving = false;
+        }
 
     }
 	
@@ -141,7 +149,10 @@ namespace UnityStandardAssets.CrossPlatformInput
             currentMovement = Mathf.RoundToInt(CrossPlatformInput.CrossPlatformInputManager.GetAxisRaw("Horizontal"));
 
             if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1)
+            {
                 currentMovement = Input.GetAxisRaw("Horizontal");
+                isMoving = true;
+            }
 
 
             if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
@@ -168,6 +179,10 @@ namespace UnityStandardAssets.CrossPlatformInput
     public void startMoving(float moveDirection)
     {
         currentMovement=moveDirection;
+        if (moveDirection < 0 || moveDirection > 0)
+            isMoving = true;
+        else
+            isMoving = false;
 
     }
 
