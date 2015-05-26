@@ -36,6 +36,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 	void Start () {
 		spawn=transform.position;
 		someScale = transform.localScale.x;
+     
 	}
 
 	void FixedUpdate(){
@@ -55,7 +56,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 	// Update is called once per frame
 	void Update () {
-
+        
             if (Input.GetButtonUp("Horizontal"))
                 currentMovement = 0;
 
@@ -106,7 +107,7 @@ namespace UnityStandardAssets.CrossPlatformInput
         }
         if (Input.GetButtonUp("Horizontal"))
             currentMovement = 0;
-
+        
     }
 	
 
