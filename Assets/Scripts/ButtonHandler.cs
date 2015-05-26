@@ -19,6 +19,8 @@ public class ButtonHandler : MonoBehaviour {
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().currentMovement = 0;
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().anim.SetFloat("Walking", Mathf.Abs(0));
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().enabled = false;
+
+            //Camera.main.GetComponent<SmoothCamera2D>().target.transform.position = transform.position;
             greenButtonActivate = false;
         }
 	}

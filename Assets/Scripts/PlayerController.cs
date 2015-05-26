@@ -33,7 +33,8 @@ namespace UnityStandardAssets.CrossPlatformInput
     private bool prev, current, inAir, jumping;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
 		spawn=transform.position;
 		someScale = transform.localScale.x;
 	}
