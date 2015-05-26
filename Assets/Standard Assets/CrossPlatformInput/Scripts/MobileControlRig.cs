@@ -24,6 +24,10 @@ namespace UnityStandardAssets.CrossPlatformInput
 	#endif
 
 #if UNITY_EDITOR
+        private void start() 
+        {
+            gameObject.SetActive(enabled);
+        }
 
         private void OnEnable()
         {

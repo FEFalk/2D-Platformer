@@ -8,7 +8,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
     public class PlayerController : MonoBehaviour
     {
-    private static float currentMovement;
+    public float currentMovement;
 	public float moveSpeed;
 	public float jumpHeight;
     public float maxMoveSpeed;
@@ -29,6 +29,7 @@ namespace UnityStandardAssets.CrossPlatformInput
     public GameObject ChildObject;
     public GameObject Laser;
 
+    private bool jumpButtonPressed;
     private bool prev, current, inAir, jumping;
 
 	// Use this for initialization
@@ -99,7 +100,7 @@ namespace UnityStandardAssets.CrossPlatformInput
             if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y * 4.5f) / 2));
         }
-        if (!Input.GetButton("Jump"))
+        if (!Input.GetButton("Jump") && jumpButtonPressed == false)
         {
             jumping = false;
         }
@@ -153,11 +154,11 @@ namespace UnityStandardAssets.CrossPlatformInput
 
             if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
             {
-                transform.localScale = new Vector3(someScale, transform.localScale.y, 1);
+                transform.Find("Body").localScale = new Vector3(someScale, transform.localScale.y, 1);
             }
             if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1)
             {
-                transform.localScale = new Vector3(-someScale, transform.localScale.y, 1);
+                transform.Find("Body").localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
             }
 
             anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
@@ -173,6 +174,10 @@ namespace UnityStandardAssets.CrossPlatformInput
     public void startJumping(bool jumped)
     {
         jumping = jumped;
+        if(jumped)
+            jumpButtonPressed = true;
+        else
+            jumpButtonPressed = false;
     }
 
     void applyStopForce()
