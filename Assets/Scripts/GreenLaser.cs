@@ -7,6 +7,7 @@ public class GreenLaser : MonoBehaviour
 
     public GameObject parentObject;
     public GameObject laserPrefab;
+    public GameObject Button;
     public bool activated;
     public int rotationOffset = 0;
     private float scaling;
@@ -93,15 +94,16 @@ public class GreenLaser : MonoBehaviour
             }
             if (touching == true)
             {
+                if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
+                {
+                    obstacleButton = true;
+                    hit.collider.GetComponent<ButtonHandler>().buttonActivate = true;
+                }
                 if (!hit.rigidbody)
                     return;
                 if (hit.collider != null)
                 {
-                    if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
-                    {
-                        obstacleButton = true;
-                        hit.collider.GetComponent<ButtonHandler>().buttonActivate = true;
-                    }
+                    
                     if (hit.collider.tag == "GreenButton" && activated == false)
                     {
                         diff = new Vector2(parentObject.transform.position.x - hit.collider.transform.position.x, parentObject.transform.position.y - hit.collider.transform.position.y);
@@ -110,6 +112,7 @@ public class GreenLaser : MonoBehaviour
                         GetComponent<GreenLaser>().enabled = false;
                         
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
+                        
                         hit.collider.GetComponent<ButtonHandler>().greenButtonActivate = true;
                         //laserPrefab.transform.position = GameObject.Find("Player").transform.position;
                         //parentObject = hit.collider.gameObject;
@@ -123,7 +126,7 @@ public class GreenLaser : MonoBehaviour
                         //lr.SetPosition(size -1, -diff);
                         //laserPrefab.transform.position = transform.position;
                         //transform.position = hit.transform.position;
-                        //Camera.main.transform.position = parentObject.transform.position;
+                        
                     }
 
                 }
@@ -135,6 +138,7 @@ public class GreenLaser : MonoBehaviour
                 activated = false;
                 lr.SetPosition(1, new Vector2(0,0));
                 touching = false;
+                Camera.main.GetComponent<SmoothCamera2D>().target = parentObject.transform;
             }
     } // end of update
 }
