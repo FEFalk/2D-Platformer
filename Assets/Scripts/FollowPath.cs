@@ -14,10 +14,10 @@ public class FollowPath : MonoBehaviour
     public PathDefinition Path;
     public float Speed = 1;
     public float MaxDistanceToGoal = .1f;
-    public GameObject[] blueBoxes;
 
     private IEnumerator<Transform> _currentPoint;
     private GameObject player;
+    
     public void Start()
     {
         player = GameObject.Find("Player");
@@ -54,9 +54,18 @@ public class FollowPath : MonoBehaviour
     }
 
     //If character collides with the platform, make it its child.
-    void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionStay2D(Collision2D coll)
     {
-        coll.gameObject.transform.parent = this.gameObject.transform;
+        if (coll.gameObject.tag == "Player")
+        {
+            if (player.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().isMoving == true)
+                  coll.gameObject.transform.parent = null;
+            else
+                coll.gameObject.transform.parent = this.gameObject.transform;
+
+        }
+        else
+            coll.gameObject.transform.parent = this.gameObject.transform;
     }
     //Once it leaves the platform, become a normal object again.
     void OnCollisionExit2D(Collision2D coll)
