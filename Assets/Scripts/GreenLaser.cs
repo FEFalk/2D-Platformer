@@ -138,7 +138,6 @@ public class GreenLaser : MonoBehaviour
                 activated = false;
                 lr.SetPosition(1, new Vector2(0,0));
                 touching = false;
-                Camera.main.GetComponent<SmoothCamera2D>().target = parentObject.transform;
             }
     } // end of update
 }
