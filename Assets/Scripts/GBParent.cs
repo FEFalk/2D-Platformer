@@ -5,11 +5,13 @@ public class GBParent : MonoBehaviour {
     public Component[] colliders;
     public Component[] greenLasers;
     public Component[] pikkadoller;
+    public GameObject[] buttons;
+    public int buttonSize;
 	public void enableCollider () {
         colliders = GetComponentsInChildren<CircleCollider2D>();
         foreach (CircleCollider2D collider in colliders) 
         {
-            collider.GetComponent<CircleCollider2D>().enabled = true;
+            collider.enabled = true;
         }
 	}
     public void enableGreenLasers()
@@ -17,7 +19,7 @@ public class GBParent : MonoBehaviour {
         greenLasers = GetComponentsInChildren<GreenLaser>();
         foreach (GreenLaser greenLaser in greenLasers)
         {
-            greenLaser.GetComponent<GreenLaser>().enabled = true;
+            greenLaser.enabled = true;
         }
     }
     public void disablegreenLasers()
@@ -25,7 +27,12 @@ public class GBParent : MonoBehaviour {
         greenLasers = GetComponentsInChildren<GreenLaser>();
         foreach (GreenLaser greenLaser in greenLasers)
         {
-            greenLaser.GetComponent<GreenLaser>().enabled = false;
+            greenLaser.enabled = false;
         }
+    }
+    public void disablePikkadollz()
+    {
+        for (int i = 0; i < buttonSize; i++)
+            buttons[i].transform.Find("Pikkadoll").gameObject.SetActive(false);
     }
 }
