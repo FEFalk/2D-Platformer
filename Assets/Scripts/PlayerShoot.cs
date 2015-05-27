@@ -6,7 +6,8 @@ public class PlayerShoot : MonoBehaviour {
 
     public GameObject parentObject;
     public GameObject laserPrefab;
-    public GameObject Button;
+    public GameObject[] Buttons;
+    private int buttonCount = 0;
     public int rotationOffset = 0;
     private float scaling;
     public bool isShooting = false;
@@ -78,11 +79,11 @@ public class PlayerShoot : MonoBehaviour {
 
         if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
         {
-            isShooting = true;
+                      isShooting = true;
             if (dragging == false && touching == true)
-                hit = Physics2D.Raycast(parentObject.transform.localPosition, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.position, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
             else
-                hit = Physics2D.Raycast(parentObject.transform.localPosition, -diff, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.position, -diff, 1 << LayerMask.NameToLayer("Ground"));
 
             //Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);
@@ -93,10 +94,17 @@ public class PlayerShoot : MonoBehaviour {
                 lr.SetPosition(1, -diff);
             }
             if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
-                {
-                    obstacleButton = true;
-                    Button.GetComponent<ButtonHandler>().buttonActivate = true;
-                }
+            {
+                 obstacleButton = true;
+                 Buttons[buttonCount].GetComponent<ButtonHandler>().buttonActivate = true;
+                 buttonCount++;
+            }
+
+            if (hit.collider.tag == "ResetButton" && obstacleButton == true)
+            {
+                Debug.Log("obstacleButton = false");
+                obstacleButton = false;
+            }
             //Debug.Log("Point: " + hit.point.x + ", " + hit.point.y + " -- Line: " + lr.transform.position.x + ", " + lr.transform.position.y);
 
             //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -125,7 +133,7 @@ public class PlayerShoot : MonoBehaviour {
                     {
                         hit.collider.GetComponentInChildren<BoxEffects>().isActivated = true;
                         dragging = true;
-                        diff = new Vector2(parentObject.transform.localPosition.x - hit.collider.transform.position.x, parentObject.transform.localPosition.y - hit.collider.transform.position.y);
+                        diff = new Vector2(parentObject.transform.position.x - hit.collider.transform.position.x, parentObject.transform.position.y - hit.collider.transform.position.y);
                         lr.SetPosition(1, -diff);
                         if (!springJoint)
                         {

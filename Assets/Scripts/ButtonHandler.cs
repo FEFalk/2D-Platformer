@@ -32,5 +32,7 @@ public class ButtonHandler : MonoBehaviour {
             Camera.main.GetComponent<SmoothCamera2D>().target = transform;
             greenButtonActivate = false;
         }
+
 	}
+    
 }
