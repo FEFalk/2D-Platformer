@@ -30,9 +30,12 @@ public class PlayerShoot : MonoBehaviour {
     private Camera mainCamera;
     private Vector2 diff;
     public bool touching;
+    private bool[] isOverGui;
     private Touch[] touches;
     private int laserTouch = -1;
     private Touch touch;
+
+
     void Start()
     {
         lr = laserPrefab.GetComponent<LineRenderer>();
@@ -52,30 +55,20 @@ public class PlayerShoot : MonoBehaviour {
             touches = Input.touches;
             for (int i = 0; i < Input.touchCount; i++)
             {
-                if (EventSystem.current.IsPointerOverGameObject(touches[i].fingerId))
+                if (EventSystem.current.IsPointerOverGameObject(touches[i].fingerId) && Input.touchCount<2)
                 {
                     laserTouch = -1;
                     touching = false;
+                    isOverGui[i] = true;
                     isPointerOverGameObject = true;
                     if (touches[i].phase == TouchPhase.Ended)
                         isPointerOverGameObject = false;
-                    break;
-                }
-                else if(Input.touchCount==0)
-                {
-                    laserTouch = -1;
-                    touching = false;
-                    isPointerOverGameObject = true;
-                    if (touches[i].phase == TouchPhase.Ended)
-                        isPointerOverGameObject = false;
-                    break;
                 }
                 else if (!EventSystem.current.IsPointerOverGameObject(touches[i].fingerId))
                 {
                     if (touches[i].phase == TouchPhase.Ended)
                         break;
                     laserTouch = i;
-                    break;
                 }
             }
         }
@@ -99,13 +92,18 @@ public class PlayerShoot : MonoBehaviour {
 
 
 
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isOverGui[i] == false)
+            {
+                touching = true;
+                break;
+            }
+            else
+                touching = false;
+        }
 
-        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
-            touching = true;
-        else
-            touching = false;
-
-        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
+        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && touching == false)
         {
             if (dragging == false && touching == true)
                 hit = Physics2D.Raycast(parentObject.transform.position, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
