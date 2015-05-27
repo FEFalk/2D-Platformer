@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Elevator : MonoBehaviour {
+public class Elevator : MonoBehaviour
+{
     public enum FollowType
     {
         MoveTowards,
@@ -49,16 +50,5 @@ public class Elevator : MonoBehaviour {
         var distanceSquared = (transform.position - _currentPoint.Current.position).sqrMagnitude;
         if (distanceSquared < MaxDistanceToGoal * MaxDistanceToGoal)
             _currentPoint.MoveNext();
-    }
-
-    //If character collides with the platform, make it its child.
-    void OnCollisionEnter2D(Collision2D coll)
-    {
-        coll.gameObject.transform.parent = this.gameObject.transform;
-    }
-    //Once it leaves the platform, become a normal object again.
-    void OnCollisionExit2D(Collision2D coll)
-    {
-        coll.gameObject.transform.parent = null;
     }
 }
