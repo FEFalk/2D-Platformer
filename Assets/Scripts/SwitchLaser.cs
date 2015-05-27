@@ -4,7 +4,7 @@ using System.Collections;
 public class SwitchLaser : MonoBehaviour {
 
     public GameObject currentLaser;
-
+    public Material redLaser, greenLaser, blueLaser;
     void Update()
     {
 
@@ -12,8 +12,10 @@ public class SwitchLaser : MonoBehaviour {
 
     public void Switch(float newSpeed)
     {
+        GameObject Laser = transform.parent.gameObject.transform.Find("Laser").gameObject;
         if (newSpeed == 0)
         {
+            Laser.GetComponent<LineRenderer>().material = blueLaser;
             if (GetComponent<GreenLaser>().activated == false)
             {
                 GetComponent<GreenLaser>().enabled = false;
@@ -33,6 +35,7 @@ public class SwitchLaser : MonoBehaviour {
 
         else if (newSpeed == 1)
         {
+            Laser.GetComponent<LineRenderer>().material = greenLaser;
             if (GetComponent<GreenLaser>().activated == false)
             {
                 GetComponent<GreenLaser>().enabled = true;
@@ -52,6 +55,7 @@ public class SwitchLaser : MonoBehaviour {
         }
         else if (newSpeed == 2)
         {
+            Laser.GetComponent<LineRenderer>().material = redLaser;
             if (GetComponent<GreenLaser>().activated == false)
             {
                 GetComponent<GreenLaser>().enabled = false;
