@@ -55,20 +55,21 @@ public class PlayerShoot : MonoBehaviour {
             touches = Input.touches;
             for (int i = 0; i < Input.touchCount; i++)
             {
-                if (EventSystem.current.IsPointerOverGameObject(touches[i].fingerId) && Input.touchCount<2)
+                if (EventSystem.current.IsPointerOverGameObject(touches[i].fingerId))
                 {
-                    laserTouch = -1;
-                    touching = false;
                     isOverGui[i] = true;
-                    isPointerOverGameObject = true;
                     if (touches[i].phase == TouchPhase.Ended)
-                        isPointerOverGameObject = false;
+                        isOverGui[i] = false;
                 }
-                else if (!EventSystem.current.IsPointerOverGameObject(touches[i].fingerId))
+                else
                 {
+                    isOverGui[i] = false;
+                    mouse_pos = touches[i].position;
+
                     if (touches[i].phase == TouchPhase.Ended)
+                        continue;
+                    else
                         break;
-                    laserTouch = i;
                 }
             }
         }
@@ -77,9 +78,7 @@ public class PlayerShoot : MonoBehaviour {
             isPointerOverGameObject = EventSystem.current.IsPointerOverGameObject();
         }
 
-        if (laserTouch != -1)
-        {
-            mouse_pos = touches[laserTouch].position;
+            
             //mouse_pos = Input.mousePosition;
             mouse_pos.z = 5.23f; //The distance between the camera and object
             object_pos = Camera.main.WorldToScreenPoint(transform.position);
@@ -87,23 +86,23 @@ public class PlayerShoot : MonoBehaviour {
             mouse_pos.y = mouse_pos.y - object_pos.y;
             angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, 0, angle);
-        }
 
 
 
 
-        for (int i = 0; i < Input.touchCount; i++)
-        {
-            if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isOverGui[i] == false)
+        //for (int i = 0; i < Input.touchCount; i++)
+        //{
+            //funkar ej på dator - ha en #if UNITY_Dator-ish
+            if (Input.GetButton("Fire1") || Input.touchCount > 0)
             {
                 touching = true;
-                break;
+                //break;
             }
             else
                 touching = false;
-        }
+        //}
 
-        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && touching == false)
+        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && touching == true)
         {
             if (dragging == false && touching == true)
                 hit = Physics2D.Raycast(parentObject.transform.position, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
