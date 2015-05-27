@@ -30,7 +30,7 @@ public class PlayerShoot : MonoBehaviour {
     private Camera mainCamera;
     private Vector2 diff;
     public bool touching;
-    private Touch touches;
+    private Touch[] touches;
     private int laserTouch = -1;
     private Touch touch;
     void Start()
@@ -49,16 +49,16 @@ public class PlayerShoot : MonoBehaviour {
         
         if (EventSystem.current.currentInputModule is TouchInputModule)
         {
+            touches = Input.touches;
             for (int i = 0; i < Input.touchCount; i++)
             {
-                touch = Input.touches[i];
-                if (EventSystem.current.IsPointerOverGameObject(Input.touches[i].fingerId))
+                if (EventSystem.current.IsPointerOverGameObject(touches[i].fingerId))
                 {
-                    if(touch.phase==TouchPhase.Ended)
-                        isPointerOverGameObject = false;
                     laserTouch = -1;
                     touching = false;
                     isPointerOverGameObject = true;
+                    if (touches[i].phase == TouchPhase.Ended)
+                        isPointerOverGameObject = false;
                     break;
                 }
                 else if(Input.touchCount==0)
@@ -66,13 +66,15 @@ public class PlayerShoot : MonoBehaviour {
                     laserTouch = -1;
                     touching = false;
                     isPointerOverGameObject = true;
+                    if (touches[i].phase == TouchPhase.Ended)
+                        isPointerOverGameObject = false;
                     break;
                 }
-                else if (!EventSystem.current.IsPointerOverGameObject(Input.touches[i].fingerId))
+                else if (!EventSystem.current.IsPointerOverGameObject(touches[i].fingerId))
                 {
-                    if (touch.phase == TouchPhase.Ended)
+                    if (touches[i].phase == TouchPhase.Ended)
                         break;
-                    laserTouch = Input.touches[i].fingerId;
+                    laserTouch = i;
                     break;
                 }
             }
@@ -84,7 +86,7 @@ public class PlayerShoot : MonoBehaviour {
 
         if (laserTouch != -1)
         {
-            mouse_pos = Input.GetTouch(laserTouch).position;
+            mouse_pos = touches[laserTouch].position;
             //mouse_pos = Input.mousePosition;
             mouse_pos.z = 5.23f; //The distance between the camera and object
             object_pos = Camera.main.WorldToScreenPoint(transform.position);
@@ -105,7 +107,6 @@ public class PlayerShoot : MonoBehaviour {
 
         if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
         {
-            isShooting = true;
             if (dragging == false && touching == true)
                 hit = Physics2D.Raycast(parentObject.transform.position, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
             else
@@ -189,7 +190,6 @@ public class PlayerShoot : MonoBehaviour {
         }
         if (!Input.GetButton("Fire1") || Input.touchCount <= 0 || laserTouch == -1)
         {
-            isShooting = false;
             dragging = false;
             lr.SetPosition(1, new Vector2(0, 0));
             touching = false;
@@ -213,7 +213,6 @@ public class PlayerShoot : MonoBehaviour {
 
         while (Input.GetButton("Fire1") || Input.touchCount > 0)
         {
-            isShooting = true;
             if (hit.collider.tag != "Blue Box" || hit.rigidbody.isKinematic == true)
             {
                 dragging = false;
@@ -224,7 +223,6 @@ public class PlayerShoot : MonoBehaviour {
 
             yield return null;
         }
-        isShooting = false;
         if (springJoint.connectedBody)
         {
             //Debug.Log(springJoint.connectedBody.rigidbody2D.velocity.ToString());
