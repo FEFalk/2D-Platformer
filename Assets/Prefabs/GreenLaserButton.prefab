@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 492494}
   - 120: {fileID: 12051774}
   - 114: {fileID: 11479572}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Laser 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,6 +61,7 @@ GameObject:
   - 4: {fileID: 445632}
   - 114: {fileID: 11427702}
   - 114: {fileID: 11406888}
+  - 114: {fileID: 11475422}
   - 114: {fileID: 11472976}
   m_Layer: 2
   m_Name: Pikkadoll 1
@@ -92,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.74000001, y: 8.85000038, z: 0}
+  m_LocalPosition: {x: -661.005615, y: 9.31501198, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 401964}
@@ -212,11 +213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb9d03c54db4cd44a05956fc250ddd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentObject: {fileID: 0}
-  laserPrefab: {fileID: 0}
+  parentObject: {fileID: 130718}
+  laserPrefab: {fileID: 117490}
   Buttons: []
   rotationOffset: 0
-  isShooting: 0
   dragging: 0
   distance: .200000003
   damper: 1
@@ -251,6 +251,23 @@ MonoBehaviour:
   Obstacle: {fileID: 0}
   buttonActivate: 0
   greenButtonActivate: 0
+--- !u!114 &11475422
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 164014}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 856a9bb7a8cdfc04e914de2115b26056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObject: {fileID: 130718}
+  laserPrefab: {fileID: 117490}
+  Button: {fileID: 0}
+  activated: 0
+  rotationOffset: 0
+  touching: 0
 --- !u!114 &11479572
 MonoBehaviour:
   m_ObjectHideFlags: 1

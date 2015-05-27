@@ -13,49 +13,60 @@ public class SwitchLaser : MonoBehaviour {
     {
         if (newSpeed == 0)
         {
-            if (GetComponent<GreenLaser>().touching == false)
+            if (GetComponent<GreenLaser>().activated == false)
             {
                 GetComponent<GreenLaser>().enabled = false;
                 GetComponent<PlayerShoot>().enabled = true;
+                GetComponent<RedLaser>().enabled = false;
             }
             if (currentLaser != null)
             {
-                if (currentLaser.GetComponent<GreenLaser>().touching == false)
+                if (currentLaser.GetComponent<GreenLaser>().activated == false)
                 {
                     currentLaser.GetComponent<GreenLaser>().enabled = false;
                     currentLaser.GetComponent<PlayerShoot>().enabled = true;
+                    currentLaser.GetComponent<RedLaser>().enabled = false;
                 }
             }
         }
 
         else if (newSpeed == 1)
         {
-            if (GetComponent<GreenLaser>().touching == false)
+            if (GetComponent<GreenLaser>().activated == false)
             {
                 GetComponent<GreenLaser>().enabled = true;
                 GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<RedLaser>().enabled = false;
             }
             if (currentLaser != null)
             {
-                if (currentLaser.GetComponent<GreenLaser>().touching == false)
+                if (currentLaser.GetComponent<GreenLaser>().activated == false)
                 {
                     currentLaser.GetComponent<GreenLaser>().enabled = true;
                     currentLaser.GetComponent<PlayerShoot>().enabled = false;
+                    currentLaser.GetComponent<RedLaser>().enabled = false;
                 }
             }
 
         }
         else if (newSpeed == 2)
         {
-            if (GetComponent<GreenLaser>().touching == false)
+            if (GetComponent<GreenLaser>().activated == false)
             {
-                this.gameObject.GetComponent<GreenLaser>().enabled = false;
-                this.gameObject.GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<GreenLaser>().enabled = false;
+                GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<RedLaser>().enabled = true;
             }
+            if (currentLaser != null)
+            {
+                if (currentLaser.GetComponent<GreenLaser>().activated == false)
+                {
 
-            currentLaser.GetComponent<GreenLaser>().enabled = false;
-            currentLaser.GetComponent<PlayerShoot>().enabled = false;
+                    currentLaser.GetComponent<GreenLaser>().enabled = false;
+                    currentLaser.GetComponent<PlayerShoot>().enabled = false;
+                    currentLaser.GetComponent<RedLaser>().enabled = true;
+                }
+            }
         }
-
     }
 }

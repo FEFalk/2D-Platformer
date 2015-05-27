@@ -2,8 +2,7 @@
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class GreenLaser : MonoBehaviour
-{
+public class RedLaser : MonoBehaviour {
 
     public GameObject parentObject;
     public GameObject laserPrefab;
@@ -28,7 +27,6 @@ public class GreenLaser : MonoBehaviour
     private Touch touches;
     private Vector2 vectorSize;
     private Vector2 prevPos;
-
     void Start()
     {
         lr = laserPrefab.GetComponent<LineRenderer>();
@@ -101,40 +99,12 @@ public class GreenLaser : MonoBehaviour
                     obstacleButton = true;
                     hit.collider.GetComponent<ButtonHandler>().buttonActivate = true;
                 }
-                if (!hit.rigidbody)
-                    return;
+           //     if (!hit.rigidbody)
+           //         return;
                 if (hit.collider != null)
                 {
-                    
-                    if (hit.collider.tag == "GreenButton" && activated == false)
-                    {
-                        diff = new Vector2(parentObject.transform.position.x - hit.collider.transform.position.x, parentObject.transform.position.y - hit.collider.transform.position.y);
-                        lr.SetPosition(1, -diff);
-                        hit.collider.GetComponent<CircleCollider2D>().enabled = false;
-                        GetComponent<GreenLaser>().enabled = false;
-                        GetComponent<PlayerShoot>().enabled = false;
-                        GetComponent<SwitchLaser>().currentLaser = hit.transform.FindChild("Pikkadoll").FindChild("Pikkadoll 1").gameObject;
-                        GetComponent<SwitchLaser>().enabled = false;
-                        
-                        
-                        hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
-                        
-                        hit.collider.GetComponent<ButtonHandler>().greenButtonActivate = true;
-                        //laserPrefab.transform.position = GameObject.Find("Player").transform.position;
-                        //parentObject = hit.collider.gameObject;
-                        
-
-                        //lr.SetVertexCount(++size);
-                        //vectorSize = new Vector2(hit.collider.transform.position.x, hit.collider.transform.position.y);
-                        //lr.SetPosition(size-1, vectorSize);
-
-                        activated = true;
-                        //lr.SetPosition(size -1, -diff);
-                        //laserPrefab.transform.position = transform.position;
-                        //transform.position = hit.transform.position;
-                        
-                    }
-
+                    if(hit.collider.tag == ("Enemy")) 
+                        Destroy(hit.collider.gameObject);
                 }
             }
             
