@@ -4,6 +4,7 @@ using System.Collections;
 public class GBParent : MonoBehaviour {
     public Component[] colliders;
     public Component[] greenLasers;
+    public Component[] pikkadoller;
     public GameObject[] buttons;
     public int buttonSize;
 	public void enableCollider () {
@@ -29,11 +30,9 @@ public class GBParent : MonoBehaviour {
             greenLaser.enabled = false;
         }
     }
-    public void disablePikkadoller()
+    public void disablePikkadollz()
     {
         for (int i = 0; i < buttonSize; i++)
-        {
             buttons[i].transform.Find("Pikkadoll").gameObject.SetActive(false);
-        }
     }
 }
