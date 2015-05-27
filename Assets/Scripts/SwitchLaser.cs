@@ -7,6 +7,7 @@ public class SwitchLaser : MonoBehaviour {
 
     void Update()
     {
+
     }
 
     public void Switch(float newSpeed)
