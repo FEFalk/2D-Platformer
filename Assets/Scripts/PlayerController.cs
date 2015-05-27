@@ -146,7 +146,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
     public void Movement()
     {
-            currentMovement = Mathf.RoundToInt(CrossPlatformInput.CrossPlatformInputManager.GetAxisRaw("Horizontal"));
+            //currentMovement = Mathf.RoundToInt(CrossPlatformInput.CrossPlatformInputManager.GetAxisRaw("Horizontal"));
 
             if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1)
             {

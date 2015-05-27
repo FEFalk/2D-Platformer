@@ -2,14 +2,15 @@
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class PlayerShoot : MonoBehaviour
-{
+public class PlayerShootMobile : MonoBehaviour {
 
     public GameObject parentObject;
     public GameObject laserPrefab;
     public GameObject[] Buttons;
+    private int buttonCount = 0;
     public int rotationOffset = 0;
     private float scaling;
+    public bool isShooting = false;
 
     private Vector3 mouse_pos;
     private Vector3 object_pos;
@@ -29,8 +30,9 @@ public class PlayerShoot : MonoBehaviour
     private Camera mainCamera;
     private Vector2 diff;
     public bool touching;
-    private Touch touches;
-    int ButtonCount = 0;
+    private Touch[] touches;
+    private Touch touch;
+
 
     void Start()
     {
@@ -44,26 +46,21 @@ public class PlayerShoot : MonoBehaviour
         laserPrefab.transform.position = transform.position;
         transform.position = parentObject.transform.position;
 
-        mouse_pos = Input.mousePosition;
-        mouse_pos.z = 5.23f; //The distance between the camera and object
-        object_pos = Camera.main.WorldToScreenPoint(transform.position);
-        mouse_pos.x = mouse_pos.x - object_pos.x;
-        mouse_pos.y = mouse_pos.y - object_pos.y;
-        angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, angle);
-
         bool isPointerOverGameObject = false;
         
         if (EventSystem.current.currentInputModule is TouchInputModule)
         {
+            touches = Input.touches;
+            touching = false;
             for (int i = 0; i < Input.touchCount; i++)
             {
-                Touch touch = Input.touches[i];
-                if (EventSystem.current.IsPointerOverGameObject(Input.touches[i].fingerId))
+                if (!EventSystem.current.IsPointerOverGameObject(touches[i].fingerId))
                 {
-                    touching = false;
-                    isPointerOverGameObject = true;
-                        break;
+                    if (touches[i].phase == TouchPhase.Ended)
+                        continue;
+                    mouse_pos = touches[i].position;
+                    touching = true;
+                    break;
                 }
             }
         }
@@ -72,40 +69,43 @@ public class PlayerShoot : MonoBehaviour
             isPointerOverGameObject = EventSystem.current.IsPointerOverGameObject();
         }
 
-        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
-                touching = true;
-            else
-                touching = false;
+            
+            //mouse_pos = Input.mousePosition;
+            mouse_pos.z = 5.23f; //The distance between the camera and object
+            object_pos = Camera.main.WorldToScreenPoint(transform.position);
+            mouse_pos.x = mouse_pos.x - object_pos.x;
+            mouse_pos.y = mouse_pos.y - object_pos.y;
+            angle = Mathf.Atan2(mouse_pos.y, mouse_pos.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
+
+
+
+        //for (int i = 0; i < Input.touchCount; i++)
+        //{
+            //funkar ej på dator - ha en #if UNITY_Dator-ish
+            //if (Input.GetButton("Fire1") || Input.touchCount > 0)
+            //{
+            //    touching = true;
+                //break;
+            //}
+            //else
+            //    touching = false;
+        //}
+
+        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && touching == true)
         {
             if (dragging == false && touching == true)
-                hit = Physics2D.Raycast(transform.position, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+            {
+                hit = Physics2D.Raycast(parentObject.transform.position, transform.right * 100, 1 << LayerMask.NameToLayer("Ground"));
+                diff = new Vector2(parentObject.transform.position.x - hit.point.x, parentObject.transform.position.y - hit.point.y);
+                lr.SetPosition(1, -diff);
+            }
             else
-                hit = Physics2D.Raycast(transform.position, -diff, 1 << LayerMask.NameToLayer("Ground"));
+                hit = Physics2D.Raycast(parentObject.transform.position, -diff, 1 << LayerMask.NameToLayer("Ground"));
 
             //Debug.Log(hit.collider.tag);
             Debug.DrawRay(transform.position, transform.right * 100, Color.red);
-
-            if (dragging == false && touching == true)
-            {
-                diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
-                lr.SetPosition(1, -diff);
-            }
-
-            if (hit.collider.tag == "ObstacleButton" && obstacleButton == false)
-            {
-                Debug.Log("Button.Length: " + Buttons.Length);
-                 obstacleButton = true;
-                Buttons[ButtonCount].GetComponent<ButtonHandler>().buttonActivate = true;
-                ButtonCount++;
-            }
-
-            if (hit.collider.tag == "ResetButton" && obstacleButton == true)
-            {
-                Debug.Log("obstacleButton = false");
-                obstacleButton = false;
-            }
 
 
             //Debug.Log("Point: " + hit.point.x + ", " + hit.point.y + " -- Line: " + lr.transform.position.x + ", " + lr.transform.position.y);
@@ -136,7 +136,7 @@ public class PlayerShoot : MonoBehaviour
                     {
                         hit.collider.GetComponentInChildren<BoxEffects>().isActivated = true;
                         dragging = true;
-                        diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
+                        diff = new Vector2(parentObject.transform.position.x - hit.collider.transform.position.x, parentObject.transform.position.y - hit.collider.transform.position.y);
                         lr.SetPosition(1, -diff);
                         if (!springJoint)
                         {
@@ -162,10 +162,16 @@ public class PlayerShoot : MonoBehaviour
                     if (dragging == true)
                         StartCoroutine("DragObject", hit.fraction);
                 }
-
             }
         }
-        else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
+        bool checkTouches=false;
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            if (!EventSystem.current.IsPointerOverGameObject(touches[i].fingerId))
+                checkTouches = true;
+        }
+
+        if (!Input.GetButton("Fire1") || Input.touchCount <= 0 || checkTouches == false)
         {
             dragging = false;
             lr.SetPosition(1, new Vector2(0, 0));
@@ -177,6 +183,7 @@ public class PlayerShoot : MonoBehaviour
         
          // end of hit true condition
     } // end of update
+
     IEnumerator DragObject(float distance)
     {
         float oldDrag = springJoint.connectedBody.drag;
@@ -187,15 +194,30 @@ public class PlayerShoot : MonoBehaviour
         Camera mainCamera = FindCamera();
 
 
-
-        while (Input.GetButton("Fire1") || Input.touchCount > 0)
+        bool checkTouches = true;
+        int laserTouch=0;
+        while (checkTouches)
         {
+            checkTouches = false;
+            for (int i = 0; i < Input.touchCount; i++)
+            {
+                if (!EventSystem.current.IsPointerOverGameObject(touches[i].fingerId))
+                {
+                    if (touches[i].phase == TouchPhase.Ended)
+                        continue;
+                    laserTouch = touches[i].fingerId;
+                    checkTouches = true;
+                    break;
+                }
+            }
+            if (Input.touchCount <= 1 && EventSystem.current.IsPointerOverGameObject(touches[0].fingerId))
+                break;
             if (hit.collider.tag != "Blue Box" || hit.rigidbody.isKinematic == true)
             {
                 dragging = false;
                 break;
             }
-            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            Ray ray = mainCamera.ScreenPointToRay(touches[laserTouch].position);
             springJoint.transform.position = ray.GetPoint(distance);
 
             yield return null;
