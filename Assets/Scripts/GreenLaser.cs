@@ -8,6 +8,7 @@ public class GreenLaser : MonoBehaviour
     public GameObject parentObject;
     public GameObject laserPrefab;
     public GameObject Button;
+
     public bool activated;
     public int rotationOffset = 0;
     private float scaling;
@@ -110,6 +111,10 @@ public class GreenLaser : MonoBehaviour
                         lr.SetPosition(1, -diff);
                         hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         GetComponent<GreenLaser>().enabled = false;
+                        GetComponent<PlayerShoot>().enabled = false;
+                        GetComponent<SwitchLaser>().currentLaser = hit.transform.FindChild("Pikkadoll").FindChild("Pikkadoll 1").gameObject;
+                        GetComponent<SwitchLaser>().enabled = false;
+                        
                         
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
                         
