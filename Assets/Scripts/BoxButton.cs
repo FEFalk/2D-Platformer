@@ -8,8 +8,7 @@ public class BoxButton : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if(activated == false)
-             Object.GetComponent<ObstacleHandler>().activated = true;
-        activated = true;
+        Object.GetComponent<Elevator>().activated = true;
+        Destroy(this);
     }
 }
