@@ -169,6 +169,7 @@ public class PlayerShoot : MonoBehaviour
             dragging = false;
             lr.SetPosition(1, new Vector2(0, 0));
             touching = false;
+            Camera.main.GetComponent<SmoothCamera2D>().target = parentObject.transform;
         }
         //Debug.Log ("Layermask: " + LayerMask.LayerToName (8));
         // I have proxy collider objects (empty gameobjects with a 2D Collider) as a child of a 3D rigidbody - simulating collisions between 2D and 3D objects
