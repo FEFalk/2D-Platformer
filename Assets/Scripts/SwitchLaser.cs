@@ -14,9 +14,10 @@ public class SwitchLaser : MonoBehaviour {
         GameObject Laser = transform.parent.gameObject.transform.Find("Laser").gameObject;
         if (newSpeed == 0)
         {
-            Laser.GetComponent<LineRenderer>().material = blueLaser;
+            
             if (GetComponent<GreenLaser>().activated == false)
             {
+                Laser.GetComponent<LineRenderer>().material = blueLaser;
                 GetComponent<GreenLaser>().enabled = false;
                 GetComponent<PlayerShoot>().enabled = true;
                 GetComponent<RedLaser>().enabled = false;
@@ -34,9 +35,10 @@ public class SwitchLaser : MonoBehaviour {
 
         else if (newSpeed == 1)
         {
-            Laser.GetComponent<LineRenderer>().material = greenLaser;
+           
             if (GetComponent<GreenLaser>().activated == false)
             {
+                Laser.GetComponent<LineRenderer>().material = greenLaser;
                 GetComponent<GreenLaser>().enabled = true;
                 GetComponent<PlayerShoot>().enabled = false;
                 GetComponent<RedLaser>().enabled = false;
@@ -54,9 +56,10 @@ public class SwitchLaser : MonoBehaviour {
         }
         else if (newSpeed == 2)
         {
-            Laser.GetComponent<LineRenderer>().material = redLaser;
+            
             if (GetComponent<GreenLaser>().activated == false)
             {
+                Laser.GetComponent<LineRenderer>().material = redLaser;
                 GetComponent<GreenLaser>().enabled = false;
                 GetComponent<PlayerShoot>().enabled = false;
                 GetComponent<RedLaser>().enabled = true;

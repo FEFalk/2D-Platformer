@@ -138,7 +138,8 @@ namespace UnityStandardAssets.CrossPlatformInput
 	
 		else if (other.transform.tag == "Key") 
 		{
-                GameObject.Find("GoalLight").GetComponent<Light>().color = Color.green;
+            GameObject.Find("Unity_Door").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Objects/Unity_DoorOpen");
+            GameObject.Find("GoalLight").GetComponent<Light>().color = Color.green;
 			hasKey = true;
 			Destroy (other.gameObject);
 		}
