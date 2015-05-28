@@ -7,6 +7,7 @@ public class SwitchLaser : MonoBehaviour {
     public Material redLaser, greenLaser, blueLaser;
     void Update()
     {
+
     }
 
     public void Switch(float newSpeed)

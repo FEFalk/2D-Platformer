@@ -48,6 +48,11 @@ public class GBParent : MonoBehaviour {
                 redLaser.enabled = true;
             }
         }
+        greenLasers = GetComponentsInChildren<PlayerShoot>();
+        foreach (PlayerShoot greenLaser in greenLasers)
+        {
+            greenLaser.enabled = true;
+        }
     }
 
     public void disablegreenLasers()
@@ -78,6 +83,11 @@ public class GBParent : MonoBehaviour {
             {
                 redLaser.enabled = false;
             }
+        }
+        greenLasers = GetComponentsInChildren<PlayerShoot>();
+        foreach (PlayerShoot greenLaser in greenLasers)
+        {
+            greenLaser.enabled = false;
         }
     }
 
