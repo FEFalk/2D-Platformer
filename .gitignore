@@ -48,36 +48,6 @@ Desktop.ini
 /Assets/Scifi Art Demo Pack/Pipes Demo/Pipe_GreenShort.png
 /Assets/Scifi Art Demo Pack/Pipes Demo/Pipe_GreenShort.png.meta
 /Assets/Scifi Art Demo Pack/Platform Demo
-/Assets/Scifi Art Demo Pack/Platform Demo/Float_Platform1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Float_Platform1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Float_Platform2.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Float_Platform2.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Forest_Platform.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Forest_Platform.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Pipe.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Pipe.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Ramp.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Ramp.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Wall1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Wall1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/pillar.png
-/Assets/Scifi Art Demo Pack/Platform Demo/pillar.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Platform1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Platform1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Platform_Ramp.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Platform_Ramp.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyFloat_Platform1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyFloat_Platform1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyFloat_Platform2.png
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyFloat_Platform2.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyWall1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyWall1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Rusty_Wall4.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Rusty_Wall4.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Walkway2.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Walkway2.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Walkway6.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Walkway6.png.meta
 /Assets/Scifi Art Demo Pack/Prop Demo
 /Assets/Scifi Art Demo Pack/Prop Demo/BlueScrap2.png
 /Assets/Scifi Art Demo Pack/Prop Demo/BlueScrap2.png.meta
@@ -121,7 +91,6 @@ Desktop.ini
 /Assets/Scifi Art Demo Pack/Pipes Demo.meta
 /Assets/Scifi Art Demo Pack/Platform Demo.meta
 /Assets/Scifi Art Demo Pack/Prop Demo.meta
-*.meta
 /Assets/Animations/GlowingLight.anim
 /Assets/Animations/Spotlight.controller
 /Assets/Editor/CrossPlatformInput/CrossPlatformInputInitialize.cs
