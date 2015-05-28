@@ -38,8 +38,15 @@ public class LampFlickering : MonoBehaviour
     {
         flickerIn = flickerIn - Mathf.Floor(flickerIn); //drop the real part of the number
         flickerIn = 0.5f * (1f + (Mathf.Sin(3.0f / flickerIn) * Mathf.Sin(5f / (1 - flickerIn))));
-        return flickerIn;
+        if (GetComponent<AudioSource>() && light.intensity < 1)
+        {
+            GetComponent<AudioSource>().mute = false;
+            GetComponent<AudioSource>().Play();
+        }
+        else if (GetComponent<AudioSource>() && light.intensity > 2)
+            GetComponent<AudioSource>().mute = true;
 
+        return flickerIn;
     }
 
 

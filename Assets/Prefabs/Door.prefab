@@ -60,7 +60,6 @@ GameObject:
   - 33: {fileID: 3360884}
   - 61: {fileID: 6143010}
   - 114: {fileID: 11445276}
-  - 114: {fileID: 11432844}
   m_Layer: 2
   m_Name: Door
   m_TagString: Goal
@@ -188,17 +187,6 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11432844
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 191110}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96122b169e9b7704991a5e21cdc62e65, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11445276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -233,7 +221,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 258f7ce1fe63a91469bd7fa06a06cd9d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!212 &21290234
@@ -259,7 +247,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: ae128590d295746479cc1e612c97bb10, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
