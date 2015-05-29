@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: New Material 1
-  m_Shader: {fileID: 10753, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: RedGlow
+  m_Shader: {fileID: 201, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -19,8 +19,8 @@ Material:
           name: _MainTex
         second:
           m_Texture: {fileID: 10300, guid: 0000000000000000f000000000000000, type: 0}
-          m_Scale: {x: 1, y: 1}
-          m_Offset: {x: -.119999997, y: 0}
+          m_Scale: {x: 1, y: 1.10000002}
+          m_Offset: {x: 0, y: 0}
       data:
         first:
           name: _BumpMap
@@ -73,6 +73,55 @@ Material:
       data:
         first:
           name: _MetallicGlossMap
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _Ramp
+        second:
+          m_Texture: {fileID: 2800000, guid: e9f6380d391b45242b08c71efa684df3, type: 3}
+          m_Scale: {x: 5.3499999, y: 4.26000023}
+          m_Offset: {x: 2.11999989, y: 2.6400001}
+      data:
+        first:
+          name: _FrontTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _BackTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _LeftTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _RightTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _UpTex
+        second:
+          m_Texture: {fileID: 0}
+          m_Scale: {x: 1, y: 1}
+          m_Offset: {x: 0, y: 0}
+      data:
+        first:
+          name: _DownTex
         second:
           m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
@@ -137,7 +186,11 @@ Material:
       data:
         first:
           name: _InvFade
-        second: .540000021
+        second: .360000014
+      data:
+        first:
+          name: _Outline
+        second: .00820000004
     m_Colors:
       data:
         first:
@@ -146,7 +199,7 @@ Material:
       data:
         first:
           name: _Color
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 1, g: 0, b: 0, a: 1}
       data:
         first:
           name: _EmissionColorUI
@@ -154,4 +207,8 @@ Material:
       data:
         first:
           name: _TintColor
-        second: {r: .0345500447, g: .00610943511, b: .83088237, a: .501960814}
+        second: {r: 1, g: .191176474, b: .191176474, a: 0}
+      data:
+        first:
+          name: _OutlineColor
+        second: {r: 1, g: 1, b: 1, a: 1}
