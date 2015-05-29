@@ -4,7 +4,6 @@ using System.Collections;
 
 public class PlayerShoot : MonoBehaviour
 {
-
     public GameObject parentObject;
     public GameObject laserPrefab;
     public GameObject[] Buttons;
@@ -95,10 +94,10 @@ public class PlayerShoot : MonoBehaviour
 
             if (hit.collider.tag == "ObstacleButton" && obstacleButton == false)
             {
-                Debug.Log("Button.Length: " + Buttons.Length);
-                 obstacleButton = true;
+               /* Debug.Log("Button.Length: " + Buttons.Length);
+                obstacleButton = true;
                 Buttons[ButtonCount].GetComponent<ButtonHandler>().buttonActivate = true;
-                ButtonCount++;
+                ButtonCount++;*/
             }
 
             if (hit.collider.tag == "ResetButton" && obstacleButton == true)
@@ -170,6 +169,7 @@ public class PlayerShoot : MonoBehaviour
             dragging = false;
             lr.SetPosition(1, new Vector2(0, 0));
             touching = false;
+            Camera.main.GetComponent<SmoothCamera2D>().target = parentObject.transform;
         }
         //Debug.Log ("Layermask: " + LayerMask.LayerToName (8));
         // I have proxy collider objects (empty gameobjects with a 2D Collider) as a child of a 3D rigidbody - simulating collisions between 2D and 3D objects

@@ -111,9 +111,9 @@ public class GreenLaser : MonoBehaviour
                         diff = new Vector2(parentObject.transform.position.x - hit.collider.transform.position.x, parentObject.transform.position.y - hit.collider.transform.position.y);
                         lr.SetPosition(1, -diff);
                         hit.collider.GetComponent<CircleCollider2D>().enabled = false;
-                        GetComponent<GreenLaser>().enabled = false;
+                        
                         GetComponent<PlayerShoot>().enabled = false;
-                        GetComponent<SwitchLaser>().currentLaser = hit.transform.FindChild("Pikkadoll").FindChild("Pikkadoll 1").gameObject;
+                        GetComponent<SwitchLaser>().Pikkadoll = hit.transform.FindChild("Pikkadoll").FindChild("Pikkadoll 1").gameObject;
                         GetComponent<SwitchLaser>().enabled = false;
                         
                         
@@ -132,7 +132,7 @@ public class GreenLaser : MonoBehaviour
                         //lr.SetPosition(size -1, -diff);
                         //laserPrefab.transform.position = transform.position;
                         //transform.position = hit.transform.position;
-                        
+                        GetComponent<GreenLaser>().enabled = false;
                     }
 
                 }
