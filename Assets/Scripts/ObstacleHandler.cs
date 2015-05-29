@@ -14,7 +14,7 @@ public class ObstacleHandler : MonoBehaviour {
     }
     IEnumerator Activate()
     {
-        gameObject.GetComponent<Animator>().enabled = true;
+        GetComponent<Animator>().enabled = true;
         AlarmLights.SetActive(true);
         AlarmLights.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2);
