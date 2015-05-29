@@ -4,7 +4,6 @@ using System.Collections;
 
 public class PlayerShoot : MonoBehaviour
 {
-
     public GameObject parentObject;
     public GameObject laserPrefab;
     public GameObject[] Buttons;
@@ -95,10 +94,10 @@ public class PlayerShoot : MonoBehaviour
 
             if (hit.collider.tag == "ObstacleButton" && obstacleButton == false)
             {
-                Debug.Log("Button.Length: " + Buttons.Length);
-                 obstacleButton = true;
+               /* Debug.Log("Button.Length: " + Buttons.Length);
+                obstacleButton = true;
                 Buttons[ButtonCount].GetComponent<ButtonHandler>().buttonActivate = true;
-                ButtonCount++;
+                ButtonCount++;*/
             }
 
             if (hit.collider.tag == "ResetButton" && obstacleButton == true)

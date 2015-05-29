@@ -203,7 +203,7 @@ GameObject:
   - 61: {fileID: 6180964}
   - 114: {fileID: 11427120}
   m_Layer: 11
-  m_Name: RemovableObstacle
+  m_Name: RemovableObstaclePOld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,6 +402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activated: 0
+  AlarmLights: {fileID: 0}
 --- !u!212 &21204512
 SpriteRenderer:
   m_ObjectHideFlags: 1

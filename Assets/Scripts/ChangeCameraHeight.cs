@@ -8,20 +8,23 @@ public class ChangeCameraHeight : MonoBehaviour {
 
     private bool wentUp = false;
 
-    void OnTriggerEnter2D()
+    void OnTriggerEnter2D(Collider2D coll)
     {
-        if(wentUp == false)
+        if (coll.transform.tag == "Player")
         {
-            mainCamera.GetComponent<SmoothCamera2D>().height = 14f;
-            wentUp = true;
-            other.GetComponent<ChangeCameraHeight>().wentUp = true;
-        }
+            if (wentUp == false)
+            {
+                mainCamera.GetComponent<SmoothCamera2D>().height = 14f;
+                wentUp = true;
+                other.GetComponent<ChangeCameraHeight>().wentUp = true;
+            }
 
-        else
-        {
-            mainCamera.GetComponent<SmoothCamera2D>().height = 4f;
-            wentUp = false;
-            other.GetComponent<ChangeCameraHeight>().wentUp = false;
+            else
+            {
+                mainCamera.GetComponent<SmoothCamera2D>().height = 4f;
+                wentUp = false;
+                other.GetComponent<ChangeCameraHeight>().wentUp = false;
+            }
         }
     }
 }
