@@ -2032,7 +2032,7 @@ GameObject:
   - 120: {fileID: 285430733}
   - 114: {fileID: 285430732}
   m_Layer: 9
-  m_Name: Laser 1
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2758,7 +2758,7 @@ GameObject:
   - 120: {fileID: 355692798}
   - 114: {fileID: 355692797}
   m_Layer: 9
-  m_Name: Laser 1
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4456,8 +4456,7 @@ Transform:
 --- !u!114 &536557904
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11472976, guid: 553adcfa1b6b77748a035fadbaaf7f8f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 536557902}
   m_Enabled: 1
@@ -4465,7 +4464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67715f0236635344bd8056237c772cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLaser: {fileID: 0}
+  Pikkadoll: {fileID: 536557902}
   redLaser: {fileID: 2100000, guid: f0be6e395a987d643a0391752c6a8060, type: 2}
   greenLaser: {fileID: 2100000, guid: 9e4a283d751240d45a01c71198b3a86a, type: 2}
   blueLaser: {fileID: 2100000, guid: cf422365313390646bf050393fa471d7, type: 2}
@@ -5693,7 +5692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67715f0236635344bd8056237c772cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLaser: {fileID: 0}
+  Pikkadoll: {fileID: 662880069}
   redLaser: {fileID: 2100000, guid: f0be6e395a987d643a0391752c6a8060, type: 2}
   greenLaser: {fileID: 2100000, guid: 9e4a283d751240d45a01c71198b3a86a, type: 2}
   blueLaser: {fileID: 2100000, guid: cf422365313390646bf050393fa471d7, type: 2}
@@ -6525,6 +6524,14 @@ Prefab:
     - target: {fileID: 11491552, guid: 4203d5f6bdd338b41a4b387b29d410a9, type: 2}
       propertyPath: delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421352, guid: 4203d5f6bdd338b41a4b387b29d410a9, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11421352, guid: 4203d5f6bdd338b41a4b387b29d410a9, type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4203d5f6bdd338b41a4b387b29d410a9, type: 2}
@@ -15342,8 +15349,7 @@ Transform:
 --- !u!114 &1879807704
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11472976, guid: 553adcfa1b6b77748a035fadbaaf7f8f,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1879807702}
   m_Enabled: 1
@@ -15351,7 +15357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67715f0236635344bd8056237c772cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentLaser: {fileID: 0}
+  Pikkadoll: {fileID: 1879807702}
   redLaser: {fileID: 2100000, guid: f0be6e395a987d643a0391752c6a8060, type: 2}
   greenLaser: {fileID: 2100000, guid: 9e4a283d751240d45a01c71198b3a86a, type: 2}
   blueLaser: {fileID: 2100000, guid: cf422365313390646bf050393fa471d7, type: 2}
