@@ -100,6 +100,7 @@ public class GreenLaser : MonoBehaviour
                 {
                     obstacleButton = true;
                     hit.collider.GetComponent<ButtonHandler>().buttonActivate = true;
+                    hit.transform.Find("ButtonEffects").gameObject.SetActive(true);
                 }
                 if (!hit.rigidbody)
                     return;
@@ -118,7 +119,10 @@ public class GreenLaser : MonoBehaviour
                         
                         
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
-                        
+
+                        //Enable effekter
+                        hit.transform.Find("ButtonEffects").gameObject.SetActive(true);
+
                         hit.collider.GetComponent<ButtonHandler>().greenButtonActivate = true;
                         //laserPrefab.transform.position = GameObject.Find("Player").transform.position;
                         //parentObject = hit.collider.gameObject;
