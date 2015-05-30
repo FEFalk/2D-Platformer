@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using System.Collections;
 
 public class GreenLaser : MonoBehaviour
@@ -111,17 +112,14 @@ public class GreenLaser : MonoBehaviour
                     {
                         diff = new Vector2(parentObject.transform.position.x - hit.collider.transform.position.x, parentObject.transform.position.y - hit.collider.transform.position.y);
                         lr.SetPosition(1, -diff);
-                        hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         
                         GetComponent<PlayerShoot>().enabled = false;
-                        GetComponent<SwitchLaser>().Pikkadoll = hit.transform.FindChild("Pikkadoll").FindChild("Pikkadoll 1").gameObject;
                         GetComponent<SwitchLaser>().enabled = false;
-                        
                         
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
 
                         //Enable effekter
-                        hit.transform.Find("ButtonEffects").gameObject.SetActive(true);
+                        //hit.transform.Find("ButtonEffects").gameObject.SetActive(true);
 
                         hit.collider.GetComponent<ButtonHandler>().greenButtonActivate = true;
                         //laserPrefab.transform.position = GameObject.Find("Player").transform.position;

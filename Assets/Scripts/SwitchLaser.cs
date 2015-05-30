@@ -1,68 +1,70 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class SwitchLaser : MonoBehaviour {
 
-    public GameObject Pikkadoll;
+    public GameObject Laser;
+    Slider slider;
     public Material redLaser, greenLaser, blueLaser;
-    void Update()
-    {
 
+    void Start()
+    {
+        slider = GameObject.Find("Slider").gameObject.GetComponent<Slider>();
     }
 
-    public void Switch(float newSpeed)
+    void Update()
     {
-        GameObject Laser = transform.parent.gameObject.transform.Find("Laser").gameObject;
-        if (newSpeed == 0)
+        if (slider.value == 0)
         {
 
-            if (Pikkadoll.GetComponent<PlayerShoot>().enabled == false && Laser.GetComponent<LineRenderer>().material != blueLaser)
+            if (GetComponent<PlayerShoot>().enabled == false && Laser.GetComponent<LineRenderer>().material != blueLaser)
             {
                 Laser.GetComponent<LineRenderer>().material = blueLaser;
-                Pikkadoll.GetComponent<GreenLaser>().enabled = false;
-                Pikkadoll.GetComponent<PlayerShoot>().enabled = true;
-                Pikkadoll.GetComponent<RedLaser>().enabled = false;
+                GetComponent<GreenLaser>().enabled = false;
+                GetComponent<PlayerShoot>().enabled = true;
+                GetComponent<RedLaser>().enabled = false;
             }
-            else if (Pikkadoll.GetComponent<PlayerShoot>().enabled == false)
+            else if (GetComponent<PlayerShoot>().enabled == false)
             {
-                Pikkadoll.GetComponent<GreenLaser>().enabled = false;
-                Pikkadoll.GetComponent<PlayerShoot>().enabled = true;
-                Pikkadoll.GetComponent<RedLaser>().enabled = false;
+                GetComponent<GreenLaser>().enabled = false;
+                GetComponent<PlayerShoot>().enabled = true;
+                GetComponent<RedLaser>().enabled = false;
             }
         }
 
-        else if (newSpeed == 1)
+        else if (slider.value == 1)
         {
 
-            if (Pikkadoll.GetComponent<GreenLaser>().enabled == false && Laser.GetComponent<LineRenderer>().material != greenLaser)
+            if (GetComponent<GreenLaser>().enabled == false && Laser.GetComponent<LineRenderer>().material != greenLaser)
             {
                 Laser.GetComponent<LineRenderer>().material = greenLaser;
-                Pikkadoll.GetComponent<GreenLaser>().enabled = true;
-                Pikkadoll.GetComponent<PlayerShoot>().enabled = false;
-                Pikkadoll.GetComponent<RedLaser>().enabled = false;
+                GetComponent<GreenLaser>().enabled = true;
+                GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<RedLaser>().enabled = false;
             }
-            else if (Pikkadoll.GetComponent<GreenLaser>().enabled == false)
+            else if (GetComponent<GreenLaser>().enabled == false)
             {
-                Pikkadoll.GetComponent<GreenLaser>().enabled = true;
-                Pikkadoll.GetComponent<PlayerShoot>().enabled = false;
-                Pikkadoll.GetComponent<RedLaser>().enabled = false;                
+                GetComponent<GreenLaser>().enabled = true;
+                GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<RedLaser>().enabled = false;
             }
 
         }
-        else if (newSpeed == 2)
+        else if (slider.value == 2)
         {
-            if (Pikkadoll.GetComponent<RedLaser>().enabled == false && Laser.GetComponent<LineRenderer>().material != redLaser)
+            if (GetComponent<RedLaser>().enabled == false && Laser.GetComponent<LineRenderer>().material != redLaser)
             {
                 Laser.GetComponent<LineRenderer>().material = redLaser;
-                Pikkadoll.GetComponent<GreenLaser>().enabled = false;
-                Pikkadoll.GetComponent<PlayerShoot>().enabled = false;
-                Pikkadoll.GetComponent<RedLaser>().enabled = true;
+                GetComponent<GreenLaser>().enabled = false;
+                GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<RedLaser>().enabled = true;
             }
             else if (GetComponent<RedLaser>().enabled == false)
             {
-                Pikkadoll.GetComponent<GreenLaser>().enabled = false;
-                Pikkadoll.GetComponent<PlayerShoot>().enabled = false;
-                Pikkadoll.GetComponent<RedLaser>().enabled = true;
+                GetComponent<GreenLaser>().enabled = false;
+                GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<RedLaser>().enabled = true;
             }
         }
     }

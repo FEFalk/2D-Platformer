@@ -7,7 +7,9 @@ public class GBParent : MonoBehaviour {
     public Component[] pikkadoller;
     public GameObject[] buttons;
     public int buttonSize;
-	public void enableCollider () {
+
+	public void enableCollider () 
+    {
         colliders = GetComponentsInChildren<CircleCollider2D>();
         foreach (CircleCollider2D collider in colliders) 
         {
