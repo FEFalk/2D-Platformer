@@ -10,6 +10,8 @@ GameObject:
   - 4: {fileID: 411746}
   - 114: {fileID: 11466698}
   - 114: {fileID: 11462272}
+  - 114: {fileID: 11441144}
+  - 114: {fileID: 11447284}
   m_Layer: 9
   m_Name: Pikkadoll
   m_TagString: Untagged
@@ -113,6 +115,22 @@ GameObject:
   m_Layer: 9
   m_Name: Point light
   m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &151806
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 457800}
+  - 58: {fileID: 5800790}
+  m_Layer: 9
+  m_Name: ForceField
+  m_TagString: ForceField
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -283,6 +301,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 445688}
   m_RootOrder: 1
+--- !u!4 &457800
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151806}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 460556}
+  m_RootOrder: 5
 --- !u!4 &458982
 Transform:
   m_ObjectHideFlags: 1
@@ -310,6 +340,7 @@ Transform:
   - {fileID: 439852}
   - {fileID: 411746}
   - {fileID: 458982}
+  - {fileID: 457800}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &470626
@@ -339,6 +370,19 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!58 &5800790
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151806}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: .74000001
 --- !u!61 &6174208
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -575,6 +619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e54d989984b492445b0586d94f18df12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMovement: 0
   moveSpeed: 22
   jumpHeight: 14
   maxMoveSpeed: 5
@@ -582,16 +627,49 @@ MonoBehaviour:
   whatIsGround:
     serializedVersion: 2
     m_Bits: 2048
+  isMoving: 0
   anim: {fileID: 9542242}
   ChildObject: {fileID: 106000}
   Laser: {fileID: 0}
---- !u!114 &11462272
+--- !u!114 &11441144
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106000}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67715f0236635344bd8056237c772cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Laser: {fileID: 152110}
+  redLaser: {fileID: 2100000, guid: d5eb8f9909db35f429671e6aa4cecced, type: 2}
+  greenLaser: {fileID: 2100000, guid: c32c7663a00ecad4ca887bbe1786b496, type: 2}
+  blueLaser: {fileID: 2100000, guid: 0f6737a5ae794ed4faff54b0765b4cd4, type: 2}
+--- !u!114 &11447284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106000}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a33b81cac9c78054086b789789029d71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentObject: {fileID: 140332}
+  laserPrefab: {fileID: 152110}
+  Button: {fileID: 0}
+  activated: 0
+  rotationOffset: 0
+  touching: 0
+--- !u!114 &11462272
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106000}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: da6df7d64e4638b4eb8c3ac029cc5841, type: 3}
   m_Name: 
@@ -608,16 +686,17 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106000}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7bb9d03c54db4cd44a05956fc250ddd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   parentObject: {fileID: 140332}
   laserPrefab: {fileID: 152110}
-  Button: {fileID: 0}
+  Buttons: []
   rotationOffset: 0
   dragging: 0
+  LineDrawSpeed: 6
   distance: .200000003
   damper: 1
   frequency: 8
@@ -634,7 +713,8 @@ LineRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf422365313390646bf050393fa471d7, type: 2}
+  - {fileID: 2100000, guid: 0f6737a5ae794ed4faff54b0765b4cd4, type: 2}
+  - {fileID: 2100000, guid: c10b1630d5621ec48a17223c3c102023, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
