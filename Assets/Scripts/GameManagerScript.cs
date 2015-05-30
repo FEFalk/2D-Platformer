@@ -10,5 +10,10 @@ public class GameManagerScript : MonoBehaviour {
 		currentLevel += 1;
 		Application.LoadLevel(currentLevel);
 	}
+
+    public void ResetLevel()
+    {
+        Application.LoadLevel(currentLevel);
+    }
 }
 
