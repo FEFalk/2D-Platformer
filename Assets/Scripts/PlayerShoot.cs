@@ -158,7 +158,7 @@ public class PlayerShoot : MonoBehaviour
                     //springJoint.maxDistance = distance;
                     springJoint.connectedBody = hit.rigidbody;
                     // maybe check if the 'fraction' is normalised. See http://docs.unity3d.com/Documentation/ScriptReference/RaycastHit2D-fraction.html
-                    if (dragging == true)
+                    if (dragging == true && hit.collider )
                         StartCoroutine("DragObject", hit.fraction);
                 }
 
@@ -181,7 +181,7 @@ public class PlayerShoot : MonoBehaviour
     {
         float oldDrag = springJoint.connectedBody.drag;
         float oldAngularDrag = springJoint.connectedBody.angularDrag;
-
+        
         springJoint.connectedBody.drag = drag;
         springJoint.connectedBody.angularDrag = angularDrag;
         Camera mainCamera = FindCamera();

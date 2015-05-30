@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67715f0236635344bd8056237c772cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pikkadoll: {fileID: 164014}
+  Laser: {fileID: 117490}
   redLaser: {fileID: 2100000, guid: f0be6e395a987d643a0391752c6a8060, type: 2}
   greenLaser: {fileID: 2100000, guid: 9e4a283d751240d45a01c71198b3a86a, type: 2}
   blueLaser: {fileID: 2100000, guid: cf422365313390646bf050393fa471d7, type: 2}
@@ -370,6 +370,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Object: {fileID: 0}
+  GUIButtonJump: {fileID: 0}
+  GUIButtonLeft: {fileID: 0}
+  GUIButtonRight: {fileID: 0}
+  GUIButtonCancel: {fileID: 0}
   Obstacle: {fileID: 0}
   buttonActivate: 0
   greenButtonActivate: 0
