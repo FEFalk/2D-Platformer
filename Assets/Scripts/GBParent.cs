@@ -4,7 +4,10 @@ using System.Collections;
 public class GBParent : MonoBehaviour {
     private CircleCollider2D[] colliders;
     private GreenLaser[] greenLasers;
+    private PlayerShoot[] blueLasers;
+    private RedLaser[] redLasers;
     private LineRenderer[] laserRenderers;
+    private SwitchLaser[] switchLasers;
     public GameObject[] buttons;
     public int buttonSize;
 
@@ -23,13 +26,28 @@ public class GBParent : MonoBehaviour {
         {
             greenLaser.enabled = true;
         }
+        switchLasers = GetComponentsInChildren<SwitchLaser>();
+        foreach (SwitchLaser switchLaser in switchLasers)
+        {
+            switchLaser.enabled = true;
+        }
     }
-    public void disablegreenLasers()
+    public void disableLasers()
     {
         greenLasers = GetComponentsInChildren<GreenLaser>();
         foreach (GreenLaser greenLaser in greenLasers)
         {
             greenLaser.enabled = false;
+        }
+        blueLasers = GetComponentsInChildren<PlayerShoot>();
+        foreach (PlayerShoot blueLaser in blueLasers)
+        {
+            blueLaser.enabled = false;
+        }
+        redLasers = GetComponentsInChildren<RedLaser>();
+        foreach (RedLaser redLaser in redLasers)
+        {
+            redLaser.enabled = false;
         }
     }
     public void disablePikkadollz()
