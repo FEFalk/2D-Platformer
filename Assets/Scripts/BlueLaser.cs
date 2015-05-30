@@ -15,6 +15,8 @@ public class BlueLaser : MonoBehaviour
     private float angle;
     public bool dragging;
 
+    private float counter;
+    public float LineDrawSpeed = 6f;
     private static RaycastHit2D hit;
     private LineRenderer lr;
     private bool obstacleButton = false;
@@ -89,6 +91,18 @@ public class BlueLaser : MonoBehaviour
             if (dragging == false && touching == true)
             {
                 diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
+
+                //float dist = Vector2.Distance(transform.position, diff);
+                //if (counter < dist)
+                //{
+                //    counter += .1f / LineDrawSpeed;
+
+                //    float x = Mathf.Lerp(0, dist, counter);
+                //    Vector2 pointAlongLine = x * new Vector2(-diff.x, -diff.y) + new Vector2(transform.position.x, transform.position.y);
+
+                //    lr.SetPosition(1, pointAlongLine);
+                //}
+
                 lr.SetPosition(1, -diff);
             }
 
@@ -136,7 +150,9 @@ public class BlueLaser : MonoBehaviour
                         hit.collider.GetComponentInChildren<BoxEffects>().isActivated = true;
                         dragging = true;
                         diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
+                        
                         lr.SetPosition(1, -diff);
+
                         if (!springJoint)
                         {
                             GameObject go = new GameObject("Rigidbody2D Dragger");
