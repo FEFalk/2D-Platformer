@@ -29,6 +29,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 	public Animator anim;
     public GameObject ChildObject;
     public GameObject Laser;
+    public GameObject GameManager;
 
     private bool jumpButtonPressed;
     private bool prev, current, inAir, jumping;
@@ -199,7 +200,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
     public void resetLevel()
     {
-        transform.position = spawn;
+        GameManager.GetComponent<GameManagerScript>().ResetLevel();
     }
 
     void applyStopForce()

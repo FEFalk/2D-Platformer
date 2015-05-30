@@ -8919,6 +8919,7 @@ MonoBehaviour:
   anim: {fileID: 1489894365}
   ChildObject: {fileID: 867579776}
   Laser: {fileID: 0}
+  GameManager: {fileID: 867625410}
 --- !u!82 &1489894368
 AudioSource:
   m_ObjectHideFlags: 0
