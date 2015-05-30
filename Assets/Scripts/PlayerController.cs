@@ -200,7 +200,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 
     public void resetLevel()
     {
-        GameManager.GetComponent<GameManagerScript>().ResetLevel();
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     void applyStopForce()
