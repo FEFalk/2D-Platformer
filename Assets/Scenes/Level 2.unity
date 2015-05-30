@@ -1902,47 +1902,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400518, guid: 854f3fdd49d299b48a57dde07a4e272f, type: 2}
   m_PrefabInternal: {fileID: 231661730}
---- !u!1 &237636239
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 237636240}
-  - 58: {fileID: 237636241}
-  m_Layer: 9
-  m_Name: ForceField
-  m_TagString: ForceField
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &237636240
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 237636239}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 573662414}
-  m_RootOrder: 5
---- !u!58 &237636241
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 237636239}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: .74000001
 --- !u!1 &242159521
 GameObject:
   m_ObjectHideFlags: 0
@@ -6673,10 +6632,6 @@ SpriteRenderer:
   m_SortingOrder: -3
   m_Sprite: {fileID: 21300000, guid: e5881e688486c484dbcae92583059ac1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
---- !u!1 &662880069
-GameObject:
-  m_PrefabParentObject: {fileID: 106000, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
-  m_PrefabInternal: {fileID: 1066495330}
 --- !u!114 &662880071
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 11466698, guid: 84f3f446456f3b94f8c1a04bd053ff16,
@@ -6685,36 +6640,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb9d03c54db4cd44a05956fc250ddd8, type: 3}
 --- !u!114 &662880072
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 662880069}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 11441144, guid: 84f3f446456f3b94f8c1a04bd053ff16,
+    type: 2}
+  m_PrefabInternal: {fileID: 1066495330}
   m_Script: {fileID: 11500000, guid: c67715f0236635344bd8056237c772cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Laser: {fileID: 2145422168}
-  redLaser: {fileID: 2100000, guid: d5eb8f9909db35f429671e6aa4cecced, type: 2}
-  greenLaser: {fileID: 2100000, guid: c32c7663a00ecad4ca887bbe1786b496, type: 2}
-  blueLaser: {fileID: 2100000, guid: 0f6737a5ae794ed4faff54b0765b4cd4, type: 2}
---- !u!114 &662880073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 662880069}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a33b81cac9c78054086b789789029d71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parentObject: {fileID: 1489894364}
-  laserPrefab: {fileID: 2145422168}
-  Button: {fileID: 0}
-  activated: 0
-  rotationOffset: 0
-  touching: 0
 --- !u!1 &676640251
 GameObject:
   m_ObjectHideFlags: 0
@@ -10003,10 +9932,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 12063734, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
-      propertyPath: m_Materials.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 460556, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -10039,10 +9964,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 30
       objectReference: {fileID: 0}
-    - target: {fileID: 11466698, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
-      propertyPath: Button
-      value: 
-      objectReference: {fileID: 427172552}
     - target: {fileID: 11462272, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
       propertyPath: Button
       value: 
@@ -10067,10 +9988,6 @@ Prefab:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: c10b1630d5621ec48a17223c3c102023, type: 2}
-    - target: {fileID: 11436874, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
-      propertyPath: GameManager
-      value: 
-      objectReference: {fileID: 867625410}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
   m_IsPrefabParent: 0
@@ -23310,7 +23227,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1771779749}
   m_RootOrder: 1
---- !u!1 &2145422168
-GameObject:
-  m_PrefabParentObject: {fileID: 152110, guid: 84f3f446456f3b94f8c1a04bd053ff16, type: 2}
-  m_PrefabInternal: {fileID: 1066495330}
