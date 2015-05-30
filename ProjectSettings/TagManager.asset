@@ -13,6 +13,7 @@ TagManager:
   - GreenButton
   - ResetButton
   - Red Button
+  - ForceField
   layers:
   - Default
   - TransparentFX

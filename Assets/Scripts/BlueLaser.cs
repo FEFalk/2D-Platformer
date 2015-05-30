@@ -158,7 +158,7 @@ public class BlueLaser : MonoBehaviour
                     //springJoint.maxDistance = distance;
                     springJoint.connectedBody = hit.rigidbody;
                     // maybe check if the 'fraction' is normalised. See http://docs.unity3d.com/Documentation/ScriptReference/RaycastHit2D-fraction.html
-                    if (dragging == true)
+                    if (dragging == true && hit.collider )
                         StartCoroutine("DragObject", hit.fraction);
                 }
 
@@ -181,12 +181,17 @@ public class BlueLaser : MonoBehaviour
     {
         float oldDrag = springJoint.connectedBody.drag;
         float oldAngularDrag = springJoint.connectedBody.angularDrag;
-
+        
         springJoint.connectedBody.drag = drag;
         springJoint.connectedBody.angularDrag = angularDrag;
         Camera mainCamera = FindCamera();
 
-
+        if(hit.collider.GetComponent<DragConstraints>().activated==true)
+        {
+            distance = 0;
+            diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
+            hit.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(-diff*200);
+        }
 
         while (Input.GetButton("Fire1") || Input.touchCount > 0)
         {
