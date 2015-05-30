@@ -64,11 +64,12 @@ public class FollowPath : MonoBehaviour
                 coll.gameObject.transform.parent = null;
 
             else
-                coll.gameObject.transform.parent = this.gameObject.transform;        
+                coll.gameObject.transform.parent = this.gameObject.transform;
         }
         else
             coll.gameObject.transform.parent = this.gameObject.transform;
 
+        
     }
     //Once it leaves the platform, become a normal object again.
     void OnCollisionExit2D(Collision2D coll)
