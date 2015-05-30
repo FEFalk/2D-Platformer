@@ -119,7 +119,7 @@ public class GreenLaser : MonoBehaviour
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
 
                         //Enable effekter
-                        //hit.transform.Find("ButtonEffects").gameObject.SetActive(true);
+                        hit.transform.Find("ButtonEffects").gameObject.SetActive(true);
 
                         hit.collider.GetComponent<ButtonHandler>().greenButtonActivate = true;
                         //laserPrefab.transform.position = GameObject.Find("Player").transform.position;
