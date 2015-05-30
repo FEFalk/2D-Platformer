@@ -18,17 +18,17 @@ public class SwitchLaser : MonoBehaviour {
         if (slider.value == 0)
         {
 
-            if (GetComponent<PlayerShoot>().enabled == false && Laser.GetComponent<LineRenderer>().material != blueLaser)
+            if (GetComponent<BlueLaser>().enabled == false && Laser.GetComponent<LineRenderer>().material != blueLaser)
             {
                 Laser.GetComponent<LineRenderer>().material = blueLaser;
                 GetComponent<GreenLaser>().enabled = false;
-                GetComponent<PlayerShoot>().enabled = true;
+                GetComponent<BlueLaser>().enabled = true;
                 GetComponent<RedLaser>().enabled = false;
             }
-            else if (GetComponent<PlayerShoot>().enabled == false)
+            else if (GetComponent<BlueLaser>().enabled == false)
             {
                 GetComponent<GreenLaser>().enabled = false;
-                GetComponent<PlayerShoot>().enabled = true;
+                GetComponent<BlueLaser>().enabled = true;
                 GetComponent<RedLaser>().enabled = false;
             }
         }
@@ -40,13 +40,13 @@ public class SwitchLaser : MonoBehaviour {
             {
                 Laser.GetComponent<LineRenderer>().material = greenLaser;
                 GetComponent<GreenLaser>().enabled = true;
-                GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<BlueLaser>().enabled = false;
                 GetComponent<RedLaser>().enabled = false;
             }
             else if (GetComponent<GreenLaser>().enabled == false)
             {
                 GetComponent<GreenLaser>().enabled = true;
-                GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<BlueLaser>().enabled = false;
                 GetComponent<RedLaser>().enabled = false;
             }
 
@@ -57,13 +57,13 @@ public class SwitchLaser : MonoBehaviour {
             {
                 Laser.GetComponent<LineRenderer>().material = redLaser;
                 GetComponent<GreenLaser>().enabled = false;
-                GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<BlueLaser>().enabled = false;
                 GetComponent<RedLaser>().enabled = true;
             }
             else if (GetComponent<RedLaser>().enabled == false)
             {
                 GetComponent<GreenLaser>().enabled = false;
-                GetComponent<PlayerShoot>().enabled = false;
+                GetComponent<BlueLaser>().enabled = false;
                 GetComponent<RedLaser>().enabled = true;
             }
         }

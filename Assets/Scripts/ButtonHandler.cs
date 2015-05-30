@@ -24,6 +24,7 @@ public class ButtonHandler : MonoBehaviour {
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().currentMovement = 0;
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().anim.SetFloat("Walking", Mathf.Abs(0));
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().enabled = false;
+            
             GetComponent<CircleCollider2D>().enabled = false;
             GUIButtonJump.SetActive(false);
             GUIButtonLeft.SetActive(false);

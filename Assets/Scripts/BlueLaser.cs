@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class PlayerShoot : MonoBehaviour
+public class BlueLaser : MonoBehaviour
 {
     public GameObject parentObject;
     public GameObject laserPrefab;

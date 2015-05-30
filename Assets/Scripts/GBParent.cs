@@ -4,7 +4,7 @@ using System.Collections;
 public class GBParent : MonoBehaviour {
     private CircleCollider2D[] colliders;
     private GreenLaser[] greenLasers;
-    private PlayerShoot[] blueLasers;
+    private BlueLaser[] blueLasers;
     private RedLaser[] redLasers;
     private LineRenderer[] laserRenderers;
     private SwitchLaser[] switchLasers;
@@ -39,8 +39,8 @@ public class GBParent : MonoBehaviour {
         {
             greenLaser.enabled = false;
         }
-        blueLasers = GetComponentsInChildren<PlayerShoot>();
-        foreach (PlayerShoot blueLaser in blueLasers)
+        blueLasers = GetComponentsInChildren<BlueLaser>();
+        foreach (BlueLaser blueLaser in blueLasers)
         {
             blueLaser.enabled = false;
         }
