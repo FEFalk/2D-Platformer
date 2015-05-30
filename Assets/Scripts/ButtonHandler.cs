@@ -29,6 +29,7 @@ public class ButtonHandler : MonoBehaviour {
             GUIButtonRight.SetActive(false);
             GUIButtonCancel.SetActive(true);
 
+            GetComponent<CircleCollider2D>().enabled = false;
             Camera.main.GetComponent<SmoothCamera2D>().target = transform;
             greenButtonActivate = false;
         }
