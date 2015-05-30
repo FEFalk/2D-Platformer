@@ -112,10 +112,10 @@ public class GreenLaser : MonoBehaviour
                     {
                         diff = new Vector2(parentObject.transform.position.x - hit.collider.transform.position.x, parentObject.transform.position.y - hit.collider.transform.position.y);
                         lr.SetPosition(1, -diff);
+
                         
                         GetComponent<PlayerShoot>().enabled = false;
                         GetComponent<SwitchLaser>().enabled = false;
-                        //hej
                         
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);
 
