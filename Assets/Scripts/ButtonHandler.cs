@@ -3,6 +3,7 @@ using System.Collections;
 
 public class ButtonHandler : MonoBehaviour {
     public GameObject Object;
+    public GameObject GUIButtonJump, GUIButtonLeft, GUIButtonRight, GUIButtonCancel;
     public GameObject Obstacle;
     public bool buttonActivate = false;
     public bool greenButtonActivate = false;
@@ -23,6 +24,10 @@ public class ButtonHandler : MonoBehaviour {
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().currentMovement = 0;
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().anim.SetFloat("Walking", Mathf.Abs(0));
             Object.GetComponent<UnityStandardAssets.CrossPlatformInput.PlayerController>().enabled = false;
+            GUIButtonJump.SetActive(false);
+            GUIButtonLeft.SetActive(false);
+            GUIButtonRight.SetActive(false);
+            GUIButtonCancel.SetActive(true);
 
             Camera.main.GetComponent<SmoothCamera2D>().target = transform;
             greenButtonActivate = false;

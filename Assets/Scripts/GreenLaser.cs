@@ -113,7 +113,6 @@ public class GreenLaser : MonoBehaviour
                         hit.collider.GetComponent<CircleCollider2D>().enabled = false;
                         
                         GetComponent<PlayerShoot>().enabled = false;
-                        GetComponent<SwitchLaser>().Pikkadoll = hit.transform.FindChild("Pikkadoll").FindChild("Pikkadoll 1").gameObject;
                         GetComponent<SwitchLaser>().enabled = false;
                         
                         
