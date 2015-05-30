@@ -114,7 +114,7 @@ public class GreenLaser : MonoBehaviour
                         lr.SetPosition(1, -diff);
 
                         
-                        GetComponent<PlayerShoot>().enabled = false;
+                        GetComponent<BlueLaser>().enabled = false;
                         GetComponent<SwitchLaser>().enabled = false;
                         
                         hit.transform.Find("Pikkadoll").gameObject.SetActive(true);

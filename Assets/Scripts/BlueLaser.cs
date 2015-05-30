@@ -2,7 +2,7 @@
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class PlayerShoot : MonoBehaviour
+public class BlueLaser : MonoBehaviour
 {
     public GameObject parentObject;
     public GameObject laserPrefab;
@@ -186,7 +186,12 @@ public class PlayerShoot : MonoBehaviour
         springJoint.connectedBody.angularDrag = angularDrag;
         Camera mainCamera = FindCamera();
 
-
+        if(hit.collider.GetComponent<DragConstraints>().activated==true)
+        {
+            distance = 0;
+            diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
+            hit.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(-diff*200);
+        }
 
         while (Input.GetButton("Fire1") || Input.touchCount > 0)
         {

@@ -1637,7 +1637,7 @@ GameObject:
   - 58: {fileID: 237636241}
   m_Layer: 9
   m_Name: ForceField
-  m_TagString: Untagged
+  m_TagString: ForceField
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2662,7 +2662,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 328676317}
   - 33: {fileID: 328676316}
-  - 65: {fileID: 328676315}
   - 23: {fileID: 328676314}
   m_Layer: 0
   m_Name: Cube
@@ -2695,18 +2694,6 @@ MeshRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!65 &328676315
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 328676313}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &328676316
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13641,7 +13628,8 @@ Prefab:
       propertyPath: m_TagString
       value: Blue Box
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 69a87a952199ea54fad34b15bfbe7007, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1588324039
@@ -16313,7 +16301,8 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 69a87a952199ea54fad34b15bfbe7007, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1789088028

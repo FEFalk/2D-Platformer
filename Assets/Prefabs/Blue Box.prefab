@@ -111,8 +111,8 @@ GameObject:
   - 23: {fileID: 2359874}
   - 50: {fileID: 5009712}
   - 61: {fileID: 6164256}
-  - 114: {fileID: 11421846}
   - 114: {fileID: 11411232}
+  - 114: {fileID: 11410122}
   m_Layer: 11
   m_Name: Blue Box
   m_TagString: Blue Box
@@ -168,7 +168,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 188340}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -.5, y: -4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 432660}
@@ -301,6 +301,18 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
+--- !u!114 &11410122
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 188340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3979bf69214822141979bff4266917a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activated: 0
 --- !u!114 &11411232
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -313,23 +325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActivated: 0
---- !u!114 &11421846
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 188340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02e3a450fe63f5e4995fca226e65fb60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: .200000003
-  damper: 1
-  frequency: 8
-  drag: 30
-  angularDrag: 30
-  attachToCenterOfMass: 0
 --- !u!198 &19833616
 ParticleSystem:
   m_ObjectHideFlags: 1
