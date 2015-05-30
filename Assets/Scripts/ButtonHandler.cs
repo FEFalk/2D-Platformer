@@ -13,7 +13,11 @@ public class ButtonHandler : MonoBehaviour {
 
         if (buttonActivate && obstacle == false)
         {
-            Obstacle.GetComponent<ObstacleHandler>().activated = true;
+            if (Obstacle.GetComponent<ObstacleHandler>())
+                Obstacle.GetComponent<ObstacleHandler>().activated = true;
+            else
+                Obstacle.GetComponent<ObstacleHandlerLevel3>().activated = true;
+
             buttonActivate = false;
             obstacle = true;
         }
