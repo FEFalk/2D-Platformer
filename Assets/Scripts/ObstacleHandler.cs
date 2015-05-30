@@ -18,6 +18,7 @@ public class ObstacleHandler : MonoBehaviour {
     {
         GetComponent<Animator>().enabled = true;
         AlarmLights.SetActive(true);
+        GameObject.Find("2D_SmallLamp").transform.Find("Point Light").GetComponent<Light>().color = Color.green;
         GameObject.Find("GameManager").transform.Find("Alarm").GetComponent<AudioSource>().enabled = true;
         AlarmLights.GetComponent<AudioSource>().Play();
         yield return new WaitForSeconds(2);
