@@ -197,6 +197,11 @@ namespace UnityStandardAssets.CrossPlatformInput
             jumpButtonPressed = false;
     }
 
+    public void resetLevel()
+    {
+        transform.position = spawn;
+    }
+
     void applyStopForce()
     {
         if (gameObject.GetComponent<Rigidbody2D>().velocity.x > 1)
