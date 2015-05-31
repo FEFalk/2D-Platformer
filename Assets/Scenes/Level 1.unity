@@ -6160,7 +6160,6 @@ MonoBehaviour:
   laserPrefab: {fileID: 1985331489}
   Buttons: []
   rotationOffset: 0
-  isShooting: 0
   dragging: 0
   distance: .200000003
   damper: 1
@@ -6182,7 +6181,7 @@ MonoBehaviour:
   Laser: {fileID: 0}
   redLaser: {fileID: 2100000, guid: f0be6e395a987d643a0391752c6a8060, type: 2}
   greenLaser: {fileID: 2100000, guid: 9e4a283d751240d45a01c71198b3a86a, type: 2}
-  blueLaser: {fileID: 2100000, guid: cf422365313390646bf050393fa471d7, type: 2}
+  blueLaser: {fileID: 2100000, guid: 0f6737a5ae794ed4faff54b0765b4cd4, type: 2}
 --- !u!114 &867579782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8989,6 +8988,7 @@ MonoBehaviour:
   Laser: {fileID: 0}
   GameManager: {fileID: 867625410}
   doorSound: {fileID: 8300000, guid: a6145168438ef3b409d4cc93889b8214, type: 3}
+  jumpSound: {fileID: 8300000, guid: ec4c9ed8ff0e9482e9bf57fe2474ae57, type: 3}
 --- !u!82 &1489894370
 AudioSource:
   m_ObjectHideFlags: 0
@@ -12206,7 +12206,8 @@ LineRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 0
   m_Materials:
-  - {fileID: 2100000, guid: cf422365313390646bf050393fa471d7, type: 2}
+  - {fileID: 2100000, guid: 0f6737a5ae794ed4faff54b0765b4cd4, type: 2}
+  - {fileID: 2100000, guid: c10b1630d5621ec48a17223c3c102023, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0

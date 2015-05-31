@@ -18,6 +18,7 @@ public class ButtonHandler : MonoBehaviour {
             else
                 Obstacle.GetComponent<ObstacleHandlerLevel3>().activated = true;
 
+            transform.Find("ButtonEffects").gameObject.SetActive(true);
             buttonActivate = false;
             obstacle = true;
         }

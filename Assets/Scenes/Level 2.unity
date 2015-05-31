@@ -9013,6 +9013,34 @@ Prefab:
       propertyPath: GUIButtonCancel
       value: 
       objectReference: {fileID: 1297239385}
+    - target: {fileID: 401964, guid: 553adcfa1b6b77748a035fadbaaf7f8f, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 401964, guid: 553adcfa1b6b77748a035fadbaaf7f8f, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -1.62920685e-07
+      objectReference: {fileID: 0}
+    - target: {fileID: 401964, guid: 553adcfa1b6b77748a035fadbaaf7f8f, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 401964, guid: 553adcfa1b6b77748a035fadbaaf7f8f, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.00999999978
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876702, guid: 553adcfa1b6b77748a035fadbaaf7f8f, type: 2}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876702, guid: 553adcfa1b6b77748a035fadbaaf7f8f, type: 2}
+      propertyPath: m_Radius
+      value: .449999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 5876702, guid: 553adcfa1b6b77748a035fadbaaf7f8f, type: 2}
+      propertyPath: m_Offset.y
+      value: .230000004
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 553adcfa1b6b77748a035fadbaaf7f8f, type: 2}
   m_IsPrefabParent: 0
