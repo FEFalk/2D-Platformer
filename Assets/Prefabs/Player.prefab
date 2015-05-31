@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11462272}
   - 114: {fileID: 11441144}
   - 114: {fileID: 11447284}
+  - 82: {fileID: 8214310}
   m_Layer: 9
   m_Name: Pikkadoll
   m_TagString: Untagged
@@ -76,7 +77,6 @@ GameObject:
   - 50: {fileID: 5094574}
   - 61: {fileID: 6174208}
   - 82: {fileID: 8286022}
-  - 82: {fileID: 8295690}
   - 114: {fileID: 11436874}
   - 111: {fileID: 11161194}
   - 95: {fileID: 9542242}
@@ -396,18 +396,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!82 &8286022
+--- !u!82 &8214310
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 140332}
+  m_GameObject: {fileID: 106000}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ec4c9ed8ff0e9482e9bf57fe2474ae57, type: 3}
+  m_audioClip: {fileID: 8300000, guid: ba23731008fb92943a3391729e4c5f8d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: .402999997
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -465,7 +465,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!82 &8295690
+--- !u!82 &8286022
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -474,7 +474,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ec4c9ed8ff0e9482e9bf57fe2474ae57, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 83981f2e3da33004995aad5d64175152, type: 3}
   m_PlayOnAwake: 0
   m_Volume: .402999997
   m_Pitch: 1
@@ -630,7 +630,10 @@ MonoBehaviour:
   isMoving: 0
   anim: {fileID: 9542242}
   ChildObject: {fileID: 106000}
-  Laser: {fileID: 0}
+  Laser: {fileID: 152110}
+  GameManager: {fileID: 0}
+  doorSound: {fileID: 8300000, guid: a6145168438ef3b409d4cc93889b8214, type: 3}
+  jumpSound: {fileID: 8300000, guid: ec4c9ed8ff0e9482e9bf57fe2474ae57, type: 3}
 --- !u!114 &11441144
 MonoBehaviour:
   m_ObjectHideFlags: 1
