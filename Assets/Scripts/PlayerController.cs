@@ -137,7 +137,7 @@ namespace UnityStandardAssets.CrossPlatformInput
     }
 
 	void Die(){
-		transform.position = spawn;
+        resetLevel();
 	}
 
 
@@ -221,7 +221,6 @@ namespace UnityStandardAssets.CrossPlatformInput
         if(jumped)
         {
             jumpButtonPressed = true;
-            GetComponent<AudioSource>().PlayOneShot(jumpSound);
         }
 
         else 
