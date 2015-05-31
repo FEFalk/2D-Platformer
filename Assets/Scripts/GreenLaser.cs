@@ -72,8 +72,11 @@ public class GreenLaser : MonoBehaviour
             isPointerOverGameObject = EventSystem.current.IsPointerOverGameObject();
         }
 
-        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
+        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false){
+            GetComponent<AudioSource>().Play();
             touching = true;
+        }
+
         else
             touching = false;
 
@@ -144,6 +147,7 @@ public class GreenLaser : MonoBehaviour
         }
         else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
             {
+                GetComponent<AudioSource>().Stop();
                 activated = false;
                 lr.SetPosition(1, new Vector2(0,0));
                 touching = false;
