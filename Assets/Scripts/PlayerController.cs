@@ -155,6 +155,10 @@ namespace UnityStandardAssets.CrossPlatformInput
 			hasKey = true;
 			Destroy (other.gameObject);
 		}
+        else if (other.transform.tag == "Enemy")
+        {
+            Die();
+        }
 	}
 
 

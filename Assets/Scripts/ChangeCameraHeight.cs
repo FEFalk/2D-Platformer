@@ -14,7 +14,7 @@ public class ChangeCameraHeight : MonoBehaviour {
         {
             if (wentUp == false)
             {
-                mainCamera.GetComponent<SmoothCamera2D>().height = 14f;
+                mainCamera.GetComponent<SmoothCamera2D>().height = 15f;
                 wentUp = true;
                 other.GetComponent<ChangeCameraHeight>().wentUp = true;
             }

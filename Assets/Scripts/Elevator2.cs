@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class Elevator : MonoBehaviour
+public class Elevator2 : MonoBehaviour
 {
     public enum FollowType
     {
@@ -10,7 +10,7 @@ public class Elevator : MonoBehaviour
     }
 
     public FollowType Type = FollowType.MoveTowards;
-    public PathDefinition Path;
+    public ElevatorDefinition Path;
     public float Speed = 1;
     public float MaxDistanceToGoal = .1f;
     public bool activated = false;
