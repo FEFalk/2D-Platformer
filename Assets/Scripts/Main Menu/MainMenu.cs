@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class MainMenu : MonoBehaviour {
@@ -6,15 +7,18 @@ public class MainMenu : MonoBehaviour {
     public bool isStart;
     public bool isQuit;
 
-    void OnMouseUp()
+    void Update()
     {
-        if (isStart)
+        if (EventSystem.current.currentInputModule is TouchInputModule)
         {
-            Application.LoadLevel(1);
-            GetComponent<Renderer>().material.color = Color.cyan;
-        }
+            if (isStart)
+            {
+                Application.LoadLevel(1);
+                GetComponent<Renderer>().material.color = Color.cyan;
+            }
 
-        if (isQuit)
-            Application.Quit();
+            if (isQuit)
+                Application.Quit();
+        }
     }
 }
