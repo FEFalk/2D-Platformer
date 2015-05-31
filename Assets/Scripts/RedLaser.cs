@@ -18,7 +18,6 @@ public class RedLaser : MonoBehaviour {
 
     private static RaycastHit2D hit;
     private LineRenderer lr;
-    private bool obstacleButton = false;
 
     private int size;
     private Camera mainCamera;
@@ -94,11 +93,6 @@ public class RedLaser : MonoBehaviour {
             }
             if (touching == true)
             {
-                if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
-                {
-                    obstacleButton = true;
-                    hit.collider.GetComponent<ButtonHandler>().buttonActivate = true;
-                }
            //     if (!hit.rigidbody)
            //         return;
                 if (hit.collider != null)
