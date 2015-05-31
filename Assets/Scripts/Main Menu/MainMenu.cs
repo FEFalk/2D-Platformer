@@ -1,20 +1,14 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using System.Collections;
 
 public class MainMenu : MonoBehaviour {
-
-    public bool isStart;
-    public bool isQuit;
-
-    void OnMouseUp()
+    public void StartButton()
     {
-        if (isStart)
-        {
-            Application.LoadLevel(1);
-            GetComponent<Renderer>().material.color = Color.cyan;
-        }
-
-        if (isQuit)
-            Application.Quit();
+         Application.LoadLevel(1);
+    }
+    public void QuitButton()
+    {
+        Application.Quit();
     }
 }

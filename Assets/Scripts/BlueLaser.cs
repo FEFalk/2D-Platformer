@@ -93,27 +93,7 @@ public class BlueLaser : MonoBehaviour
             if (dragging == false && touching == true)
             {
                 diff = new Vector2(transform.position.x - hit.point.x, transform.position.y - hit.point.y);
-
-                //float dist = Vector2.Distance(transform.position, diff);
-                //if (counter < dist)
-                //{
-                //    counter += .1f / LineDrawSpeed;
-
-                //    float x = Mathf.Lerp(0, dist, counter);
-                //    Vector2 pointAlongLine = x * new Vector2(-diff.x, -diff.y) + new Vector2(transform.position.x, transform.position.y);
-
-                //    lr.SetPosition(1, pointAlongLine);
-                //}
-
                 lr.SetPosition(1, -diff);
-            }
-
-            if (hit.collider.tag == "ObstacleButton" && obstacleButton == false)
-            {
-               /* Debug.Log("Button.Length: " + Buttons.Length);
-                obstacleButton = true;
-                Buttons[ButtonCount].GetComponent<ButtonHandler>().buttonActivate = true;
-                ButtonCount++;*/
             }
 
             if (hit.collider.tag == "ResetButton" && obstacleButton == true)
@@ -121,21 +101,11 @@ public class BlueLaser : MonoBehaviour
                 Debug.Log("obstacleButton = false");
                 obstacleButton = false;
             }
+            if (hit.collider.tag == "ForceField")
+            {
+                return;
+            }
 
-
-            //Debug.Log("Point: " + hit.point.x + ", " + hit.point.y + " -- Line: " + lr.transform.position.x + ", " + lr.transform.position.y);
-
-            //Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            //difference.Normalize();
-            //float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
-            //if (transform.localScale.x == -1)
-            //    transform.rotation = Quaternion.Euler(0f, 0f, -rotZ + rotationOffset);
-            //else
-            //transform.rotation = Quaternion.Euler(0f, 0f, rotZ + rotationOffset);
-            ////if(laserPrefab.GetComponent<LaserMovement>().hit!=true)
-            ////    scaling += 0.5f;
-            //laserPrefab.transform.localPosition = new Vector2(transform.localPosition.x + scaling/2.86f, 0);
-            //laserPrefab.transform.localScale = new Vector3(transform.localScale.x + scaling, 1, 0);
             if (touching == true)
             {
                 if(!GetComponent<AudioSource>().isPlaying) {
@@ -147,17 +117,15 @@ public class BlueLaser : MonoBehaviour
                 {
                     dragging = false;
                     return;
-                }
+                }              
                 if (hit.collider != null && hit.rigidbody.isKinematic == false)
                 {
                     if (hit.collider.tag == "Blue Box")
-                    {
+                    {      
                         hit.collider.GetComponentInChildren<BoxEffects>().isActivated = true;
                         dragging = true;
-                        diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
-                        
+                        diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);     
                         lr.SetPosition(1, -diff);
-
                         if (!springJoint)
                         {
                             GameObject go = new GameObject("Rigidbody2D Dragger");
@@ -167,7 +135,7 @@ public class BlueLaser : MonoBehaviour
                             body.mass = 0.0001f;
                         }
                         springJoint.transform.position = hit.point;
-
+                        
                     }
                     else
                         dragging = false;
@@ -207,12 +175,12 @@ public class BlueLaser : MonoBehaviour
         springJoint.connectedBody.drag = drag;
         springJoint.connectedBody.angularDrag = angularDrag;
         Camera mainCamera = FindCamera();
-
+       
         if(hit.collider.GetComponent<DragConstraints>().activated==true)
         {
             distance = 0;
             diff = new Vector2(transform.position.x - hit.collider.transform.position.x, transform.position.y - hit.collider.transform.position.y);
-            hit.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(-diff*200);
+            hit.collider.gameObject.GetComponent<Rigidbody2D>().AddForce(-diff*2000);
         }
 
         while (Input.GetButton("Fire1") || Input.touchCount > 0)
