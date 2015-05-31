@@ -73,8 +73,10 @@ public class BlueLaser : MonoBehaviour
             isPointerOverGameObject = EventSystem.current.IsPointerOverGameObject();
         }
 
-        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false)
-                touching = true;
+        if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false) {
+            touching = true;
+        }
+
             else
                 touching = false;
 
@@ -106,6 +108,9 @@ public class BlueLaser : MonoBehaviour
 
             if (touching == true)
             {
+                if(!GetComponent<AudioSource>().isPlaying) {
+                    GetComponent<AudioSource>().Play();
+                }
                 if (!hit.rigidbody)
                     return;
                 if (hit.collider != null && hit.rigidbody.isKinematic == true)
@@ -150,6 +155,7 @@ public class BlueLaser : MonoBehaviour
         }
         else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
         {
+            GetComponent<AudioSource>().Stop();
             dragging = false;
             lr.SetPosition(1, new Vector2(0, 0));
             touching = false;

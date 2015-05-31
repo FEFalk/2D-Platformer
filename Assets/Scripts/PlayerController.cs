@@ -30,6 +30,7 @@ namespace UnityStandardAssets.CrossPlatformInput
     public GameObject ChildObject;
     public GameObject Laser;
     public GameObject GameManager;
+    public AudioClip doorSound;
 
     private bool jumpButtonPressed;
     private bool prev, current, inAir, jumping;
@@ -97,7 +98,6 @@ namespace UnityStandardAssets.CrossPlatformInput
         {
             GetComponent<AudioSource>().Play();
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-            GetComponent<AudioSource>().Play();
             inAir = true;
             prev = true;
         }
@@ -141,6 +141,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 		{
             GameObject.Find("Unity_Door").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Objects/Unity_DoorOpen");
             GameObject.Find("GoalLight").GetComponent<Light>().color = Color.green;
+            GetComponent<AudioSource>().PlayOneShot(doorSound);
 			hasKey = true;
 			Destroy (other.gameObject);
 		}
