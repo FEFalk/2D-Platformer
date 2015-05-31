@@ -9,8 +9,10 @@ public class GameManagerScript : MonoBehaviour {
 	public static void CompleteLevel()
 	{
 		currentLevel += 1;
+        if (currentLevel == 4)
+            currentLevel = 0;
+
 		Application.LoadLevel(currentLevel);
-        Debug.Log(currentLevel);
 	}
     public void StartButton(bool start)
     {
@@ -25,6 +27,12 @@ public class GameManagerScript : MonoBehaviour {
         {
             Application.Quit();
         }
+    }
+
+    public void LoadSelected(int index)
+    {
+        currentLevel = index;
+        Application.LoadLevel(index);
     }
 }
 

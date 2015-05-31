@@ -13,6 +13,9 @@ public class StandingOnBlueBox : MonoBehaviour {
     void OnCollisionExit2D(Collision2D coll)
     {
         if (coll.gameObject.tag == "Player" || coll.gameObject.tag == "Blue Box")
+        {
             coll.gameObject.transform.parent = null;
+            coll.gameObject.transform.localScale = Vector3.one;
+        }
     }
 }

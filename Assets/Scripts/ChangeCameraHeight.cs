@@ -4,7 +4,6 @@ using System.Collections;
 public class ChangeCameraHeight : MonoBehaviour {
 
     public Camera mainCamera;
-    public GameObject other;
 
     private bool wentUp = false;
 
@@ -16,14 +15,12 @@ public class ChangeCameraHeight : MonoBehaviour {
             {
                 mainCamera.GetComponent<SmoothCamera2D>().height = 15f;
                 wentUp = true;
-                other.GetComponent<ChangeCameraHeight>().wentUp = true;
             }
 
             else
             {
                 mainCamera.GetComponent<SmoothCamera2D>().height = 4f;
                 wentUp = false;
-                other.GetComponent<ChangeCameraHeight>().wentUp = false;
             }
         }
     }

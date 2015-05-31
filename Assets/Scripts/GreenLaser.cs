@@ -104,9 +104,8 @@ public class GreenLaser : MonoBehaviour
             }
             if (touching == true)
             {
-                if (hit.collider.tag == "ObstacleButton" && obstacleButton != true)
+                if (hit.collider.tag == "ObstacleButton")
                 {
-                    obstacleButton = true;
                     hit.collider.GetComponent<ButtonHandler>().buttonActivate = true;
                     hit.transform.Find("ButtonEffects").gameObject.SetActive(true);
                 }
