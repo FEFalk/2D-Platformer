@@ -73,7 +73,11 @@ public class GreenLaser : MonoBehaviour
         }
 
         if ((Input.GetButton("Fire1") || Input.touchCount > 0) && isPointerOverGameObject == false){
-            GetComponent<AudioSource>().Play();
+            if (GetComponent<AudioSource>())
+            {
+                if (!GetComponent<AudioSource>().isPlaying)
+                    GetComponent<AudioSource>().Play();
+            }
             touching = true;
         }
 
@@ -147,7 +151,9 @@ public class GreenLaser : MonoBehaviour
         }
         else if (!Input.GetButton("Fire1") || Input.touchCount <= 0)
             {
-                GetComponent<AudioSource>().Stop();
+                if(GetComponent<AudioSource>())
+                    GetComponent<AudioSource>().Stop();
+
                 activated = false;
                 lr.SetPosition(1, new Vector2(0,0));
                 touching = false;

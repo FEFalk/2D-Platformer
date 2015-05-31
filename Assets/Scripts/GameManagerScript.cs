@@ -10,6 +10,7 @@ public class GameManagerScript : MonoBehaviour {
 	{
 		currentLevel += 1;
 		Application.LoadLevel(currentLevel);
+        Debug.Log(currentLevel);
 	}
     public void StartButton(bool start)
     {

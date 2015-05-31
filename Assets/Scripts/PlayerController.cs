@@ -31,6 +31,7 @@ namespace UnityStandardAssets.CrossPlatformInput
     public GameObject Laser;
     public GameObject GameManager;
     public AudioClip doorSound;
+    public AudioClip jumpSound;
 
     private bool jumpButtonPressed;
     private bool prev, current, inAir, jumping;
@@ -67,7 +68,6 @@ namespace UnityStandardAssets.CrossPlatformInput
             isMoving = false;
         }
 
-
 		//Ground-checking
 		groundCheckDiag1.x = groundCheck.position.x-0.49f;
 		groundCheckDiag1.y = groundCheck.position.y-0.1f;
@@ -97,9 +97,8 @@ namespace UnityStandardAssets.CrossPlatformInput
         }
         if (jumping && grounded && prev == false)
         {
-            GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().PlayOneShot(jumpSound);
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
-            GetComponent<AudioSource>().Play();
             anim.SetBool("Jumping", true);
             inAir = true;
             prev = true;
@@ -116,8 +115,6 @@ namespace UnityStandardAssets.CrossPlatformInput
             jumping = false;
         }
 
-        
-
         if (Input.GetButtonUp("Horizontal"))
         {
             currentMovement = 0;
@@ -125,14 +122,21 @@ namespace UnityStandardAssets.CrossPlatformInput
         }
 
     }
-	
 
 	void OnCollisionEnter2D(Collision2D other){
+        GetComponent<AudioSource>().volume = 0.403f;
+
 		if (other.transform.tag == "Enemy")
 		{
 			Die();
 		}
 	}
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+
+    }
+
 	void Die(){
 		transform.position = spawn;
 	}
@@ -148,7 +152,6 @@ namespace UnityStandardAssets.CrossPlatformInput
 		{
             GameObject.Find("Unity_Door").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Objects/Unity_DoorOpen");
             GameObject.Find("GoalLight").GetComponent<Light>().color = Color.green;
-            GetComponent<AudioSource>().PlayOneShot(doorSound);
 			hasKey = true;
 			Destroy (other.gameObject);
 		}
@@ -167,10 +170,15 @@ namespace UnityStandardAssets.CrossPlatformInput
 
 
             if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
+            {
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+            }
 
             if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
+            {
                 gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+            }
+
 
 
             //Turning/facing new direction
@@ -190,10 +198,18 @@ namespace UnityStandardAssets.CrossPlatformInput
     public void startMoving(float moveDirection)
     {
         currentMovement=moveDirection;
-        if (moveDirection < 0 || moveDirection > 0)
+        if (moveDirection < 0 || moveDirection > 0){
             isMoving = true;
+            if (!GetComponent<AudioSource>().isPlaying)
+                GetComponent<AudioSource>().Play();
+        }
+
         else
+        {
             isMoving = false;
+            GetComponent<AudioSource>().Pause();
+        }
+
 
     }
 
@@ -202,9 +218,16 @@ namespace UnityStandardAssets.CrossPlatformInput
     {
         jumping = jumped;
         if(jumped)
+        {
             jumpButtonPressed = true;
-        else
+            GetComponent<AudioSource>().PlayOneShot(doorSound);
+            GetComponent<AudioSource>().volume = 0f;
+        }
+
+        else 
+        {
             jumpButtonPressed = false;
+        }
     }
 
     public void resetLevel()

@@ -16,6 +16,7 @@ TagManager:
   - ForceField
   - ElevatorEnter
   - ElevatorActivate
+  - Ground
   layers:
   - Default
   - TransparentFX

@@ -108,9 +108,13 @@ public class BlueLaser : MonoBehaviour
 
             if (touching == true)
             {
-                if(!GetComponent<AudioSource>().isPlaying) {
-                    GetComponent<AudioSource>().Play();
+                if (GetComponent<AudioSource>())
+                {
+                    if (!GetComponent<AudioSource>().isPlaying)
+                        GetComponent<AudioSource>().Play();
+                    
                 }
+
                 if (!hit.rigidbody)
                     return;
                 if (hit.collider != null && hit.rigidbody.isKinematic == true)
