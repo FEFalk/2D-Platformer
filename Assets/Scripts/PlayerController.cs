@@ -39,6 +39,7 @@ namespace UnityStandardAssets.CrossPlatformInput
     {
 		spawn=transform.position;
 		someScale = transform.localScale.x;
+        transform.Find("Laser").GetComponent<LineRenderer>().sortingOrder = -1;
 	}
 
 	void FixedUpdate(){
@@ -98,12 +99,14 @@ namespace UnityStandardAssets.CrossPlatformInput
             GetComponent<AudioSource>().Play();
             GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
             GetComponent<AudioSource>().Play();
+            anim.SetBool("Jumping", true);
             inAir = true;
             prev = true;
         }
 
         if (jumping && !grounded && inAir == true)
         {
+            anim.SetBool("Jumping", false);
             if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
                 GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y * 4.5f) / 2));
         }
@@ -111,6 +114,9 @@ namespace UnityStandardAssets.CrossPlatformInput
         {
             jumping = false;
         }
+
+        
+
         if (Input.GetButtonUp("Horizontal"))
         {
             currentMovement = 0;
@@ -145,6 +151,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 			Destroy (other.gameObject);
 		}
 	}
+
 
     public void Movement()
     {
