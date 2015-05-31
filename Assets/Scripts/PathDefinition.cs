@@ -24,8 +24,8 @@ public class PathDefinition : MonoBehaviour
 
             if (index <= 0)
                 direction = 1;
-            else if (index >= Points.Length - 1)
-                direction = -1;
+            else if (index <=  1)
+                yield break;
 
             index = index + direction;
         }

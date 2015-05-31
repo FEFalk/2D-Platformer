@@ -4,7 +4,6 @@ using System.Collections;
 
 public class ElevatorActivate : MonoBehaviour {
 
-    public Material ElevatorOutside;
     public bool activated;
 
 	// Use this for initialization
@@ -25,7 +24,7 @@ public class ElevatorActivate : MonoBehaviour {
     {
         if(other.transform.tag=="Player")
         {
-
+            transform.parent.GetComponent<Animator>().enabled = true;
         }
     }
 

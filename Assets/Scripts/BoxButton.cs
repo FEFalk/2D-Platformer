@@ -8,6 +8,7 @@ public class BoxButton : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        transform.Find("ButtonEffects").gameObject.SetActive(true);
         Object.GetComponent<Elevator>().activated = true;
         Destroy(this);
     }
