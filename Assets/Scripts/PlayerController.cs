@@ -221,7 +221,6 @@ namespace UnityStandardAssets.CrossPlatformInput
         if(jumped)
         {
             jumpButtonPressed = true;
-            GetComponent<AudioSource>().PlayOneShot(jumpSound);
         }
 
         else 
