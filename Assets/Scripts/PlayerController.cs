@@ -124,7 +124,6 @@ namespace UnityStandardAssets.CrossPlatformInput
     }
 
 	void OnCollisionEnter2D(Collision2D other){
-        GetComponent<AudioSource>().volume = 0.403f;
 
 		if (other.transform.tag == "Enemy")
 		{
@@ -150,6 +149,7 @@ namespace UnityStandardAssets.CrossPlatformInput
 	
 		else if (other.transform.tag == "Key") 
 		{
+            GetComponent<AudioSource>().PlayOneShot(doorSound);
             GameObject.Find("Unity_Door").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Objects/Unity_DoorOpen");
             GameObject.Find("GoalLight").GetComponent<Light>().color = Color.green;
 			hasKey = true;
@@ -204,14 +204,11 @@ namespace UnityStandardAssets.CrossPlatformInput
         currentMovement=moveDirection;
         if (moveDirection < 0 || moveDirection > 0){
             isMoving = true;
-            if (!GetComponent<AudioSource>().isPlaying)
-                GetComponent<AudioSource>().Play();
         }
 
         else
         {
             isMoving = false;
-            GetComponent<AudioSource>().Pause();
         }
 
 
@@ -224,8 +221,7 @@ namespace UnityStandardAssets.CrossPlatformInput
         if(jumped)
         {
             jumpButtonPressed = true;
-            GetComponent<AudioSource>().PlayOneShot(doorSound);
-            GetComponent<AudioSource>().volume = 0f;
+            GetComponent<AudioSource>().PlayOneShot(jumpSound);
         }
 
         else 
