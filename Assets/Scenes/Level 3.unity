@@ -12053,6 +12053,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 10810448, guid: 15ad779426f3ae54392c0069c23759c6, type: 2}
+      propertyPath: m_Range
+      value: 19.7999992
+      objectReference: {fileID: 0}
+    - target: {fileID: 10810448, guid: 15ad779426f3ae54392c0069c23759c6, type: 2}
+      propertyPath: m_SpotAngle
+      value: 63.0999985
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 15ad779426f3ae54392c0069c23759c6, type: 2}
   m_IsPrefabParent: 0
@@ -17878,8 +17886,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: startMoving
+        - m_Target: {fileID: 1513555830}
+          m_MethodName: 
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -17896,8 +17904,8 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: startMoving
+        - m_Target: {fileID: 1513555830}
+          m_MethodName: 
           m_Mode: 4
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -18451,7 +18459,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &853189561
 Transform:
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 400000, guid: ed1c797ec3736704db03a0d64d010e33, type: 2}
   m_PrefabInternal: {fileID: 853189560}
 --- !u!1 &857957104
 GameObject:
@@ -22527,7 +22535,7 @@ Prefab:
   m_IsPrefabParent: 0
 --- !u!4 &1022449230
 Transform:
-  m_PrefabParentObject: {fileID: 0}
+  m_PrefabParentObject: {fileID: 400006, guid: ccbcfc705a39717429590a9f247ec30a, type: 2}
   m_PrefabInternal: {fileID: 1022449229}
 --- !u!1 &1026503484
 GameObject:
@@ -35577,7 +35585,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1313281659}
           m_MethodName: startMoving
           m_Mode: 4
           m_Arguments:
@@ -35595,7 +35603,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1313281659}
           m_MethodName: startMoving
           m_Mode: 4
           m_Arguments:
@@ -42173,7 +42181,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1313281659}
           m_MethodName: startJumping
           m_Mode: 6
           m_Arguments:
@@ -42191,7 +42199,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1313281659}
           m_MethodName: startJumping
           m_Mode: 6
           m_Arguments:
