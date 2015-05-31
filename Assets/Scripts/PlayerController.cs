@@ -137,7 +137,7 @@ namespace UnityStandardAssets.CrossPlatformInput
     }
 
 	void Die(){
-		transform.position = spawn;
+        resetLevel();
 	}
 
 
