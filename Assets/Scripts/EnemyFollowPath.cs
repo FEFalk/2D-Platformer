@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
-public class Elevator : MonoBehaviour
+public class EnemyFollowPath : MonoBehaviour
 {
     public enum FollowType
     {
@@ -13,14 +14,15 @@ public class Elevator : MonoBehaviour
     public PathDefinition Path;
     public float Speed = 1;
     public float MaxDistanceToGoal = .1f;
-    public bool activated = false;
 
     private IEnumerator<Transform> _currentPoint;
     private GameObject player;
+    private GameObject gun;
+
     public void Start()
     {
-
         player = GameObject.Find("Player");
+        gun = GameObject.Find("Pikkadoll");
 
         if (Path == null)
         {
@@ -40,7 +42,7 @@ public class Elevator : MonoBehaviour
 
     public void Update()
     {
-        if (_currentPoint == null || _currentPoint.Current == null || activated == false)
+        if (_currentPoint == null || _currentPoint.Current == null)
             return;
 
         if (Type == FollowType.MoveTowards)
