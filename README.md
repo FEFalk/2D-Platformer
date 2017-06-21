@@ -1,7 +1,7 @@
 # 2D_Platformer
 Sci-fi 2D-Platforming Game made in Unity. Developed for a project for a course in mobile application development at Mälardalen University
 
-##How to compile and run
+## How to compile and run
 - Use Unity
 
 ## Screenshots
