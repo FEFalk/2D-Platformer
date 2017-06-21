@@ -6,6 +6,7 @@
 !/Assets/
 !/ProjectSettings/
 !.gitignore
+!/screenshots/
  
 # OS Stuff
 .DS_Store

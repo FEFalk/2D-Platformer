@@ -34,8 +34,6 @@ public class GreenLaser : MonoBehaviour
     {
         lr = laserPrefab.GetComponent<LineRenderer>();
         activated = false;
-        size = 2;
-        
     }
 
     void Update()
