@@ -19,9 +19,9 @@ public class DragRigidbody : MonoBehaviour
         mainCamera = FindCamera();
     }
 
-    void Update() {       
-       
-        if (!Input.GetMouseButtonDown (0))
+    void Update() {
+
+        if (!Input.GetButton("Fire2"))
             return;
        
         int layerMask = 1 << 11;
@@ -47,11 +47,12 @@ public class DragRigidbody : MonoBehaviour
                 Debug.Log ("Currently 'centerOfMass' isn't reported for 2D physics like 3D Physics - it will be added in a future release.");
                
                 // Currently 'centerOfMass' isn't reported for 2D physics like 3D Physics yet - it will be added in a future release.
-                //Vector3 anchor = transform.TransformDirection(hit.rigidbody.centerOfMass) + hit.rigidbody.transform.position; in c# might be Vector2?
-                //anchor = springJoint.transform.InverseTransformPoint(anchor);
-                //springJoint.anchor = anchor;
+                Vector3 anchor = transform.TransformDirection(hit.rigidbody.centerOfMass) + hit.rigidbody.transform.position;
+                //in c# might be Vector2?
+                anchor = springJoint.transform.InverseTransformPoint(anchor);
+                springJoint.anchor = anchor;
             } else {
-                //springJoint.anchor = Vector3.zero;
+                springJoint.anchor = Vector3.zero;
             }
            
             springJoint.distance = distance; // there is no distance in SpringJoint2D

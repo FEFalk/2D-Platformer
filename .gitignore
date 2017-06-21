@@ -6,6 +6,7 @@
 !/Assets/
 !/ProjectSettings/
 !.gitignore
+!/screenshots/
  
 # OS Stuff
 .DS_Store
@@ -48,36 +49,6 @@ Desktop.ini
 /Assets/Scifi Art Demo Pack/Pipes Demo/Pipe_GreenShort.png
 /Assets/Scifi Art Demo Pack/Pipes Demo/Pipe_GreenShort.png.meta
 /Assets/Scifi Art Demo Pack/Platform Demo
-/Assets/Scifi Art Demo Pack/Platform Demo/Float_Platform1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Float_Platform1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Float_Platform2.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Float_Platform2.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Forest_Platform.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Forest_Platform.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Pipe.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Pipe.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Ramp.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Ramp.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Wall1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Gray_Wall1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/pillar.png
-/Assets/Scifi Art Demo Pack/Platform Demo/pillar.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Platform1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Platform1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Platform_Ramp.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Platform_Ramp.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyFloat_Platform1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyFloat_Platform1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyFloat_Platform2.png
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyFloat_Platform2.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyWall1.png
-/Assets/Scifi Art Demo Pack/Platform Demo/RustyWall1.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Rusty_Wall4.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Rusty_Wall4.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Walkway2.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Walkway2.png.meta
-/Assets/Scifi Art Demo Pack/Platform Demo/Walkway6.png
-/Assets/Scifi Art Demo Pack/Platform Demo/Walkway6.png.meta
 /Assets/Scifi Art Demo Pack/Prop Demo
 /Assets/Scifi Art Demo Pack/Prop Demo/BlueScrap2.png
 /Assets/Scifi Art Demo Pack/Prop Demo/BlueScrap2.png.meta
@@ -121,3 +92,164 @@ Desktop.ini
 /Assets/Scifi Art Demo Pack/Pipes Demo.meta
 /Assets/Scifi Art Demo Pack/Platform Demo.meta
 /Assets/Scifi Art Demo Pack/Prop Demo.meta
+/Assets/Animations/GlowingLight.anim
+/Assets/Animations/Spotlight.controller
+/Assets/Editor/CrossPlatformInput/CrossPlatformInputInitialize.cs
+/Assets/Editor/ImageEffects/AntialiasingEditor.cs
+/Assets/Editor/ImageEffects/BloomAndFlaresEditor.cs
+/Assets/Editor/ImageEffects/BloomEditor.cs
+/Assets/Editor/ImageEffects/CameraMotionBlurEditor.cs
+/Assets/Editor/ImageEffects/ColorCorrectionCurvesEditor.cs
+/Assets/Editor/ImageEffects/ColorCorrectionLookupEditor.cs
+/Assets/SampleScenes/Menu/Prefabs/MenuLoader.prefab
+/Assets/SampleScenes/Menu/Prefabs/MenuUI.prefab
+/Assets/SampleScenes/Menu/Scripts/EventSystemChecker.cs
+/Assets/SampleScenes/Menu/Scripts/MenuSceneLoader.cs
+/Assets/SampleScenes/Menu/Scripts/PauseMenu.cs
+/Assets/SampleScenes/Menu/Scripts/ReturnToMainMenu.cs
+/Assets/SampleScenes/Menu/Scripts/SceneAndURLLoader.cs
+/Assets/SampleScenes/Menu/Sprites/LogoUnitySprite.png
+/Assets/SampleScenes/Menu/Sprites/MenuCornerTopRightSprite.png
+/Assets/SampleScenes/Scripts/SlowMoButton.cs
+/Assets/Standard Assets/2D/Scripts/Camera2DFollow.cs
+/Assets/Standard Assets/2D/Scripts/CameraFollow.cs
+/Assets/Standard Assets/2D/Scripts/Platformer2DUserControl.cs
+/Assets/Standard Assets/2D/Scripts/PlatformerCharacter2D.cs
+/Assets/Standard Assets/2D/Scripts/Restarter.cs
+/Assets/Standard Assets/2D/Sprites/BackgroundGreyGridSprite.png
+/Assets/Standard Assets/2D/Sprites/BackgroundNavyGridSprite.png
+/Assets/Standard Assets/Characters/FirstPersonCharacter/Audio/Footstep01.wav
+/Assets/Standard Assets/Characters/FirstPersonCharacter/Audio/Footstep02.wav
+/Assets/Standard Assets/Characters/FirstPersonCharacter/Audio/Footstep03.wav
+/Assets/Standard Assets/Characters/FirstPersonCharacter/Audio/Footstep04.wav
+/Assets/Standard Assets/Characters/FirstPersonCharacter/Audio/Jump.wav
+/Assets/Standard Assets/Characters/FirstPersonCharacter/Audio/Land.wav
+/Assets/Standard Assets/Characters/FirstPersonCharacter/FirstPersonCharacterGuidelines.txt
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonAcceleratorOverSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonAcceleratorUpSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonArrowOverSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonArrowUpSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonBrakeOverSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonBrakeUpSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonCameraCycleUpSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonResetSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonSpacebarSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonThumbstickOverSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonThumbstickUpSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonTimescaleFullUpSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/ButtonTimescaleSlowUpSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/SliderBackgroundSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/SliderHandleSprite.png
+/Assets/Standard Assets/CrossPlatformInput/Sprites/TouchpadSprite.png
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Antialiasing.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Bloom.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/BloomAndFlares.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/BloomOptimized.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Blur.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/BlurOptimized.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/CameraMotionBlur.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionCurves.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionLookup.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ColorCorrectionRamp.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ContrastEnhance.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ContrastStretch.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/CreaseShading.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/DepthOfField.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/DepthOfFieldDeprecated.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/EdgeDetection.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Fisheye.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/GlobalFog.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Grayscale.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ImageEffectBase.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ImageEffects.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/MotionBlur.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/NoiseAndGrain.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/NoiseAndScratches.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/PostEffectsBase.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/PostEffectsHelper.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Quads.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ScreenOverlay.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ScreenSpaceAmbientObscurance.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/ScreenSpaceAmbientOcclusion.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/SepiaTone.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/SunShafts.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/TiltShift.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Tonemapping.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Triangles.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Twirl.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/VignetteAndChromaticAberration.cs
+/Assets/Standard Assets/Effects/ImageEffects/Scripts/Vortex.cs
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/Blend.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlendForBloom.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlendOneOne.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BlurAndFlares.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BrightPassFilter.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/BrightPassFilter2.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/LensFlareCreate.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBloom.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/MobileBlur.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/MultiPassHollywoodFlares.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/SeparableBlurPlus.shader
+/Assets/Standard Assets/Effects/ImageEffects/Shaders/_BloomAndFlares/VignetteShader.shader
+/Assets/Standard Assets/Effects/ImageEffects/Textures/VignetteMask.png
+/Assets/Standard Assets/Effects/LightCookies/Textures/FlashlightCookie.tif
+/Assets/Standard Assets/Effects/LightCookies/Textures/FlashlightIrregularCookie.tif
+/Assets/Standard Assets/Effects/LightCookies/Textures/LightHardCookie.psd
+/Assets/Standard Assets/Effects/LightCookies/Textures/LightSoftCookie.tif
+/Assets/Standard Assets/Effects/LightCookies/Textures/LightSquareCookie.psd
+/Assets/Standard Assets/Effects/LightFlares/Flares/50mmZoom.flare
+/Assets/Standard Assets/Effects/LightFlares/Flares/FlareSmall.flare
+/Assets/Standard Assets/Effects/LightFlares/Flares/Sun.flare
+/Assets/Standard Assets/Effects/LightFlares/Materials/Flare50mm.mat
+/Assets/Standard Assets/Effects/LightFlares/Textures/Flare50mm.psd
+/Assets/Standard Assets/Effects/LightFlares/Textures/FlareStar.psd
+/Assets/Standard Assets/Effects/ToonShading/Materials/ToonBasic.mat
+/Assets/Standard Assets/Effects/ToonShading/Materials/ToonBasicOutline.mat
+/Assets/Standard Assets/Effects/ToonShading/Materials/ToonLit.mat
+/Assets/Standard Assets/Effects/ToonShading/Materials/ToonLitOutline.mat
+/Assets/Standard Assets/Effects/ToonShading/Shaders/ToonBasic.shader
+/Assets/Standard Assets/Effects/ToonShading/Shaders/ToonBasicOutline.shader
+/Assets/Standard Assets/Effects/ToonShading/Shaders/ToonLit.shader
+/Assets/Standard Assets/Effects/ToonShading/Shaders/ToonLitOutline.shader
+/Assets/Standard Assets/Effects/ToonShading/Textures/ToonLit.psd
+/Assets/Standard Assets/Effects/ToonShading/Textures/UtilToonGradient.png
+/Assets/Standard Assets/ParticleSystems/ParticleSystemsGuidelines.txt
+/Assets/Standard Assets/ParticleSystems/Prefabs/Afterburner.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/DustStorm.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/DustStormMobile.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/Explosion.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/ExplosionMobile.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/FireComplex.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/FireMobile.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/Fireworks.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/Flare.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/FlareMobile.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/Hose.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/HoseMobile.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/Smoke.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/Steam.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/SteamMobile.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/TyreBurnoutSmoke.prefab
+/Assets/Standard Assets/ParticleSystems/Prefabs/WildFire.prefab
+/Assets/Standard Assets/ParticleSystems/Scripts/AfterburnerPhysicsForce.cs
+/Assets/Standard Assets/ParticleSystems/Scripts/ExplosionFireAndDebris.cs
+/Assets/Standard Assets/ParticleSystems/Scripts/ExplosionPhysicsForce.cs
+/Assets/Standard Assets/ParticleSystems/Scripts/ExtinguishableParticleSystem.cs
+/Assets/Standard Assets/ParticleSystems/Scripts/FireLight.cs
+/Assets/Standard Assets/ParticleSystems/Scripts/Hose.cs
+/Assets/Standard Assets/ParticleSystems/Scripts/ParticleSystemMultiplier.cs
+/Assets/Standard Assets/ParticleSystems/Scripts/SmokeParticles.cs
+/Assets/Standard Assets/ParticleSystems/Scripts/WaterHoseParticles.cs
+/Assets/Standard Assets/ParticleSystems/Shaders/PriorityParticleAdd.shader
+/Assets/Standard Assets/ParticleSystems/Shaders/PriorityParticleAddSoft.shader
+/Assets/Standard Assets/ParticleSystems/Shaders/PriorityParticleAlpha.shader
+/Assets/Standard Assets/ParticleSystems/Textures/ParticleBokeh.png
+/Assets/Standard Assets/ParticleSystems/Textures/ParticleCloudWhite.png
+/Assets/Standard Assets/ParticleSystems/Textures/ParticleFireballSheet.png
+/Assets/Standard Assets/ParticleSystems/Textures/ParticleFirecloud.png
+/Assets/Standard Assets/ParticleSystems/Textures/ParticleFlameLickSheet.png
+/Assets/Standard Assets/ParticleSystems/Textures/ParticleFlamesSheet.png
+/Assets/Standard Assets/ParticleSystems/Textures/ParticleFlare.png
+/Assets/Standard Assets/ParticleSystems/Textures/Spark.png
+/Assets/Standard Assets/ParticleSystems/Textures/SplashesFineParticle.png
+/Assets/Standard Assets/ParticleSystems/Textures/SplashesLargeParticle.png

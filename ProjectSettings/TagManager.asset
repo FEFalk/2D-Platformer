@@ -7,6 +7,16 @@ TagManager:
   - Enemy
   - Key
   - Goal
+  - Wall
+  - Blue Box
+  - ObstacleButton
+  - GreenButton
+  - ResetButton
+  - Red Button
+  - ForceField
+  - ElevatorEnter
+  - ElevatorActivate
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -20,8 +30,8 @@ TagManager:
   - Player
   - 
   - Ground
-  - 
-  - 
+  - Key
+  - Goal
   - 
   - 
   - 

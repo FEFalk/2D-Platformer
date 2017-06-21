@@ -1,8 +1,14 @@
-﻿using UnityEngine;
-using System.Collections;
+﻿using System;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PlayerController : MonoBehaviour {
-    private static float currentMovement;
+
+namespace UnityStandardAssets.CrossPlatformInput
+{
+
+    public class PlayerController : MonoBehaviour
+    {
+    public float currentMovement;
 	public float moveSpeed;
 	public float jumpHeight;
     public float maxMoveSpeed;
@@ -10,6 +16,7 @@ public class PlayerController : MonoBehaviour {
 	public Transform groundCheck;
 	public LayerMask whatIsGround;
 	private bool grounded;
+    public bool isMoving;
 
 	private bool doubleJumped;
 	private Vector2 groundCheckDiag1;
@@ -22,13 +29,19 @@ public class PlayerController : MonoBehaviour {
 	public Animator anim;
     public GameObject ChildObject;
     public GameObject Laser;
+    public GameObject GameManager;
+    public AudioClip doorSound;
+    public AudioClip jumpSound;
 
+    private bool jumpButtonPressed;
     private bool prev, current, inAir, jumping;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+    {
 		spawn=transform.position;
 		someScale = transform.localScale.x;
+        transform.Find("Laser").GetComponent<LineRenderer>().sortingOrder = -1;
 	}
 
 	void FixedUpdate(){
@@ -49,6 +62,12 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            currentMovement = 0;
+            isMoving = false;
+        }
+
 		//Ground-checking
 		groundCheckDiag1.x = groundCheck.position.x-0.49f;
 		groundCheckDiag1.y = groundCheck.position.y-0.1f;
@@ -60,9 +79,9 @@ public class PlayerController : MonoBehaviour {
 		if (grounded)
 			doubleJumped = false;
 
-        if (prev == true && jumping == false && GetComponent<Rigidbody2D>().velocity.y>8.2f)
+        if (prev == true && jumping == false && GetComponent<Rigidbody2D>().velocity.y > 8.2f)
         {
-            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -jumpHeight/2), ForceMode2D.Impulse);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, -jumpHeight / 2), ForceMode2D.Impulse);
         }
 
         if (jumping == false)
@@ -71,32 +90,54 @@ public class PlayerController : MonoBehaviour {
             prev = false;
         }
 
-		//Jumping
-		if (jumping && grounded && prev==false) 
-		{
-            GetComponent<AudioSource>().Play();
-			GetComponent<Rigidbody2D> ().AddForce (new Vector2 (0, jumpHeight), ForceMode2D.Impulse);
-            GetComponent<AudioSource>().Play();
+        //Jumping
+        if (Input.GetButton("Jump"))
+        {
+            jumping = true;
+        }
+        if (jumping && grounded && prev == false)
+        {
+            GetComponent<AudioSource>().PlayOneShot(jumpSound);
+            GetComponent<Rigidbody2D>().AddForce(new Vector2(0, jumpHeight), ForceMode2D.Impulse);
+            anim.SetBool("Jumping", true);
             inAir = true;
             prev = true;
-		}
-		
-		if (jumping && !grounded && inAir == true)
-		{
-            if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
-                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y*4.5f)/2));
+        }
 
-		}
-	}
+        if (jumping && !grounded && inAir == true)
+        {
+            anim.SetBool("Jumping", false);
+            if (gameObject.GetComponent<Rigidbody2D>().velocity.y < 3)
+                GetComponent<Rigidbody2D>().AddForce(new Vector2(0, (GetComponent<Rigidbody2D>().velocity.y * 4.5f) / 2));
+        }
+        if (!Input.GetButton("Jump") && jumpButtonPressed == false)
+        {
+            jumping = false;
+        }
+
+        if (Input.GetButtonUp("Horizontal"))
+        {
+            currentMovement = 0;
+            isMoving = false;
+        }
+
+    }
 
 	void OnCollisionEnter2D(Collision2D other){
+
 		if (other.transform.tag == "Enemy")
 		{
 			Die();
 		}
 	}
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+
+    }
+
 	void Die(){
-		transform.position = spawn;
+        resetLevel();
 	}
 
 
@@ -108,41 +149,68 @@ public class PlayerController : MonoBehaviour {
 	
 		else if (other.transform.tag == "Key") 
 		{
+            GetComponent<AudioSource>().PlayOneShot(doorSound);
+            GameObject.Find("Unity_Door").GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Objects/Unity_DoorOpen");
+            GameObject.Find("GoalLight").GetComponent<Light>().color = Color.green;
 			hasKey = true;
 			Destroy (other.gameObject);
 		}
+        else if (other.transform.tag == "Enemy")
+        {
+            Die();
+        }
 	}
+
 
     public void Movement()
     {
-        currentMovement = Input.GetAxisRaw("Horizontal");
+            //currentMovement = Mathf.RoundToInt(CrossPlatformInput.CrossPlatformInputManager.GetAxisRaw("Horizontal"));
 
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+            if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1)
+            {
+                currentMovement = Input.GetAxisRaw("Horizontal");
+                isMoving = true;
+            }
 
-        if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
-            gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+
+            if (gameObject.GetComponent<Rigidbody2D>().velocity.x < maxMoveSpeed && currentMovement > 0)
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+            }
+
+            if (gameObject.GetComponent<Rigidbody2D>().velocity.x > -maxMoveSpeed && currentMovement < 0)
+            {
+                gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(currentMovement * moveSpeed, 0f));
+            }
 
 
-        //Turning/facing new direction
-        if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
-        {
-            transform.localScale = new Vector2(someScale, transform.localScale.y);
-            ChildObject.transform.localScale = new Vector2(someScale, ChildObject.transform.localScale.y);
+
+            //Turning/facing new direction
+
+            if (Input.GetAxisRaw("Horizontal") == 1 || currentMovement == 1)
+            {
+                transform.Find("Body").localScale = new Vector3(someScale, transform.localScale.y, 1);
+            }
+            if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1)
+            {
+                transform.Find("Body").localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+            }
+
+            anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
         }
-        if (Input.GetAxisRaw("Horizontal") == -1 || currentMovement == -1){
-            transform.localScale = new Vector2(-someScale, transform.localScale.y);
-            ChildObject.transform.localScale = new Vector2(-someScale, ChildObject.transform.localScale.y);
-            Laser.transform.localScale = new Vector2(someScale, transform.localScale.y);
-        }
-
-        anim.SetFloat("Walking", Mathf.Abs(currentMovement * moveSpeed));
-
-    }
 
     public void startMoving(float moveDirection)
     {
         currentMovement=moveDirection;
+        if (moveDirection < 0 || moveDirection > 0){
+            isMoving = true;
+        }
+
+        else
+        {
+            isMoving = false;
+        }
+
 
     }
 
@@ -150,6 +218,20 @@ public class PlayerController : MonoBehaviour {
     public void startJumping(bool jumped)
     {
         jumping = jumped;
+        if(jumped)
+        {
+            jumpButtonPressed = true;
+        }
+
+        else 
+        {
+            jumpButtonPressed = false;
+        }
+    }
+
+    public void resetLevel()
+    {
+        Application.LoadLevel(Application.loadedLevel);
     }
 
     void applyStopForce()
@@ -166,3 +248,4 @@ public class PlayerController : MonoBehaviour {
     }
 }
 
+}
